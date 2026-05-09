@@ -48,7 +48,6 @@ const Chatbot = () => {
   const handleSend = (text = inputValue) => {
     if (!text.trim()) return;
 
-    // Check if it's a specific course selection from suggestions
     const selectedCourseId = courseMapping[text];
 
     const userMessage = {
@@ -70,7 +69,6 @@ const Chatbot = () => {
       if (selectedCourseId) {
         botResponse = `Excellent choice! "${text}" is a great program. I'm redirecting you to the course details now... 🚀`;
         
-        // Redirect logic
         setTimeout(() => {
           navigate(`/course/${selectedCourseId}`);
           setIsOpen(false);
@@ -198,13 +196,19 @@ const Chatbot = () => {
               {/* Avatar */}
               <div style={{
                 width: "36px", height: "36px",
-                borderRadius: "12px",
-                background: "linear-gradient(135deg, #6366f1, #4f46e5)",
+                borderRadius: "10px",
+                background: "rgba(255,255,255,0.05)",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 boxShadow: "0 4px 12px rgba(99,102,241,0.3)",
                 flexShrink: 0,
-                fontSize: "1.1rem",
-              }}>🎓</div>
+                overflow: "hidden"
+              }}>
+                <img 
+                  src="/images/courses/placement/image.png" 
+                  alt="Assistant" 
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+                />
+              </div>
 
               <div style={{ flex: 1 }}>
                 <div style={{ color: "#f8fafc", fontSize: "0.875rem", fontWeight: 700, lineHeight: 1.2 }}>PreppRight Assistant</div>
