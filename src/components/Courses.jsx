@@ -152,15 +152,8 @@ const Courses = ({ limit }) => {
                   <span>⭐ {course.rating}</span>
                 </div>
                 <div className="course-footer">
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <span
-                      style={{
-                        fontSize: "0.85rem",
-                        color: "#64748b",
-                        textDecoration: "line-through",
-                        marginBottom: "2px",
-                      }}
-                    >
+                  <div className="price-container">
+                    <span className="old-price">
                       ₹
                       {(() => {
                         const p = parseInt(

@@ -117,18 +117,17 @@ const QuizPage = () => {
                       <p style={{ color: "#94a3b8", fontSize: "0.9rem" }}>
                         20 Random Questions | 30 Minutes
                       </p>
-                      <div
-                        style={{
-                          marginTop: "2rem",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span style={{ color: "#10b981", fontWeight: 800 }}>
-                          FREE
-                        </span>
-                        <button onClick={startQuiz} className="btn btn-primary">
+                      <div className="course-footer quiz-footer">
+                        <div className="price-container">
+                          <span style={{ color: "#10b981", fontWeight: 800, fontSize: "1.2rem" }}>
+                            FREE
+                          </span>
+                        </div>
+                        <button 
+                          onClick={startQuiz} 
+                          className="btn btn-primary"
+                          style={{ padding: "0.75rem 1.5rem" }}
+                        >
                           Start Quiz
                         </button>
                       </div>

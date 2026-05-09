@@ -116,6 +116,11 @@ const ContactPage = () => {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
               <ContactInfoItem
+                icon="📍"
+                title="Visit Us"
+                detail="Noida, Uttar Pradesh, India"
+              />
+              <ContactInfoItem
                 icon="📧"
                 title="Email Us"
                 detail="support@preppright.com"
@@ -127,34 +132,7 @@ const ContactPage = () => {
               />
             </div>
 
-            {/* Social Proof / Trusted By */}
-            <div style={{ marginTop: 64 }}>
-              <p
-                style={{
-                  fontSize: 12,
-                  fontWeight: 700,
-                  color: "#475569",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  marginBottom: 20,
-                }}
-              >
-                Trusted by students from
-              </p>
-              <div
-                className="contact-proof-logos"
-                style={{
-                  display: "flex",
-                  gap: 30,
-                  opacity: 0.5,
-                  filter: "grayscale(1)",
-                }}
-              >
-                <span style={{ fontWeight: 800, fontSize: 18 }}>GOOGLE</span>
-                <span style={{ fontWeight: 800, fontSize: 18 }}>META</span>
-                <span style={{ fontWeight: 800, fontSize: 18 }}>AMAZON</span>
-              </div>
-            </div>
+
           </motion.div>
 
           {/* Right Column: Form */}
