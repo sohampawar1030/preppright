@@ -116,11 +116,6 @@ const ContactPage = () => {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
               <ContactInfoItem
-                icon="📍"
-                title="Visit Us"
-                detail="123 Tech Park, Silicon Valley, Pune - 411045"
-              />
-              <ContactInfoItem
                 icon="📧"
                 title="Email Us"
                 detail="support@preppright.com"
