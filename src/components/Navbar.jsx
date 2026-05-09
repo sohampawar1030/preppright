@@ -139,7 +139,22 @@ const injectStyles = () => {
     @media (max-width: 900px) {
       .nav-desktop-links { display: none !important; }
       .nav-hamburger-wrap { display: flex !important; }
+      .nav-logo { height: 45px !important; }
     }
+    @keyframes nav-logo-shimmer {
+      0% { filter: brightness(2) contrast(1.1) drop-shadow(0 0 10px rgba(255,255,255,0.3)) drop-shadow(0 0 20px rgba(99,102,241,0.6)); }
+      50% { filter: brightness(2.5) contrast(1.2) drop-shadow(0 0 25px rgba(255,255,255,0.7)) drop-shadow(0 0 45px rgba(99,102,241,1)); }
+      100% { filter: brightness(2) contrast(1.1) drop-shadow(0 0 10px rgba(255,255,255,0.3)) drop-shadow(0 0 20px rgba(99,102,241,0.6)); }
+    }
+    .nav-logo {
+      height: 85px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      transition: all 0.3s ease;
+      animation: nav-logo-shimmer 4s infinite ease-in-out;
+    }
+
     @media (min-width: 901px) {
       .nav-hamburger-wrap { display: none !important; }
       .mobile-menu { display: none !important; }
@@ -184,6 +199,47 @@ const Navbar = () => {
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
+
+  /* ── Swipe gesture logic ── */
+  useEffect(() => {
+    let touchStart = 0;
+    let touchEnd = 0;
+
+    const handleTouchStart = (e) => {
+      touchStart = e.targetTouches[0].clientX;
+    };
+
+    const handleTouchMove = (e) => {
+      touchEnd = e.targetTouches[0].clientX;
+    };
+
+    const handleTouchEnd = () => {
+      const distance = touchStart - touchEnd;
+      const minDistance = 70; // Threshold for swipe
+
+      if (!menuOpen) {
+        // OPEN: Right to left swipe (touchStart > touchEnd)
+        if (distance > minDistance) {
+          setMenuOpen(true);
+        }
+      } else {
+        // CLOSE: Left to right swipe (touchEnd > touchStart)
+        if (-distance > minDistance) {
+          setMenuOpen(false);
+        }
+      }
+    };
+
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchend", handleTouchEnd);
+
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [menuOpen]);
 
   const isActive = (path) =>
     path === "/"
@@ -246,14 +302,7 @@ const Navbar = () => {
             <img
               src="/assets/PreepPright-Yv6Az5Se.png"
               alt="PreppRight Logo"
-              style={{
-                height: 85,
-                width: "auto",
-                objectFit: "contain",
-                display: "block",
-                filter: "brightness(2) contrast(1.1) drop-shadow(0 0 15px rgba(255,255,255,0.4)) drop-shadow(0 0 30px rgba(99,102,241,0.8))",
-                transition: "all 0.3s ease",
-              }}
+              className="nav-logo"
               onError={(e) => {
                 e.target.style.display = "none";
                 e.target.nextSibling.style.display = "flex";
@@ -491,13 +540,8 @@ const Navbar = () => {
               <img
                 src="/assets/PreepPright-Yv6Az5Se.png"
                 alt="PreppRight Logo"
-                style={{
-                  height: 45,
-                  width: "auto",
-                  objectFit: "contain",
-                  display: "block",
-                  filter: "brightness(1.5)",
-                }}
+                className="nav-logo"
+                style={{ height: 40 }}
               />
             </Link>
             <button

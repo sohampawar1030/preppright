@@ -577,6 +577,15 @@
   top: 6rem;
 }
 
+.courses-sidebar-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+}
+
 .category-list-wrapper {
   position: relative;
   width: 100%;

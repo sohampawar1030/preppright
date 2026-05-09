@@ -459,7 +459,7 @@ const CategoriesPage = () => {
           <h1
             style={{
               animation: "cat-fadeUp .7s .1s ease both",
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Outfit', sans-serif",
               fontSize: "clamp(2.6rem,6vw,4.5rem)",
               fontWeight: 800,
               color: "#fff",
@@ -530,7 +530,7 @@ const CategoriesPage = () => {
                   border: "1px solid rgba(255,255,255,.1)",
                   color: "#e2e8f0",
                   fontSize: 15,
-                  fontFamily: "'DM Sans',sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   transition: "border-color .25s, box-shadow .25s",
                   boxSizing: "border-box",
                 }}
@@ -604,7 +604,7 @@ const CategoriesPage = () => {
                   <p
                     style={{
                       margin: 0,
-                      fontFamily: "'Syne',sans-serif",
+                      fontFamily: "'Outfit', sans-serif",
                       fontWeight: 800,
                       fontSize: 22,
                       color: "#fff",
@@ -732,7 +732,7 @@ const CategoriesPage = () => {
                 </div>
                 <h3
                   style={{
-                    fontFamily: "'Syne',sans-serif",
+                    fontFamily: "'Outfit', sans-serif",
                     fontWeight: 800,
                     fontSize: 20,
                     color: "#fff",
@@ -791,7 +791,7 @@ const CategoriesPage = () => {
                     background: "transparent",
                     border: `1px solid ${cat.accentBorder}`,
                     color: cat.tagColor,
-                    fontFamily: "'DM Sans',sans-serif",
+                    fontFamily: "'Outfit', sans-serif",
                     fontWeight: 700,
                     fontSize: 14,
                     cursor: "pointer",

@@ -311,31 +311,31 @@ const TickerBar = () => {
   const logos = [
     {
       name: "Google",
-      url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg",
+      url: "https://cdn.simpleicons.org/google/4285F4",
     },
     {
       name: "Amazon",
-      url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazon.svg",
+      url: "https://cdn.simpleicons.org/amazon/FF9900",
     },
     {
       name: "Microsoft",
-      url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoft.svg",
+      url: "https://cdn.simpleicons.org/microsoft/00A4EF",
     },
     {
       name: "Meta",
-      url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/meta.svg",
+      url: "https://cdn.simpleicons.org/meta/0668E1",
     },
     {
       name: "TCS",
-      url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tata.svg",
+      url: "https://cdn.simpleicons.org/tata/1B317E",
     },
     {
       name: "Infosys",
-      url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/infosys.svg",
+      url: "https://cdn.simpleicons.org/infosys/007CC3",
     },
     {
       name: "Wipro",
-      url: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/wipro.svg",
+      url: "https://cdn.simpleicons.org/wipro/000000",
     },
   ];
   const list = [...logos, ...logos, ...logos];
@@ -367,8 +367,7 @@ const TickerBar = () => {
               display: "flex",
               alignItems: "center",
               gap: 12,
-              opacity: 0.6,
-              filter: "grayscale(100%) brightness(200%)",
+              opacity: 1,
               transition: "all 0.3s",
             }}
           >
@@ -511,7 +510,7 @@ const CourseDetailsPage = () => {
           color: "#e2e8f0",
           textAlign: "center",
           padding: "80px 0",
-          fontFamily: "DM Sans,sans-serif",
+          fontFamily: "'Outfit', sans-serif",
         }}
       >
         Course not found
@@ -555,198 +554,15 @@ const CourseDetailsPage = () => {
   ];
 
   return (
-    <div
-      className="course-details-page"
-      style={{
-        minHeight: "100vh",
-        position: "relative",
-        overflowX: "hidden",
-        paddingTop:
-          "calc(var(--nav-h, 90px) + var(--cdp-offer-h, 60px) + 20px)",
-        "--cdp-offer-h": "60px",
-      }}
-    >
-      {/* ── PREMIUM LIMITED OFFER BANNER ── */}
-      <motion.div
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      <div
+        className="course-details-page"
         style={{
-          background: "rgba(15, 22, 40, 0.8)",
-          backdropFilter: "blur(20px)",
-          position: "fixed",
-          top: "var(--nav-h, 90px)",
-          left: 0,
-          right: 0,
-          zIndex: 950,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
+          minHeight: "100vh",
+          position: "relative",
+          overflowX: "hidden",
+          paddingTop: "var(--nav-h, 90px)",
         }}
       >
-        {/* Animated background glow */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.05), transparent)",
-            animation: "cdp-shimmer-banner 3s infinite",
-            pointerEvents: "none",
-          }}
-        />
-
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 20,
-            maxWidth: 1200,
-            width: "100%",
-            padding: "0 24px",
-            justifyContent: "center",
-            position: "relative",
-            zIndex: 1,
-            flexWrap: "wrap",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              flexShrink: 0,
-            }}
-          >
-            <span
-              style={{
-                background: "linear-gradient(135deg, #f59e0b, #ef4444)",
-                padding: "4px 12px",
-                borderRadius: 8,
-                fontSize: 10,
-                fontWeight: 900,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                color: "#fff",
-                boxShadow: "0 4px 12px rgba(245, 158, 11, 0.2)",
-                display: "flex",
-                alignItems: "center",
-                gap: 5,
-              }}
-            >
-              <IcLightning /> LIMITED
-            </span>
-            <span
-              style={{ fontSize: 13, fontWeight: 700, color: "#94a3b8" }}
-              className="desktop-only"
-            >
-              Offer ending in:
-            </span>
-          </div>
-
-          <div
-            style={{
-              display: "flex",
-              gap: 12,
-              fontWeight: 800,
-              fontSize: 16,
-              color: "#fff",
-              alignItems: "center",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <span
-                style={{
-                  background: "rgba(255,255,255,0.05)",
-                  padding: "2px 8px",
-                  borderRadius: 6,
-                  border: "1px solid rgba(255,255,255,0.05)",
-                  minWidth: 30,
-                  textAlign: "center",
-                }}
-              >
-                {formatNum(timeLeft.hours)}
-              </span>
-            </div>
-            <span style={{ color: "#6366f1" }}>:</span>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <span
-                style={{
-                  background: "rgba(255,255,255,0.05)",
-                  padding: "2px 8px",
-                  borderRadius: 6,
-                  border: "1px solid rgba(255,255,255,0.05)",
-                  minWidth: 30,
-                  textAlign: "center",
-                }}
-              >
-                {formatNum(timeLeft.minutes)}
-              </span>
-            </div>
-            <span style={{ color: "#6366f1" }}>:</span>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <span
-                style={{
-                  background: "rgba(255,255,255,0.05)",
-                  padding: "2px 8px",
-                  borderRadius: 6,
-                  border: "1px solid rgba(255,255,255,0.05)",
-                  minWidth: 30,
-                  textAlign: "center",
-                }}
-              >
-                {formatNum(timeLeft.seconds)}
-              </span>
-            </div>
-          </div>
-
-          <button
-            onClick={() =>
-              window.open(
-                "https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform",
-                "_blank",
-              )
-            }
-            style={{
-              color: "#fff",
-              fontSize: 12,
-              fontWeight: 800,
-              textDecoration: "none",
-              background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-              padding: "6px 16px",
-              borderRadius: 10,
-              border: "none",
-              cursor: "pointer",
-              transition: "all 0.3s",
-              boxShadow: "0 8px 20px rgba(99, 102, 241, 0.3)",
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-            }}
-          >
-            Claim Now 🚀
-          </button>
-        </div>
-      </motion.div>
 
       {/* ── Ambient blobs ── */}
       {!isMobile && (
@@ -846,7 +662,7 @@ const CourseDetailsPage = () => {
               <h1
                 className="cdp-ani-2"
                 style={{
-                  fontFamily: "'Syne', sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontSize: "clamp(2.4rem,5vw,4.2rem)",
                   fontWeight: 800,
                   color: "#fff",
@@ -1264,7 +1080,7 @@ const CourseDetailsPage = () => {
               </div>
               <h2
                 style={{
-                  fontFamily: "'Syne',sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontSize: "clamp(1.6rem,3vw,2.2rem)",
                   fontWeight: 800,
                   color: "#fff",
@@ -1356,7 +1172,7 @@ const CourseDetailsPage = () => {
               </div>
               <h2
                 style={{
-                  fontFamily: "'Syne',sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontSize: "clamp(1.6rem,3vw,2.2rem)",
                   fontWeight: 800,
                   color: "#fff",
@@ -1542,7 +1358,7 @@ const CourseDetailsPage = () => {
             </Pill>
             <h2
               style={{
-                fontFamily: "'Syne',sans-serif",
+                fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(2rem,4vw,3rem)",
                 fontWeight: 800,
                 color: "#fff",
@@ -1698,7 +1514,7 @@ const CourseDetailsPage = () => {
                   </p>
                   <h3
                     style={{
-                      fontFamily: "'Syne',sans-serif",
+                      fontFamily: "'Outfit', sans-serif",
                       fontSize: "clamp(1.4rem,3vw,1.9rem)",
                       fontWeight: 800,
                       color: "#fff",
@@ -1848,7 +1664,7 @@ const CourseDetailsPage = () => {
             </Pill>
             <h2
               style={{
-                fontFamily: "'Syne',sans-serif",
+                fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(1.8rem,3.5vw,2.6rem)",
                 fontWeight: 800,
                 color: "#fff",
@@ -2084,7 +1900,7 @@ const CourseDetailsPage = () => {
               </Pill>
               <h2
                 style={{
-                  fontFamily: "'Syne',sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontSize: "clamp(1.8rem,3.5vw,2.6rem)",
                   fontWeight: 800,
                   color: "#fff",
@@ -2194,7 +2010,7 @@ const CourseDetailsPage = () => {
                 </div>
                 <h3
                   style={{
-                    fontFamily: "'Syne',sans-serif",
+                    fontFamily: "'Outfit', sans-serif",
                     fontWeight: 800,
                     fontSize: 20,
                     color: "#fff",
@@ -2258,7 +2074,7 @@ const CourseDetailsPage = () => {
             </Pill>
             <h2
               style={{
-                fontFamily: "'Syne',sans-serif",
+                fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(2rem,4vw,3.2rem)",
                 fontWeight: 800,
                 color: "#fff",
@@ -2574,7 +2390,7 @@ const CourseDetailsPage = () => {
                     fontSize: 28,
                     fontWeight: 800,
                     margin: "0 0 20px",
-                    fontFamily: "'Syne', sans-serif",
+                    fontFamily: "'Outfit', sans-serif",
                   }}
                 >
                   Join the Elite Discord Community
@@ -2646,7 +2462,7 @@ const CourseDetailsPage = () => {
               </Pill>
               <h2
                 style={{
-                  fontFamily: "'Syne',sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontSize: "2.4rem",
                   fontWeight: 800,
                   color: "#fff",
@@ -2728,7 +2544,7 @@ const CourseDetailsPage = () => {
             </Pill>
             <h2
               style={{
-                fontFamily: "'Syne',sans-serif",
+                fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(2rem,4vw,3.2rem)",
                 fontWeight: 800,
                 color: "#fff",
@@ -2898,7 +2714,7 @@ const CourseDetailsPage = () => {
               <div>
                 <h2
                   style={{
-                    fontFamily: "'Syne',sans-serif",
+                    fontFamily: "'Outfit', sans-serif",
                     fontSize: "clamp(1.8rem,3.5vw,2.6rem)",
                     fontWeight: 800,
                     color: "#fff",
@@ -3042,8 +2858,8 @@ const CourseDetailsPage = () => {
                     </span>
                     <h3
                       style={{
-                        fontFamily: "'Syne',sans-serif",
-                        fontSize: "clamp(3rem, 12vw, 4.5rem)",
+                        fontFamily: "'Outfit', sans-serif",
+                        fontSize: "clamp(2.5rem, 10vw, 3.8rem)",
                         fontWeight: 800,
                         color: "#fff",
                         margin: 0,
@@ -3081,7 +2897,7 @@ const CourseDetailsPage = () => {
                     padding: "20px",
                     background: "#6366f1",
                     color: "#fff",
-                    fontFamily: "'Syne',sans-serif",
+                    fontFamily: "'Outfit', sans-serif",
                     fontWeight: 800,
                     fontSize: 18,
                     borderRadius: 16,
@@ -3136,7 +2952,7 @@ const CourseDetailsPage = () => {
             </Pill>
             <h2
               style={{
-                fontFamily: "'Syne',sans-serif",
+                fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(2rem,4vw,3.2rem)",
                 fontWeight: 800,
                 color: "#fff",
@@ -3211,7 +3027,7 @@ const CourseDetailsPage = () => {
                   <div>
                     <h3
                       style={{
-                        fontFamily: "'Syne', sans-serif",
+                        fontFamily: "'Outfit', sans-serif",
                         fontSize: 22,
                         fontWeight: 800,
                         color: "#fff",
@@ -3318,7 +3134,7 @@ const CourseDetailsPage = () => {
             </Pill>
             <h2
               style={{
-                fontFamily: "'Syne',sans-serif",
+                fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(2rem,4vw,3.2rem)",
                 fontWeight: 800,
                 color: "#fff",
@@ -3433,7 +3249,7 @@ const CourseDetailsPage = () => {
                           fontSize: 18,
                           fontWeight: 700,
                           margin: "0 0 8px",
-                          fontFamily: "'Syne', sans-serif",
+                          fontFamily: "'Outfit', sans-serif",
                         }}
                       >
                         {item.title}
@@ -3473,7 +3289,7 @@ const CourseDetailsPage = () => {
             <Pill>❓ FAQ</Pill>
             <h2
               style={{
-                fontFamily: "'Syne',sans-serif",
+                fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(1.8rem,3.5vw,2.4rem)",
                 fontWeight: 800,
                 color: "#fff",
@@ -3545,7 +3361,7 @@ const CourseDetailsPage = () => {
                 <h4
                   className="cdp-sticky-title"
                   style={{
-                    fontFamily: "'Syne',sans-serif",
+                    fontFamily: "'Outfit', sans-serif",
                     fontWeight: 800,
                     color: "#fff",
                     fontSize: 14,
@@ -3575,7 +3391,7 @@ const CourseDetailsPage = () => {
                 </p>
                 <h4
                   style={{
-                    fontFamily: "'Syne',sans-serif",
+                    fontFamily: "'Outfit', sans-serif",
                     fontWeight: 800,
                     color: "#fff",
                     fontSize: 17,
@@ -3627,7 +3443,7 @@ const CourseDetailsPage = () => {
                       fontWeight: 800,
                       fontSize: 18,
                       color: "#ec4899",
-                      fontFamily: "Syne, sans-serif",
+                      fontFamily: "'Outfit', sans-serif",
                     }}
                   >
                     <span>{formatNum(timeLeft.hours)}</span>:
@@ -3657,7 +3473,7 @@ const CourseDetailsPage = () => {
                       fontSize: isMobile ? 14 : 24,
                       fontWeight: 800,
                       color: "#818cf8",
-                      fontFamily: "Syne, sans-serif",
+                      fontFamily: "'Outfit', sans-serif",
                       maxWidth: "100%",
                     }}
                   >
@@ -3695,7 +3511,7 @@ const CourseDetailsPage = () => {
                   padding: isMobile ? "8px 12px" : "14px 32px",
                   background: "linear-gradient(135deg,#6366f1,#ec4899)",
                   color: "#fff",
-                  fontFamily: "'Syne',sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontWeight: 800,
                   fontSize: isMobile ? 10 : 15,
                   borderRadius: 12,
