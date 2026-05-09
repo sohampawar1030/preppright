@@ -3,8 +3,18 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-createRoot(document.getElementById('root')).render(
+const root = createRoot(document.getElementById('root'));
+root.render(
   <StrictMode>
     <App />
   </StrictMode>,
-)
+);
+
+// Remove preloader after hydration
+const preloader = document.getElementById('preloader');
+if (preloader) {
+  setTimeout(() => {
+    preloader.style.opacity = '0';
+    setTimeout(() => preloader.remove(), 500);
+  }, 300);
+}
