@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
     <section className="hero">
@@ -34,9 +36,11 @@ const Hero = () => {
             </div>
           </div>
           <div className="hero-actions hero-actions-responsive">
-            <button className="btn btn-primary btn-lg hero-action-btn">
-              Explore Programs
-            </button>
+            <Link to="/courses" style={{ textDecoration: "none" }}>
+              <button className="btn btn-primary btn-lg hero-action-btn">
+                Explore Programs
+              </button>
+            </Link>
             <button className="btn btn-outline btn-lg hero-action-btn">
               Watch Demo
             </button>
