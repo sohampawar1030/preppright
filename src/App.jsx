@@ -63,10 +63,10 @@ function AppContent() {
       <div className="app-effects" aria-hidden="true" />
       <EnrollmentBanner visible={showBanner} setVisible={setShowBanner} />
       <Navbar bannerVisible={showBanner} />
-      <main className={`w-full transition-all duration-500 ${showBanner ? "pt-[136px]" : "pt-[80px]"}`}>
+      <main className="w-full">
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home bannerVisible={showBanner} />} />
           <Route path="/advantage/:id" element={<AdvantageDetailPage />} />
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/course/:id" element={<CourseDetailsPage />} />

@@ -16,10 +16,10 @@ import Footer from "../components/Footer";
 
 
 
-const Home = () => {
+const Home = ({ bannerVisible }) => {
   return (
     <>
-      <Hero />
+      <Hero bannerVisible={bannerVisible} />
       <Empower /> {/* Moved Up to Ensure Visibility */}
       <Trust />
       <Gateway />

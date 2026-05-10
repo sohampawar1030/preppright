@@ -62,7 +62,7 @@ const SEARCHABLE_COURSES = [
 
 
 
-const Hero = () => {
+const Hero = ({ bannerVisible }) => {
   const [current, setCurrent] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [recommendations, setRecommendations] = useState([]);
@@ -91,16 +91,20 @@ const Hero = () => {
 
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-white">
+    <section className={`relative pb-20 md:pb-32 overflow-hidden bg-white transition-all duration-500 ${
+      bannerVisible 
+        ? "pt-[140px] md:pt-[160px]" 
+        : "pt-[100px] md:pt-[120px]"
+    }`}>
       {/* Background Orbs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-indigo-50/50 rounded-full blur-[120px] -z-10 translate-x-1/3 -translate-y-1/3" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-violet-50/30 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2" />
 
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
           
           {/* Content Section */}
-          <div className="relative z-10 order-2 lg:order-1 text-center lg:text-left">
+          <div className="relative z-10 order-1 md:order-1 text-center md:text-left">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -115,113 +119,23 @@ const Hero = () => {
                 </div>
 
                 <h1
-                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight leading-[1.1] text-slate-950"
+                  className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight leading-[1.1] text-slate-950"
                   style={{ fontFamily: "'Lexend', sans-serif" }}
                 >
                   {SLIDES[current].title}
                 </h1>
 
-                <p className="text-slate-500 text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8 font-medium">
+                <p className="text-slate-500 text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto md:mx-0 mb-8 font-medium">
                   {SLIDES[current].desc}
                 </p>
               </motion.div>
             </AnimatePresence>
 
-            {/* Search Bar - Responsive */}
-            <div className="relative w-full max-w-xl mx-auto lg:mx-0 mb-10 group z-50">
-              <div className="absolute inset-0 bg-indigo-500/10 blur-xl group-focus-within:blur-2xl transition-all rounded-full" />
-              <div className="relative flex items-center bg-white p-2 rounded-2xl border border-slate-200 shadow-sm focus-within:border-indigo-400 focus-within:ring-4 focus-within:ring-indigo-50 transition-all">
-                <div className="pl-4 pr-2 text-slate-400">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </div>
-                <input 
-                  type="text" 
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  placeholder="Find Your Learning Path..." 
-                  className="w-full py-3 bg-transparent text-slate-900 placeholder-slate-400 font-medium focus:outline-none text-sm md:text-base"
-                />
-                <button className="hidden sm:block px-6 py-3 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-all">
-                  Search
-                </button>
-              </div>
-
-              <AnimatePresence>
-                {recommendations.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 right-0 mt-4 bg-white rounded-[32px] border border-slate-100 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] overflow-hidden z-[100] p-3"
-                  >
-                    {recommendations.map((course) => (
-                      <button
-                        key={course.id}
-                        onClick={() => navigate(`/course/${course.id}`)}
-                        className="w-full flex items-center gap-5 p-3 hover:bg-indigo-50/50 rounded-2xl transition-all group text-left"
-                      >
-                        <div className="w-20 h-14 md:w-24 md:h-16 rounded-xl overflow-hidden flex-shrink-0 border border-slate-100">
-                          <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-slate-900 font-black text-sm md:text-base truncate group-hover:text-indigo-600 transition-colors" style={{ fontFamily: "'Lexend', sans-serif" }}>
-                            {course.title}
-                          </h4>
-                          <div className="flex items-center gap-3 mt-1.5">
-                            <span className="text-indigo-600 font-black text-[11px] md:text-xs tracking-tighter">{course.price}</span>
-                            <span className="w-1 h-1 rounded-full bg-slate-300" />
-                            <span className="text-slate-400 font-bold text-[10px] md:text-[11px] uppercase tracking-widest">{course.duration}</span>
-                            <span className="w-1 h-1 rounded-full bg-slate-300" />
-                            <span className="text-amber-400 font-black text-[10px] md:text-[11px]">⭐ {course.rating}</span>
-                          </div>
-                        </div>
-                        <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm">
-                           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-                        </div>
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Mobile Search Button */}
-              <button className="sm:hidden w-full mt-3 min-h-[48px] rounded-2xl bg-indigo-600 text-white font-bold text-sm shadow-lg shadow-indigo-100">
-                Search Courses
-              </button>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a
-                href="#courses"
-                className="flex items-center justify-center min-h-[48px] px-10 rounded-2xl bg-slate-950 text-white font-bold text-sm uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-xl shadow-slate-900/10 active:scale-95"
-              >
-                Join for Free
-              </a>
-              <a
-                href="#courses"
-                className="flex items-center justify-center min-h-[48px] px-10 rounded-2xl bg-white border border-slate-200 text-slate-900 font-bold text-sm uppercase tracking-widest hover:bg-slate-50 transition-all active:scale-95"
-              >
-                Explore Courses
-              </a>
-            </div>
-
-            {/* Slide Indicators */}
-            <div className="flex justify-center lg:justify-start gap-2 mt-12">
-              {SLIDES.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-10 bg-indigo-600" : "w-3 bg-slate-200 hover:bg-slate-300"}`}
-                  aria-label={`Go to slide ${i + 1}`}
-                />
-              ))}
-            </div>
+            {/* Slide Indicators moved below */}
           </div>
 
           {/* Visual Section */}
-          <div className="relative h-[320px] sm:h-[450px] lg:h-[600px] order-1 lg:order-2">
+          <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] order-2 md:order-2">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -237,7 +151,7 @@ const Hero = () => {
                     <img
                       src={SLIDES[current].img}
                       alt="Course Preview"
-                      className="w-full h-full object-cover"
+                      className="w-full h-auto min-h-[300px] md:min-h-[400px] lg:h-full object-cover rounded-2xl"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
                     
@@ -246,23 +160,23 @@ const Hero = () => {
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.5 }}
-                      className="absolute bottom-8 left-8 right-8 p-6 rounded-3xl bg-white/90 backdrop-blur-xl border border-white/20 shadow-2xl flex items-center justify-between"
+                      className="absolute bottom-3 left-3 right-3 md:bottom-8 md:left-8 md:right-8 p-3 md:p-6 rounded-2xl md:rounded-3xl bg-white/90 backdrop-blur-xl border border-white/20 shadow-2xl flex items-center justify-between"
                     >
                       <div>
-                        <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-1">
+                        <div className="text-[8px] md:text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-0.5 md:mb-1">
                           Current Trend
                         </div>
-                        <div className="text-lg font-black text-slate-900" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                        <div className="text-xs md:text-lg font-black text-slate-900" style={{ fontFamily: "'Lexend', sans-serif" }}>
                           {SLIDES[current].badge}
                         </div>
                       </div>
                       <div className="flex -space-x-3">
                         {[1, 2, 3].map((i) => (
-                          <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+                          <div key={i} className="w-6 h-6 md:w-10 md:h-10 rounded-full border border-white bg-slate-200 overflow-hidden">
                             <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" />
                           </div>
                         ))}
-                        <div className="w-10 h-10 rounded-full border-2 border-white bg-indigo-600 flex items-center justify-center text-[10px] font-bold text-white">
+                        <div className="w-6 h-6 md:w-10 md:h-10 rounded-full border border-white bg-indigo-600 flex items-center justify-center text-[8px] md:text-[10px] font-bold text-white">
                           +5k
                         </div>
                       </div>
@@ -276,9 +190,100 @@ const Hero = () => {
               </motion.div>
             </AnimatePresence>
           </div>
-
         </div>
       </div>
+
+        {/* Search Bar & Buttons - Moved Below Image */}
+        <div className="mt-16 md:mt-24 max-w-4xl mx-auto px-4 relative z-50">
+          
+          {/* Search Bar */}
+          <div className="relative w-full mb-10 group">
+            <div className="absolute inset-0 bg-indigo-500/10 blur-xl group-focus-within:blur-2xl transition-all rounded-full" />
+            <div className="relative flex items-center bg-white p-1.5 md:p-2.5 rounded-2xl border border-slate-200 shadow-sm focus-within:border-indigo-400 focus-within:ring-4 focus-within:ring-indigo-50 transition-all">
+              <div className="pl-4 pr-2 text-slate-400">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <input 
+                type="text" 
+                value={searchQuery}
+                onChange={handleSearchChange}
+                placeholder="Find Your Learning Path..." 
+                className="w-full py-3 md:py-4 bg-transparent text-slate-900 placeholder-slate-400 font-bold focus:outline-none text-sm md:text-lg"
+              />
+              <button className="px-6 md:px-12 py-3 md:py-4 rounded-xl bg-indigo-600 text-white font-black text-xs md:text-sm uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200">
+                Search
+              </button>
+            </div>
+
+            <AnimatePresence>
+              {recommendations.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute top-full left-0 right-0 mt-4 bg-white rounded-[32px] border border-slate-100 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] overflow-hidden z-[100] p-3"
+                >
+                  {recommendations.map((course) => (
+                    <button
+                      key={course.id}
+                      onClick={() => navigate(`/course/${course.id}`)}
+                      className="w-full flex items-center gap-5 p-3 hover:bg-indigo-50/50 rounded-2xl transition-all group text-left"
+                    >
+                      <div className="w-20 h-14 md:w-24 md:h-16 rounded-xl overflow-hidden flex-shrink-0 border border-slate-100">
+                        <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-slate-900 font-black text-sm md:text-base truncate group-hover:text-indigo-600 transition-colors" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                          {course.title}
+                        </h4>
+                        <div className="flex items-center gap-3 mt-1.5">
+                          <span className="text-indigo-600 font-black text-[11px] md:text-xs tracking-tighter">{course.price}</span>
+                          <span className="w-1 h-1 rounded-full bg-slate-300" />
+                          <span className="text-slate-400 font-bold text-[10px] md:text-[11px] uppercase tracking-widest">{course.duration}</span>
+                          <span className="w-1 h-1 rounded-full bg-slate-300" />
+                          <span className="text-amber-400 font-black text-[10px] md:text-[11px]">⭐ {course.rating}</span>
+                        </div>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm">
+                         <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                      </div>
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="#courses"
+              className="w-full sm:w-auto flex items-center justify-center min-h-[56px] px-12 rounded-2xl bg-slate-950 text-white font-black text-sm uppercase tracking-[0.2em] hover:bg-indigo-600 transition-all shadow-2xl shadow-slate-900/20 active:scale-95"
+            >
+              Join for Free
+            </a>
+            <a
+              href="#courses"
+              className="w-full sm:w-auto flex items-center justify-center min-h-[56px] px-12 rounded-2xl bg-white border-2 border-slate-100 text-slate-900 font-black text-sm uppercase tracking-[0.2em] hover:bg-slate-50 transition-all active:scale-95"
+            >
+              Explore Courses
+            </a>
+          </div>
+
+          {/* Slide Indicators Centered */}
+          <div className="flex justify-center gap-3 mt-12">
+            {SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                className={`h-1.5 rounded-full transition-all duration-500 ${i === current ? "w-12 bg-indigo-600" : "w-3 bg-slate-200 hover:bg-slate-300"}`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
     </section>
   );
 };
