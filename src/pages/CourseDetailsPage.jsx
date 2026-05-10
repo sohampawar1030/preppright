@@ -306,72 +306,65 @@ const StatCard = ({ icon, label, value }) => (
   </div>
 );
 
-/* ─── Ticker ─── */
-const TickerBar = () => {
-  const logos = [
-    {
-      name: "Google",
-      url: "https://cdn.simpleicons.org/google/4285F4",
-    },
-    {
-      name: "Amazon",
-      url: "https://cdn.simpleicons.org/amazon/FF9900",
-    },
-    {
-      name: "Microsoft",
-      url: "https://cdn.simpleicons.org/microsoft/00A4EF",
-    },
-    {
-      name: "Meta",
-      url: "https://cdn.simpleicons.org/meta/0668E1",
-    },
-    {
-      name: "TCS",
-      url: "https://cdn.simpleicons.org/tata/1B317E",
-    },
-    {
-      name: "Infosys",
-      url: "https://cdn.simpleicons.org/infosys/007CC3",
-    },
-    {
-      name: "Wipro",
-      url: "https://cdn.simpleicons.org/wipro/000000",
-    },
+/* ─── Student Activity Row (Replaces Ticker) ─── */
+const StudentActivityRow = () => {
+  const images = [
+    "/images/Students_working/image.png",
+    "/images/Students_working/image copy.png",
+    "/images/Students_working/image copy 3.png",
+    "/images/Students_working/image copy 4.png",
+    "/images/Students_working/image copy 6.png",
+    "/images/Students_working/image copy 7.png",
+    "/images/Students_working/image copy 9.png",
+    "/images/Students_working/image copy 10.png",
   ];
-  const list = [...logos, ...logos, ...logos];
+  const list = [...images, ...images];
   return (
     <div
       style={{
         overflow: "hidden",
-        background: "rgba(0,0,0,0.03)",
-        borderTop: "1px solid rgba(255,255,255,.05)",
-        borderBottom: "1px solid rgba(255,255,255,.05)",
-        padding: "20px 0",
+        background: "#f8fafc",
+        borderTop: "1px solid #f1f5f9",
+        borderBottom: "1px solid #f1f5f9",
+        padding: "24px 0",
         userSelect: "none",
       }}
     >
       <div
         style={{
           display: "flex",
-          gap: 80,
+          gap: 30,
           whiteSpace: "nowrap",
-          animation: "cdp-ticker 30s linear infinite",
+          animation: "cdp-ticker 40s linear infinite",
           width: "max-content",
           alignItems: "center",
         }}
       >
-        {list.map((logo, i) => (
+        {list.map((img, i) => (
           <div
             key={i}
             style={{
+              width: 220,
+              height: 140,
+              borderRadius: 12,
+              overflow: "hidden",
+              border: "1px solid #e2e8f0",
+              background: "#fff",
               display: "flex",
               alignItems: "center",
-              gap: 12,
-              opacity: 1,
-              transition: "all 0.3s",
+              justifyContent: "center",
+              padding: 4
             }}
           >
-            <img src={logo.url} alt={logo.name} style={{ height: 24 }} />
+            <img 
+              src={img} 
+              alt="Students Working" 
+              style={{ 
+                width: "100%", 
+                height: "100%", 
+                objectFit: "contain" 
+              }} 
+            />
           </div>
         ))}
       </div>
@@ -744,8 +737,8 @@ const CourseDetailsPage = () => {
           </div>
         </div>
       </section>
-      {/* ── Ticker ── */}
-      <TickerBar />
+      {/* ── Student Activity Row ── */}
+      <StudentActivityRow />
 
       {/* ════════════════════════════════════
           WHO IS THIS FOR + CAREER OUTCOMES
@@ -1590,10 +1583,11 @@ const CourseDetailsPage = () => {
                   <th
                     style={{
                       padding: "25px 30px",
-                      color: "#f59e0b",
+                      color: "#6366f1",
                       fontSize: 18,
-                      background: "rgba(245,158,11,.1)",
+                      background: "rgba(99,102,241,.1)",
                       textAlign: "center",
+                      fontWeight: 800
                     }}
                   >
                     PreppRight
@@ -1657,7 +1651,7 @@ const CourseDetailsPage = () => {
                         color: "#0f172a",
                         fontWeight: 700,
                         textAlign: "center",
-                        background: "rgba(245,158,11,.03)",
+                        background: "rgba(99,102,241,.04)",
                       }}
                     >
                       {row.p}
@@ -1890,16 +1884,19 @@ const CourseDetailsPage = () => {
                 name: "Rahul Sharma",
                 role: "Software Engineer @ Google",
                 text: "The curriculum is top-notch. The focus on real-world projects helped me crack my interviews easily. Highly recommended!",
+                img: "/images/Students_working/image.png"
               },
               {
                 name: "Sneha Patil",
                 role: "UI/UX Designer @ Meta",
                 text: "PreppRight's mentors are industry veterans. Their feedback on my portfolio was game-changing for my career.",
+                img: "/images/Students_working/image copy.png"
               },
               {
                 name: "Amit Verma",
                 role: "Data Scientist @ Amazon",
                 text: "The hands-on labs and Discord support are amazing. I never felt stuck during the entire 6-month journey.",
+                img: "/images/Students_working/image copy 3.png"
               },
             ].map((rev, i) => (
               <motion.div
@@ -1909,7 +1906,7 @@ const CourseDetailsPage = () => {
                   padding: 30,
                   borderRadius: 12,
                   background: "rgba(0,0,0,0.03)",
-                  border: "1px solid rgba(255,255,255,.06)",
+                  border: "1px solid rgba(0,0,0,0.05)",
                   position: "relative",
                 }}
               >
@@ -1923,19 +1920,16 @@ const CourseDetailsPage = () => {
                 >
                   <div
                     style={{
-                      width: 50,
-                      height: 50,
+                      width: 54,
+                      height: 54,
                       borderRadius: "50%",
                       background: "rgba(236, 72, 153, 0.1)",
                       border: "2px solid rgba(236, 72, 153, 0.3)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#ec4899",
+                      overflow: "hidden",
                       flexShrink: 0,
                     }}
                   >
-                    <IcUser />
+                    <img src={rev.img} alt={rev.name} style={{ width: "100%", height: "100%", objectCover: "cover" }} />
                   </div>
                   <div>
                     <h5
@@ -1958,10 +1952,11 @@ const CourseDetailsPage = () => {
                 </div>
                 <p
                   style={{
-                    color: "#94a3b8",
+                    color: "#64748b",
                     fontSize: 15,
                     lineHeight: 1.6,
                     fontStyle: "italic",
+                    margin: 0
                   }}
                 >
                   "{rev.text}"
@@ -1973,6 +1968,69 @@ const CourseDetailsPage = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Learning in Action Gallery */}
+          <div style={{ marginTop: 80 }}>
+            <div style={{ textAlign: "center" }} className="mb-10">
+              <Pill color="#6366f1" bg="rgba(99,102,241,.1)">
+                📸 Gallery
+              </Pill>
+              <h3
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "2.4rem",
+                  fontWeight: 800,
+                  color: "#0f172a",
+                  margin: "16px 0",
+                }}
+              >
+                Learning in <span style={{ color: "#6366f1" }}>Action</span>
+              </h3>
+              <p style={{ color: "#64748b", fontSize: 16, maxWidth: 600, margin: "0 auto" }}>
+                Glimpses of our students working on real-world industry projects and collaborating in labs.
+              </p>
+            </div>
+            
+            <div style={{ 
+              display: "grid", 
+              gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(4, 1fr)", 
+              gap: 20 
+            }}>
+              {[
+                "/images/Students_working/image copy 4.png",
+                "/images/Students_working/image copy 6.png",
+                "/images/Students_working/image copy 7.png",
+                "/images/Students_working/image copy 9.png",
+                "/images/Students_working/image copy 10.png",
+                "/images/Students_working/image copy 2.png",
+                "/images/Students_working/image copy 5.png",
+                "/images/Students_working/image copy 8.png",
+              ].map((img, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  style={{
+                    aspectRatio: "1/1",
+                    borderRadius: 16,
+                    overflow: "hidden",
+                    border: "4px solid white",
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                    background: "#f8fafc"
+                  }}
+                >
+                  <img 
+                    src={img} 
+                    alt="Student at work" 
+                    style={{ 
+                      width: "100%", 
+                      height: "100%", 
+                      objectFit: "cover" 
+                    }} 
+                  />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
