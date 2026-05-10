@@ -1,71 +1,282 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
-import { Link } from "react-router-dom";
+
+const SLIDES = [
+  {
+    tag: "Get Certified. Get Ahead",
+    title: (
+      <>
+        Of the Industry <br />
+        <span className="text-indigo-600">Grow with PreppRight</span>
+      </>
+    ),
+    desc: "Join 5M+ learners worldwide. Experience live interactive classes and report massive career growth with our industry-recognized certifications.",
+    img: "/images/Students_working/image copy 10.png",
+    badge: "⭐ Top Rated Platform",
+    stats: [
+      { label: "Careers Advanced", value: "5M+" },
+      { label: "Live Classes", value: "1.5K+" },
+      { label: "Career Hike", value: "85%" },
+    ],
+  },
+  {
+    tag: "Real Mentors. Real Code.",
+    title: (
+      <>
+        Build Powerful <br />
+        <span className="text-indigo-600">Java Applications</span>
+      </>
+    ),
+    desc: "Join the most interactive learning community. We don't just teach code; we build careers through 1-on-1 human mentorship.",
+    img: "/images/courses/abc/java.png",
+    badge: "🔥 Live Interaction",
+  },
+  {
+    tag: "Future-Proof Careers",
+    title: (
+      <>
+        Master the <br />
+        <span className="text-violet-600">AI & ML Revolution</span>
+      </>
+    ),
+    desc: "Don't just use AI, build it. Get hands-on training from industry experts who've worked at the world's biggest tech giants.",
+    img: "/images/courses/ai_ml.png",
+    badge: "🚀 120% Avg. Hike",
+  },
+];
+
+const SEARCHABLE_COURSES = [
+  { id: "java-programming", title: "Java Programming Mastery", price: "₹3,000", duration: "3 Months", rating: "4.9", image: "/images/courses/abc/java.png" },
+  { id: "full-stack-web-development", title: "Full Stack Web Development", price: "₹5,000", duration: "6 Months", rating: "4.8", image: "/images/courses/abc/fullstack .png" },
+  { id: "data-science-roadmap", title: "Data Science Roadmap", price: "₹4,000", duration: "4 Months", rating: "4.8", image: "/images/courses/abc/datascience.png" },
+  { id: "python-mastery", title: "Python Mastery Bootcamp", price: "₹3,000", duration: "3 Months", rating: "4.8", image: "/images/courses/abc/pythonmystry.png" },
+  { id: "ai-ml-python", title: "AI & Machine Learning with Python", price: "₹6,000", duration: "4 Months", rating: "4.8", image: "/images/courses/ai_ml.png" },
+  { id: "cybersecurity-fundamentals", title: "Cybersecurity Fundamentals", price: "₹4,000", duration: "3 Months", rating: "4.8", image: "/images/courses/abc/cybersecurity.png" },
+  { id: "cloud-computing", title: "Cloud Computing Training", price: "₹5,000", duration: "2 Months", rating: "4.8", image: "/images/courses/abc/cloudcomputing.png" },
+  { id: "hybrid-ev", title: "Hybrid Electric Vehicles", price: "₹6,000", duration: "4 Months", rating: "4.9", image: "/images/courses/abc/hybried.png" },
+  { id: "autocad", title: "AutoCAD Mastery", price: "₹4,000", duration: "2 Months", rating: "4.7", image: "/images/courses/abc/AutoCAD.png" },
+  { id: "digital-marketing", title: "Digital Marketing Masterclass", price: "₹3,000", duration: "3 Months", rating: "4.8", image: "/images/courses/abc/digitalmarkerting.png" },
+];
+
+
 
 const Hero = () => {
+  const [current, setCurrent] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [recommendations, setRecommendations] = useState([]);
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    if (query.length > 1) {
+      const filtered = SEARCHABLE_COURSES.filter(course =>
+        course.title.toLowerCase().includes(query.toLowerCase())
+      ).slice(0, 5);
+      setRecommendations(filtered);
+    } else {
+      setRecommendations([]);
+    }
+  };
+
+
   return (
-    <section className="hero">
-      <div className="hero-glow"></div>
-      <div className="container hero-grid">
-        <div className="hero-content animate-fade-in" data-reveal>
-          <div className="badge">New Era of Learning</div>
-          <h1 style={{ fontSize: "clamp(2.2rem, 8vw, 4rem)", lineHeight: 1.1 }}>
-            Master Your Future with{" "}
-            <span className="gradient-text">PreppRight</span>
-          </h1>
-          <p
-            className="hero-description"
-            style={{ fontSize: "clamp(1rem, 2.5vw, 1.25rem)" }}
-          >
-            Experience the world's most advanced educational platform.
-            Interactive courses, real-world projects, and mentorship from
-            industry giants.
-          </p>
-          <div className="hero-stats">
-            <div className="stat">
-              <span className="stat-value">5M+</span>
-              <span className="stat-label">Students</span>
-            </div>
-            <div className="stat">
-              <span className="stat-value">1.5K+</span>
-              <span className="stat-label">Classes</span>
-            </div>
-            <div className="stat">
-              <span className="stat-value">98%</span>
-              <span className="stat-label">Success Rate</span>
-            </div>
-          </div>
-          <div className="hero-actions hero-actions-responsive">
-            <Link to="/courses" style={{ textDecoration: "none" }}>
-              <button className="btn btn-primary btn-lg hero-action-btn">
-                Explore Programs
+    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-white">
+      {/* Background Orbs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-indigo-50/50 rounded-full blur-[120px] -z-10 translate-x-1/3 -translate-y-1/3" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-violet-50/30 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2" />
+
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          
+          {/* Content Section */}
+          <div className="relative z-10 order-2 lg:order-1 text-center lg:text-left">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs font-black uppercase tracking-widest">
+                  <span className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse" />
+                  {SLIDES[current].tag}
+                </div>
+
+                <h1
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight leading-[1.1] text-slate-950"
+                  style={{ fontFamily: "'Lexend', sans-serif" }}
+                >
+                  {SLIDES[current].title}
+                </h1>
+
+                <p className="text-slate-500 text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8 font-medium">
+                  {SLIDES[current].desc}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Search Bar - Responsive */}
+            <div className="relative w-full max-w-xl mx-auto lg:mx-0 mb-10 group z-50">
+              <div className="absolute inset-0 bg-indigo-500/10 blur-xl group-focus-within:blur-2xl transition-all rounded-full" />
+              <div className="relative flex items-center bg-white p-2 rounded-2xl border border-slate-200 shadow-sm focus-within:border-indigo-400 focus-within:ring-4 focus-within:ring-indigo-50 transition-all">
+                <div className="pl-4 pr-2 text-slate-400">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+                <input 
+                  type="text" 
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  placeholder="Find Your Learning Path..." 
+                  className="w-full py-3 bg-transparent text-slate-900 placeholder-slate-400 font-medium focus:outline-none text-sm md:text-base"
+                />
+                <button className="hidden sm:block px-6 py-3 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-all">
+                  Search
+                </button>
+              </div>
+
+              <AnimatePresence>
+                {recommendations.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 right-0 mt-4 bg-white rounded-[32px] border border-slate-100 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] overflow-hidden z-[100] p-3"
+                  >
+                    {recommendations.map((course) => (
+                      <button
+                        key={course.id}
+                        onClick={() => navigate(`/course/${course.id}`)}
+                        className="w-full flex items-center gap-5 p-3 hover:bg-indigo-50/50 rounded-2xl transition-all group text-left"
+                      >
+                        <div className="w-20 h-14 md:w-24 md:h-16 rounded-xl overflow-hidden flex-shrink-0 border border-slate-100">
+                          <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="text-slate-900 font-black text-sm md:text-base truncate group-hover:text-indigo-600 transition-colors" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                            {course.title}
+                          </h4>
+                          <div className="flex items-center gap-3 mt-1.5">
+                            <span className="text-indigo-600 font-black text-[11px] md:text-xs tracking-tighter">{course.price}</span>
+                            <span className="w-1 h-1 rounded-full bg-slate-300" />
+                            <span className="text-slate-400 font-bold text-[10px] md:text-[11px] uppercase tracking-widest">{course.duration}</span>
+                            <span className="w-1 h-1 rounded-full bg-slate-300" />
+                            <span className="text-amber-400 font-black text-[10px] md:text-[11px]">⭐ {course.rating}</span>
+                          </div>
+                        </div>
+                        <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm">
+                           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                        </div>
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Mobile Search Button */}
+              <button className="sm:hidden w-full mt-3 min-h-[48px] rounded-2xl bg-indigo-600 text-white font-bold text-sm shadow-lg shadow-indigo-100">
+                Search Courses
               </button>
-            </Link>
-            <button className="btn btn-outline btn-lg hero-action-btn">
-              Watch Demo
-            </button>
-          </div>
-        </div>
-        <div className="hero-image-container" data-reveal>
-          <img
-            src="/images/courses/placement/image.png"
-            alt="Hero Illustration"
-            className="hero-image"
-          />
-          <div className="floating-card card-1 glass">
-            <span className="icon">🏆</span>
-            <div>
-              <p className="label">Top Rated</p>
-              <p className="value">4.9/5 Stars</p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a
+                href="#courses"
+                className="flex items-center justify-center min-h-[48px] px-10 rounded-2xl bg-slate-950 text-white font-bold text-sm uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-xl shadow-slate-900/10 active:scale-95"
+              >
+                Join for Free
+              </a>
+              <a
+                href="#courses"
+                className="flex items-center justify-center min-h-[48px] px-10 rounded-2xl bg-white border border-slate-200 text-slate-900 font-bold text-sm uppercase tracking-widest hover:bg-slate-50 transition-all active:scale-95"
+              >
+                Explore Courses
+              </a>
+            </div>
+
+            {/* Slide Indicators */}
+            <div className="flex justify-center lg:justify-start gap-2 mt-12">
+              {SLIDES.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-10 bg-indigo-600" : "w-3 bg-slate-200 hover:bg-slate-300"}`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
             </div>
           </div>
-          <div className="floating-card card-2 glass">
-            <span className="icon">👥</span>
-            <div>
-              <p className="label">Active Users</p>
-              <p className="value">120k Online</p>
-            </div>
+
+          {/* Visual Section */}
+          <div className="relative h-[320px] sm:h-[450px] lg:h-[600px] order-1 lg:order-2">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, scale: 0.95, rotate: 1 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 1.05, rotate: -1 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0"
+              >
+                <div className="relative w-full h-full p-4">
+                  {/* Premium Frame */}
+                  <div className="relative w-full h-full rounded-[40px] md:rounded-[60px] overflow-hidden bg-slate-100 border-4 border-white shadow-2xl">
+                    <img
+                      src={SLIDES[current].img}
+                      alt="Course Preview"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                    
+                    {/* Floating Badge */}
+                    <motion.div 
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                      className="absolute bottom-8 left-8 right-8 p-6 rounded-3xl bg-white/90 backdrop-blur-xl border border-white/20 shadow-2xl flex items-center justify-between"
+                    >
+                      <div>
+                        <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-1">
+                          Current Trend
+                        </div>
+                        <div className="text-lg font-black text-slate-900" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                          {SLIDES[current].badge}
+                        </div>
+                      </div>
+                      <div className="flex -space-x-3">
+                        {[1, 2, 3].map((i) => (
+                          <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+                            <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" />
+                          </div>
+                        ))}
+                        <div className="w-10 h-10 rounded-full border-2 border-white bg-indigo-600 flex items-center justify-center text-[10px] font-bold text-white">
+                          +5k
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute -top-6 -right-6 w-32 h-32 bg-indigo-600/10 rounded-full blur-2xl animate-pulse" />
+                  <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-violet-600/10 rounded-full blur-3xl" />
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
+
         </div>
       </div>
     </section>

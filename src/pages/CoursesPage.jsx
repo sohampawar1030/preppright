@@ -1,23 +1,42 @@
 import React, { useState, useEffect } from "react";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
-/* ─── Custom Hook for Responsive ─── */
-const useWindowSize = () => {
-  const [size, setSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-  useEffect(() => {
-    const handleResize = () =>
-      setSize({ width: window.innerWidth, height: window.innerHeight });
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-  return size;
-};
+const COURSE_HERO_SLIDES = [
+  {
+    tag: "Get Certified. Get Ahead",
+    title: <>Master the Skills <br /><span className="text-indigo-600">Top Companies Hire</span></>,
+    desc: "Experience world-class learning with industry experts. Join 50,000+ students already transforming their careers with PreppRight.",
+    img: "/images/Students_working/image copy 10.png",
+    accent: "bg-indigo-600"
+  },
+  {
+    tag: "IT & Software",
+    title: <>Build Powerful <br /><span className="text-violet-600">Software Solutions</span></>,
+    desc: "From Full Stack to AI/ML, master the tech stack of tomorrow. 1-on-1 mentorship and 24/7 learning support.",
+    img: "/images/courses/abc/java.png",
+    accent: "bg-violet-600"
+  },
+  {
+    tag: "Mechanical Engineering",
+    title: <>Drive the <br /><span className="text-emerald-600">EV Revolution</span></>,
+    desc: "Master Hybrid Electric Vehicle technology and AutoCAD. Engineer the sustainable future of automotive industry.",
+    img: "/images/courses/abc/hybried.png",
+    accent: "bg-emerald-600"
+  }
+];
 
 const CoursesPage = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % COURSE_HERO_SLIDES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   const categories = [
     "All Courses",
     "Business and Non-IT",
@@ -29,569 +48,339 @@ const CoursesPage = () => {
   ];
 
   const allCourses = [
-    {
-      id: "financial-management",
-      title: "Financial Management and Analysis Training Program",
-      category: "Business and Non-IT",
-      price: "₹3,000",
-      duration: "3 Months",
-      rating: "4.9",
-      image_url: "/images/courses/financial_management.png",
-    },
-    {
-      id: "digital-marketing",
-      title: "Digital Marketing Training Program",
-      category: "Business and Non-IT",
-      price: "₹3,000",
-      duration: "3 Months",
-      rating: "4.8",
-      image_url: "/images/courses/digital_marketing.png",
-    },
-    {
-      id: "hr-management",
-      title: "Human Resource Management Training Program",
-      category: "Business and Non-IT",
-      price: "₹3,000",
-      duration: "3 Months",
-      rating: "4.7",
-      image_url: "/images/courses/hr_management.png",
-    },
-    {
-      id: "business-analytics",
-      title: "Business Analytics Training Program",
-      category: "Business and Non-IT",
-      price: "₹3,000",
-      duration: "3 Months",
-      rating: "4.8",
-      image_url: "/images/courses/business_analytics.png",
-    },
-    {
-      id: "java-programming",
-      title: "Java Programming",
-      category: "IT and Software",
-      price: "₹3,000",
-      duration: "3 Months",
-      rating: "4.8",
-      image_url: "/images/courses/java_programming.png",
-    },
-    {
-      id: "data-science-roadmap",
-      title: "Placement-Oriented Programming & Data Science Roadmap",
-      category: "IT and Software",
-      price: "₹4,000",
-      duration: "4 Months",
-      rating: "4.8",
-      image_url: "/images/courses/data_science.png",
-    },
-    {
-      id: "full-stack-web-development",
-      title: "Full Stack Web Development",
-      category: "IT and Software",
-      price: "₹5,000",
-      duration: "6 Months",
-      rating: "4.8",
-      image_url: "/images/courses/web_development.png",
-    },
-    {
-      id: "python-mastery",
-      title: "Python Mastery",
-      category: "IT and Software",
-      price: "₹3,000",
-      duration: "3 Months",
-      rating: "4.8",
-      image_url: "/images/courses/python_mastery.png",
-    },
-    {
-      id: "ai-ml-python",
-      title: "AI & Machine Learning with Python",
-      category: "IT and Software",
-      price: "₹6,000",
-      duration: "4 Months",
-      rating: "4.8",
-      image_url: "/images/courses/ai_ml.png",
-    },
-    {
-      id: "cybersecurity-fundamentals",
-      title: "Cybersecurity Fundamentals",
-      category: "IT and Software",
-      price: "₹4,000",
-      duration: "3 Months",
-      rating: "4.8",
-      image_url: "/images/courses/cybersecurity.png",
-    },
-    {
-      id: "cloud-computing",
-      title: "Cloud Computing Training Program",
-      category: "IT and Software",
-      price: "₹5,000",
-      duration: "2 Months",
-      rating: "4.8",
-      image_url: "/images/courses/cloud_computing.png",
-    },
-    {
-      id: "iot",
-      title: "Internet of Things (IoT)",
-      category: "Electronic and Communication",
-      price: "₹3,000",
-      duration: "2 Months",
-      rating: "4.5",
-      image_url: "/images/courses/electronics_iot.png",
-    },
-    {
-      id: "embedded-systems",
-      title: "Embedded Systems",
-      category: "Electronic and Communication",
-      price: "₹4,000",
-      duration: "2 Months",
-      rating: "4.5",
-      image_url: "/images/courses/embedded_systems.png",
-    },
-    {
-      id: "hybrid-ev",
-      title: "Hybrid Electric Vehicles Training Program",
-      category: "Mechanical",
-      price: "₹5,000",
-      duration: "2 Months",
-      rating: "4.5",
-      image_url: "/images/courses/web_development.png",
-    },
-    {
-      id: "autocad",
-      title: "AutoCAD Training Program",
-      category: "Mechanical",
-      price: "₹3,000",
-      duration: "2 Months",
-      rating: "4.5",
-      image_url: "/images/courses/business_analytics.png",
-    },
-    {
-      id: "drone-engineering",
-      title: "Drone Engineering & Aviation",
-      category: "Electronic and Communication",
-      price: "₹6,000",
-      duration: "3 Months",
-      rating: "4.8",
-      image_url: "/images/courses/electronics_iot.png",
-    },
-    {
-      id: "metaverse",
-      title: "Metaverse / AR / VR Development",
-      category: "IT and Software",
-      price: "₹7,000",
-      duration: "4 Months",
-      rating: "4.9",
-      image_url: "/images/courses/web_development.png",
-    },
+    { id: "java-programming", title: "Java Programming Mastery", category: "IT and Software", price: "₹3,000", duration: "3 Months", rating: "4.9", image_url: "/images/courses/abc/java.png" },
+    { id: "full-stack-web-development", title: "Full Stack Web Development", category: "IT and Software", price: "₹5,000", duration: "6 Months", rating: "4.8", image_url: "/images/courses/abc/fullstack .png" },
+    { id: "financial-management", title: "Financial Management & Analysis", category: "Business and Non-IT", price: "₹3,000", duration: "3 Months", rating: "4.9", image_url: "/images/courses/abc/Financial.png" },
+    { id: "data-science-roadmap", title: "Data Science Roadmap", category: "IT and Software", price: "₹4,000", duration: "4 Months", rating: "4.8", image_url: "/images/courses/abc/datascience.png" },
+    { id: "python-mastery", title: "Python Mastery bootcamp", category: "IT and Software", price: "₹3,000", duration: "3 Months", rating: "4.8", image_url: "/images/courses/abc/pythonmystry.png" },
+    { id: "ai-ml-python", title: "AI & Machine Learning with Python", category: "IT and Software", price: "₹6,000", duration: "4 Months", rating: "4.8", image_url: "/images/courses/ai_ml.png" },
+    { id: "digital-marketing", title: "Digital Marketing Masterclass", category: "Business and Non-IT", price: "₹3,000", duration: "3 Months", rating: "4.8", image_url: "/images/courses/abc/digitalmarkerting.png" },
+    { id: "hr-management", title: "Human Resource Management", category: "Business and Non-IT", price: "₹3,000", duration: "3 Months", rating: "4.7", image_url: "/images/courses/abc/HR.png" },
+    { id: "cybersecurity-fundamentals", title: "Cybersecurity Fundamentals", category: "IT and Software", price: "₹4,000", duration: "3 Months", rating: "4.8", image_url: "/images/courses/abc/cybersecurity.png" },
+    { id: "cloud-computing", title: "Cloud Computing Training", category: "IT and Software", price: "₹5,000", duration: "2 Months", rating: "4.8", image_url: "/images/courses/abc/cloudcomputing.png" },
+    { id: "iot", title: "Internet of Things (IoT)", category: "Electronic and Communication", price: "₹3,000", duration: "2 Months", rating: "4.5", image_url: "/images/courses/electronics_iot.png" },
+    { id: "embedded-systems", title: "Embedded Systems & Robotics", category: "Electronic and Communication", price: "₹4,000", duration: "2 Months", rating: "4.5", image_url: "/images/courses/embedded_systems.png" },
+    { id: "drone-engineering", title: "Drone Engineering & Aviation", category: "Electronic and Communication", price: "₹6,000", duration: "3 Months", rating: "4.8", image_url: "/images/courses/electronics_iot.png" },
+    { id: "hybrid-ev", title: "Hybrid Electric Vehicles Training Program", category: "Mechanical", price: "₹6,000", duration: "4 Months", rating: "4.9", image_url: "/images/courses/abc/hybried.png" },
+    { id: "autocad", title: "AutoCAD Training Program", category: "Mechanical", price: "₹4,000", duration: "2 Months", rating: "4.7", image_url: "/images/courses/abc/AutoCAD.png" },
+    { id: "metaverse", title: "Metaverse / AR / VR Development", category: "IT and Software", price: "₹7,000", duration: "4 Months", rating: "4.9", image_url: "/images/courses/web_development.png" },
   ];
 
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("All Courses");
-  const { width } = useWindowSize();
-  const isMobile = width < 768;
-  const isTablet = width < 1024;
+  const [search, setSearch] = useState("");
 
-  const filteredCourses =
-    selectedCategory === "All Courses"
-      ? allCourses
-      : allCourses.filter((course) => course.category === selectedCategory);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const filteredCourses = allCourses.filter(course => {
+    const matchesCategory = selectedCategory === "All Courses" || course.category === selectedCategory;
+    const matchesSearch = course.title.toLowerCase().includes(search.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const benefits = [
+    {
+      title: "World Class Pedagogy",
+      img: "/images/categories/development.png",
+      points: [
+        "Learn from the World's Best Faculty & Industry Experts",
+        "Learn with fun Hands-on Exercises & Assignments",
+        "Participate in Hackathons & Group Activities"
+      ],
+      stats: [
+        { label: "4.8/5 Rating", icon: "⭐" },
+        { label: "Gamified Learning", icon: "🎮" }
+      ]
+    },
+    {
+      title: "Personalized Guidance with 24×7 Support",
+      img: "/images/categories/marketing.png",
+      points: [
+        "Dedicated Learning Managers",
+        "24/7 Learning Support",
+        "Network with Peers & Interact with Industry Leaders"
+      ],
+      stats: [
+        { label: "24 x 7 Support", icon: "🕒" },
+        { label: "1:1 Mentorship", icon: "🤝" }
+      ]
+    },
+    {
+      title: "Career Assistance",
+      img: "/images/categories/business.png",
+      points: [
+        "Resume Building & Mock Interview Prep",
+        "Exclusive access to PreppRight Job Portal",
+        "400+ Hiring Partners"
+      ],
+      stats: [
+        { label: "85,000 Career Transition", icon: "📈" },
+        { label: "400+ Hiring Partners", icon: "🌐" }
+      ]
+    }
+  ];
 
   return (
-    <div className="page courses-page">
-      <div
-        className="container"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "calc(100vh - 70px)",
-        }}
-      >
-        <div className="courses-layout">
-          {/* Sidebar */}
-          <aside className="category-sidebar glass">
-            <h3 className="courses-sidebar-title">Categories</h3>
-            <div className="category-list-wrapper">
-              <div className="category-list">
-                {categories.map((cat, index) => (
+    <div className="min-h-screen bg-white text-slate-900" style={{ fontFamily: "'Inter', sans-serif" }}>
+      
+      {/* Premium Dynamic Hero Section */}
+      <section className="pt-40 pb-20 relative overflow-hidden bg-white">
+        {/* Decorative background element */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-50/50 rounded-full blur-[120px] -z-10 translate-x-1/4 -translate-y-1/4" />
+        
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center min-h-[500px]">
+            
+            <div className="relative z-10">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 30 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs font-black uppercase tracking-[0.2em]">
+                    <span className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse" />
+                    {COURSE_HERO_SLIDES[currentSlide].tag}
+                  </div>
+                  <h1 className="text-5xl md:text-6xl font-extrabold mb-8 tracking-tighter leading-tight text-slate-950" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                    {COURSE_HERO_SLIDES[currentSlide].title}
+                  </h1>
+                  <p className="text-slate-500 text-xl leading-relaxed max-w-lg mb-12 font-medium">
+                    {COURSE_HERO_SLIDES[currentSlide].desc}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Slider Dots */}
+              <div className="flex gap-2">
+                {COURSE_HERO_SLIDES.map((_, i) => (
                   <button
-                    key={index}
-                    className={`category-item ${selectedCategory === cat ? "active" : ""}`}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </button>
+                    key={i}
+                    onClick={() => setCurrentSlide(i)}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${i === currentSlide ? 'w-8 bg-indigo-600' : 'w-2 bg-slate-200'}`}
+                  />
                 ))}
               </div>
             </div>
-          </aside>
 
-          {/* Main Content */}
-          <main className="courses-content">
-            <div
-              className="section-header"
-              style={{
-                textAlign: isMobile ? "center" : "left",
-                marginBottom: isMobile ? "1.5rem" : "2rem",
-                padding: isMobile ? "0 1rem" : "0",
-              }}
-            >
-              <h2 className="section-title courses-page-title">
-                {selectedCategory}
-              </h2>
-              <p className="courses-page-subtitle">
-                Found {filteredCourses.length} courses in this category.
-              </p>
+            <div className="relative h-full min-h-[400px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.1 }}
+                  transition={{ duration: 0.8 }}
+                  className="absolute inset-0"
+                >
+                  <div className="w-full h-full rounded-[48px] overflow-hidden shadow-premium border border-slate-100 p-4 bg-white">
+                    <img 
+                      src={COURSE_HERO_SLIDES[currentSlide].img} 
+                      alt="Course Category" 
+                      className="w-full h-full object-cover rounded-[36px]"
+                    />
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            <div className="course-grid-filtered">
-              {filteredCourses.map((course, index) => (
-                <div key={index} className="course-card glass hov-up">
-                  <div className="course-image">
-                    <img src={course.image_url} alt={course.title} />
-                    <div className="course-category">{course.category}</div>
-                  </div>
-                  <div className="course-info courses-page-course-info">
-                    <h3>{course.title}</h3>
-                    <p>Comprehensive training with industry projects.</p>
-                    <div className="course-meta">
-                      <span>⏱️ {course.duration}</span>
-                      <span>⭐ {course.rating}</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Filter and Courses Grid */}
+      <section className="py-24 border-t border-slate-50" id="all-courses">
+        <div className="max-w-7xl mx-auto px-6">
+          
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 gap-10">
+            <div className="flex flex-wrap gap-3">
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    if (cat === "TECH LAB") navigate("/tech-lab");
+                    else if (cat === "Job Orientation") navigate("/job-orientation");
+                    else setSelectedCategory(cat);
+                  }}
+                  className={`px-6 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all ${
+                    selectedCategory === cat
+                      ? "bg-indigo-600 text-white shadow-xl shadow-indigo-200 scale-105"
+                      : "bg-white text-slate-400 hover:bg-slate-50 border border-slate-100"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            
+            <div className="relative w-full lg:w-96 group">
+              <input
+                type="text"
+                placeholder="Search for your course..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full pl-14 pr-8 py-5 rounded-2xl bg-white border border-slate-100 focus:border-indigo-600 outline-none transition-all shadow-premium group-hover:border-indigo-200 font-medium"
+              />
+              <span className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300 text-xl group-hover:text-indigo-600 transition-colors">🔍</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <AnimatePresence mode="popLayout">
+              {filteredCourses.map((course, idx) => (
+                <motion.div
+                  layout
+                  key={course.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  className="group bg-white rounded-[40px] border border-slate-100 hover:border-indigo-100 transition-all duration-500 hover:shadow-premium overflow-hidden flex flex-col"
+                >
+                  <div className="aspect-[16/10] overflow-hidden relative">
+                    <img 
+                      src={course.image_url} 
+                      alt={course.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                    />
+                    <div className="absolute top-6 left-6 px-3 py-1 rounded-lg bg-white/90 backdrop-blur-md border border-white/20 text-slate-900 text-[10px] font-black uppercase tracking-widest">
+                      {course.category}
                     </div>
-                    <div className="course-footer courses-page-course-footer">
-                      <div className="price-container">
-                        <span className="old-price">
-                          ₹
-                          {(() => {
-                            const p = parseInt(
-                              course.price?.replace(/[₹,]/g, "") || "0",
-                            );
-                            return (p + 2000).toLocaleString("en-IN");
-                          })()}
-                        </span>
-                        <span className="price">{course.price}</span>
+                  </div>
+                  <div className="p-10 flex flex-col flex-grow">
+                    <div className="flex items-center gap-2 mb-6">
+                      <div className="flex text-amber-400">★★★★★</div>
+                      <span className="text-xs font-black text-slate-400 uppercase tracking-widest">{course.rating} (2.4k Reviews)</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-6 tracking-tight leading-snug group-hover:text-indigo-600 transition-colors" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                      {course.title}
+                    </h3>
+                    <div className="flex items-center gap-6 mb-10 pb-10 border-b border-slate-50">
+                      <div className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest">
+                        <span>🕒</span> {course.duration}
                       </div>
-                      <Link
-                        to={`/course/${course.id}`}
-                        className="btn btn-primary btn-sm"
+                      <div className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest">
+                        <span>📜</span> Certified
+                      </div>
+                    </div>
+                    <div className="mt-auto flex items-center justify-between">
+                      <span className="text-2xl font-black text-slate-900 tracking-tighter">{course.price}</span>
+                      <Link 
+                        to={`/course/${course.id}`} 
+                        className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300"
                       >
-                        View Course
+                        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
                       </Link>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-              {filteredCourses.length === 0 && (
-                <div
-                  className="glass"
-                  style={{
-                    padding: "3rem",
-                    textAlign: "center",
-                    gridColumn: "1 / -1",
-                  }}
-                >
-                  <p>No courses found in this category yet.</p>
-                </div>
-              )}
+            </AnimatePresence>
+          </div>
+          
+          {filteredCourses.length === 0 && (
+            <div className="text-center py-20">
+              <div className="text-6xl mb-6">🔍</div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">No courses found</h3>
+              <p className="text-slate-500">Try adjusting your search or category filter.</p>
             </div>
-          </main>
+          )}
         </div>
+      </section>
 
-        {/* About & Mission Section */}
-        <section
-          className="about-sections-container courses-page-about"
-          style={{ marginTop: "5rem" }}
-        >
-          <div className="grid-2">
-            <div
-              className="glass p-4 courses-page-info-card"
-              style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-            >
-              <h2 className="gradient-text" style={{ fontSize: "2rem" }}>
-                About PreppRight
+      {/* About Section */}
+      <section className="py-24 bg-[#fafafa]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <div className="inline-block px-3 py-1 mb-6 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-widest">About PreppRight</div>
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                Empowering the <span className="text-indigo-600">Next Generation</span>
               </h2>
-              <p style={{ color: "rgba(255,255,255,0.8)", lineHeight: "1.6" }}>
-                Empowering the next generation with quality education and
-                personalized learning experiences. At PreppRight, we believe
-                that education is the key to unlocking human potential and
-                shaping a brighter future.
+              <p className="text-slate-500 text-xl leading-relaxed mb-10 font-medium">
+                At PreppRight, our mission is to provide students with the resources, tools, and guidance they need to achieve academic excellence and beyond.
               </p>
-            </div>
-            <div
-              className="glass p-4 courses-page-info-card"
-              style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-            >
-              <h2 className="gradient-text" style={{ fontSize: "2rem" }}>
-                Our Mission
-              </h2>
-              <p style={{ color: "rgba(255,255,255,0.8)", lineHeight: "1.6" }}>
-                To provide students with the resources, tools, and guidance they
-                need to achieve academic excellence and beyond. We are committed
-                to making high-quality education accessible to everyone,
-                everywhere.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid-2" style={{ marginTop: "2rem" }}>
-            <div
-              className="glass p-4 courses-page-info-card"
-              style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-            >
-              <h2 className="gradient-text" style={{ fontSize: "2rem" }}>
-                Our Vision
-              </h2>
-              <p style={{ color: "rgba(255,255,255,0.8)", lineHeight: "1.6" }}>
-                We envision a world where every learner has access to
-                personalized education, breaking down barriers to learning
-                opportunities and fostering a global community of lifelong
-                learners.
-              </p>
-            </div>
-            <div
-              className="glass p-4 courses-page-info-card"
-              style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-            >
-              <h2 className="gradient-text" style={{ fontSize: "2rem" }}>
-                Our Community
-              </h2>
-              <p style={{ color: "rgba(255,255,255,0.8)", lineHeight: "1.6" }}>
-                Join a thriving community of learners, educators, and
-                professionals all working towards success and growth in their
-                fields. Collaborate, share knowledge, and grow together with
-                PreppRight.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose PreppRight */}
-        <section style={{ marginTop: "5rem", textAlign: "center" }}>
-          <h2 className="section-title">
-            Why Choose <span className="gradient-text">PreppRight?</span>
-          </h2>
-          <div className="grid-3" style={{ marginTop: "3rem" }}>
-            <div className="glass p-4 hov-up courses-page-benefit-card">
-              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>📈</div>
-              <h3>Personalized Plans</h3>
-              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.7)" }}>
-                Learning plans to match each student's unique pace and style.
-              </p>
-            </div>
-            <div className="glass p-4 hov-up courses-page-benefit-card">
-              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🎯</div>
-              <h3>Real-time Tracking</h3>
-              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.7)" }}>
-                Progress tracking to help students stay on top of their goals.
-              </p>
-            </div>
-            <div className="glass p-4 hov-up">
-              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🎓</div>
-              <h3>Expert Mentors</h3>
-              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.7)" }}>
-                Available for guidance and dedicated academic support.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Our Impact */}
-        <section
-          className="glass"
-          style={{
-            marginTop: "5rem",
-            padding: "4rem 2rem",
-            textAlign: "center",
-            background:
-              "linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(255, 255, 255, 0.05))",
-          }}
-        >
-          <h2 className="section-title">
-            Our <span className="gradient-text">Impact</span>
-          </h2>
-          <p
-            style={{
-              maxWidth: "800px",
-              margin: "0 auto 3rem",
-              color: "rgba(255,255,255,0.8)",
-            }}
-          >
-            Since our inception, PreppRight has impacted over 50,000 students
-            worldwide, with a 95% success rate in helping students achieve their
-            academic goals.
-          </p>
-          <div className="grid-3">
-            <div>
-              <h2 style={{ fontSize: "3rem", color: "#6c63ff" }}>50,000+</h2>
-              <p>Students Impacted</p>
-            </div>
-            <div>
-              <h2 style={{ fontSize: "3rem", color: "#6c63ff" }}>95%</h2>
-              <p>Success Rate</p>
-            </div>
-            <div>
-              <h2 style={{ fontSize: "3rem", color: "#6c63ff" }}>WorldWide</h2>
-              <p>Presence</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Learner Benefits */}
-        <section style={{ marginTop: isMobile ? "3rem" : "5rem" }}>
-          <h2
-            className="section-title"
-            style={{
-              textAlign: "center",
-              fontSize: isMobile ? "1.8rem" : "2.5rem",
-            }}
-          >
-            Learner <span className="gradient-text">Benefits</span>
-          </h2>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: isTablet ? "1fr" : "1fr 1fr",
-              marginTop: "3rem",
-              gap: "2rem",
-            }}
-          >
-            <div className="glass p-4 hov-up">
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: isMobile ? "flex-start" : "center",
-                  marginBottom: "1rem",
-                  flexDirection: isMobile ? "column" : "row",
-                  gap: isMobile ? 8 : 0,
-                }}
-              >
-                <h3 style={{ color: "#6c63ff" }}>World Class Pedagogy</h3>
-                <span
-                  className="glass"
-                  style={{
-                    padding: "0.2rem 0.8rem",
-                    borderRadius: "20px",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  ⭐ 4.8/5 Rating
-                </span>
-              </div>
-              <ul
-                style={{
-                  listStyle: "none",
-                  padding: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.5rem",
-                  fontSize: isMobile ? "0.85rem" : "1rem",
-                }}
-              >
-                <li>
-                  • Learn from the World's Best Faculty & Industry Experts
-                </li>
-                <li>• Learn with fun Hands-on Exercises & Assignments</li>
-                <li>• Participate in Hackathons & Group Activities</li>
-              </ul>
-            </div>
-            <div className="glass p-4 hov-up">
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: isMobile ? "flex-start" : "center",
-                  marginBottom: "1rem",
-                  flexDirection: isMobile ? "column" : "row",
-                  gap: isMobile ? 8 : 0,
-                }}
-              >
-                <h3 style={{ color: "#6c63ff" }}>24/7 Support & Mentorship</h3>
-                <span
-                  className="glass"
-                  style={{
-                    padding: "0.2rem 0.8rem",
-                    borderRadius: "20px",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  1:1 Mentorship
-                </span>
-              </div>
-              <ul
-                style={{
-                  listStyle: "none",
-                  padding: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.5rem",
-                  fontSize: isMobile ? "0.85rem" : "1rem",
-                }}
-              >
-                <li>• Dedicated Learning Managers</li>
-                <li>• 24/7 Learning Support</li>
-                <li>• Network with Peers & Interact with Industry Leaders</li>
-              </ul>
-            </div>
-            <div
-              className="glass p-4 hov-up courses-page-benefit-card"
-              style={{ gridColumn: isTablet ? "auto" : "1 / -1" }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: isMobile ? "flex-start" : "center",
-                  marginBottom: "1rem",
-                  flexDirection: isMobile ? "column" : "row",
-                  gap: isMobile ? 8 : 0,
-                }}
-              >
-                <h3 style={{ color: "#6c63ff" }}>Career Assistance</h3>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: isMobile ? "0.5rem" : "1rem",
-                    flexDirection: isMobile ? "column" : "row",
-                  }}
-                >
-                  <span
-                    className="glass"
-                    style={{
-                      padding: "0.2rem 0.8rem",
-                      borderRadius: "20px",
-                      fontSize: "0.8rem",
-                    }}
-                  >
-                    85,000+ Career Transitions
-                  </span>
-                  <span
-                    className="glass"
-                    style={{
-                      padding: "0.2rem 0.8rem",
-                      borderRadius: "20px",
-                      fontSize: "0.8rem",
-                    }}
-                  >
-                    400+ Hiring Partners
-                  </span>
+              <div className="grid grid-cols-2 gap-10">
+                <div>
+                  <div className="text-3xl font-black text-slate-900 mb-2">50,000+</div>
+                  <div className="text-xs font-black text-slate-400 uppercase tracking-widest">Students Impacted</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-black text-slate-900 mb-2">95%</div>
+                  <div className="text-xs font-black text-slate-400 uppercase tracking-widest">Success Rate</div>
                 </div>
               </div>
-              <ul
-                style={{
-                  listStyle: "none",
-                  padding: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.5rem",
-                  fontSize: isMobile ? "0.85rem" : "1rem",
-                }}
-              >
-                <li>• Resume Building & Mock Interview Prep</li>
-                <li>• Exclusive access to PreppRight Job Portal</li>
-                <li>• Personalized career coaching and placement support</li>
-              </ul>
+            </motion.div>
+            <div className="relative">
+              <div className="bg-white p-6 rounded-[48px] shadow-premium border border-slate-100 overflow-hidden">
+                <img src="/images/categories/business.png" alt="Impact" className="w-full h-auto rounded-[32px]" />
+              </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* Bento-Style Learner Benefits */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-24">
+            <div className="inline-block px-3 py-1 mb-4 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-widest">The PreppRight Advantage</div>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+              Why Students <span className="text-indigo-600">Love Us</span>
+            </h2>
+          </div>
+
+          <div className="space-y-32">
+            {benefits.map((benefit, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-20 items-center`}
+              >
+                <div className="w-full lg:w-1/2">
+                  <div className="relative group bg-white p-5 rounded-[56px] shadow-premium border border-slate-100 overflow-hidden">
+                    <img 
+                      src={benefit.img} 
+                      alt={benefit.title} 
+                      className="w-full h-auto rounded-[40px] transition-transform duration-700 group-hover:scale-105" 
+                    />
+                  </div>
+                </div>
+
+                <div className="w-full lg:w-1/2">
+                  <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-8 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                    {benefit.title}
+                  </h3>
+                  <ul className="space-y-6 mb-12">
+                    {benefit.points.map((point, i) => (
+                      <li key={i} className="flex items-start gap-4 text-lg text-slate-500 font-medium group">
+                        <span className="mt-1.5 w-2 h-2 rounded-full bg-indigo-600 group-hover:scale-150 transition-transform" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="grid grid-cols-2 gap-6">
+                    {benefit.stats.map((s, k) => (
+                      <div key={k} className="p-8 rounded-3xl bg-[#fafafa] border border-slate-50 flex flex-col items-center justify-center text-center group hover:bg-white hover:border-indigo-100 hover:shadow-xl transition-all">
+                        <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">{s.icon}</div>
+                        <div className="font-bold text-slate-900 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

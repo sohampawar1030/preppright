@@ -3,21 +3,6 @@ import Footer from "../components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { getRandomQuestions } from "../data/quizData";
 
-/* ─── Custom Hook for Responsive ─── */
-const useWindowSize = () => {
-  const [size, setSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-  useEffect(() => {
-    const handleResize = () =>
-      setSize({ width: window.innerWidth, height: window.innerHeight });
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-  return size;
-};
-
 const QuizPage = () => {
   const [quizState, setQuizState] = useState("landing"); // 'landing', 'active', 'results'
   const [questions, setQuestions] = useState([]);
@@ -63,399 +48,199 @@ const QuizPage = () => {
     return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
-  const { width } = useWindowSize();
-  const isMobile = width < 768;
-  const isTablet = width < 1024;
-
   return (
-    <>
-      <div className="page">
-        <div className="container">
-          <AnimatePresence mode="wait">
-            {quizState === "landing" && (
-              <motion.div
-                key="landing"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                style={{ textAlign: "center", maxWidth: 800, margin: "0 auto" }}
-              >
-                <div className="section-header">
-                  <h2 className="section-title">
-                    Interactive{" "}
-                    <span className="gradient-text">Aptitude Quizzes</span>
-                  </h2>
-                  <p>
-                    Prepare for placement exams with our random 20-question sets
-                    from a pool of 500+ questions.
-                  </p>
+    <div className="min-h-screen bg-white text-slate-900" style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="max-w-6xl mx-auto px-6 pt-40 pb-20">
+        <AnimatePresence mode="wait">
+          {quizState === "landing" && (
+            <motion.div
+              key="landing"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="text-center"
+            >
+              <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs font-black uppercase tracking-[0.2em]">
+                Placement Readiness
+              </div>
+              <h1 className="text-5xl md:text-6xl font-extrabold mb-8 tracking-tighter leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                Interactive <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600">Aptitude Arena</span>
+              </h1>
+              <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-16">
+                Sharpen your logic and quantitative skills with our AI-curated question sets. Designed specifically for top-tier company assessments.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    className="group bg-white rounded-[32px] p-10 text-left border border-slate-100 hover:border-indigo-100 hover:shadow-premium transition-all duration-500 hover:-translate-y-2"
+                  >
+                    <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-3xl mb-8 group-hover:bg-indigo-50 group-hover:scale-110 transition-all">
+                      📝
+                    </div>
+                    <h3 className="text-2xl font-bold mb-3 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                      General Aptitude Set {i}
+                    </h3>
+                    <p className="text-slate-400 font-medium text-sm mb-10">
+                      20 Random Questions <br />
+                      30 Minutes Duration
+                    </p>
+                    <div className="flex items-center justify-between pt-8 border-t border-slate-50">
+                      <span className="text-emerald-500 font-black text-lg uppercase tracking-widest">Free</span>
+                      <button 
+                        onClick={startQuiz} 
+                        className="px-8 py-3.5 rounded-2xl bg-slate-900 text-white text-sm font-bold hover:bg-indigo-600 transition-all shadow-lg hover:shadow-indigo-600/20"
+                      >
+                        Start Arena
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {quizState === "active" && questions.length > 0 && (
+            <motion.div
+              key="active"
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="max-w-3xl mx-auto"
+            >
+              <div className="bg-white rounded-[40px] p-10 md:p-16 border border-slate-100 shadow-2xl shadow-slate-200/50">
+                {/* Header Stats */}
+                <div className="flex justify-between items-center mb-12">
+                  <div className="flex items-center gap-4">
+                    <div className="px-5 py-2.5 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 font-black text-xl tabular-nums">
+                      {formatTime(timeLeft)}
+                    </div>
+                    <span className="text-slate-400 text-xs font-black uppercase tracking-widest">Time Remaining</span>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-slate-900 font-black text-xl">{currentIndex + 1} / {questions.length}</div>
+                    <span className="text-slate-400 text-xs font-black uppercase tracking-widest">Progress</span>
+                  </div>
                 </div>
 
-                <div
-                  className="course-grid"
-                  style={{ marginTop: isMobile ? "2rem" : "3rem" }}
-                >
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="course-card glass hov-up"
-                      style={{
-                        padding: isMobile ? "1.5rem" : "2.5rem",
-                        textAlign: "left",
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontSize: isMobile ? "1.5rem" : "2rem",
-                          marginBottom: "1rem",
-                        }}
-                      >
-                        📝
-                      </div>
+                {/* Progress Bar */}
+                <div className="w-full h-2 bg-slate-50 rounded-full mb-16 overflow-hidden">
+                  <motion.div
+                    className="h-full bg-gradient-to-r from-indigo-600 to-violet-600"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
+                  />
+                </div>
 
-                      <h3>General Aptitude Set {i}</h3>
-                      <p style={{ color: "#94a3b8", fontSize: "0.9rem" }}>
-                        20 Random Questions | 30 Minutes
-                      </p>
-                      <div className="course-footer quiz-footer">
-                        <div className="price-container">
-                          <span style={{ color: "#10b981", fontWeight: 800, fontSize: "1.2rem" }}>
-                            FREE
-                          </span>
-                        </div>
-                        <button 
-                          onClick={startQuiz} 
-                          className="btn btn-primary"
-                          style={{ padding: "0.75rem 1.5rem" }}
-                        >
-                          Start Quiz
-                        </button>
-                      </div>
-                    </div>
+                {/* Question */}
+                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-12 leading-tight tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                  {questions[currentIndex].question}
+                </h2>
+
+                {/* Options Grid */}
+                <div className="space-y-4">
+                  {questions[currentIndex].options.map((opt, i) => (
+                    <button
+                      key={i}
+                      onClick={() => handleAnswer(opt)}
+                      className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-300 flex items-center gap-6 group ${
+                        answers[currentIndex] === opt
+                          ? "border-indigo-600 bg-indigo-50/30"
+                          : "border-slate-50 bg-slate-50/50 hover:border-slate-200 hover:bg-white"
+                      }`}
+                    >
+                      <span className={`w-10 h-10 rounded-xl flex items-center justify-center font-black transition-all ${
+                        answers[currentIndex] === opt
+                          ? "bg-indigo-600 text-white"
+                          : "bg-white text-slate-400 group-hover:text-slate-900 border border-slate-100"
+                      }`}>
+                        {String.fromCharCode(65 + i)}
+                      </span>
+                      <span className={`text-lg font-bold ${
+                        answers[currentIndex] === opt ? "text-indigo-900" : "text-slate-600"
+                      }`}>
+                        {opt}
+                      </span>
+                    </button>
                   ))}
                 </div>
-              </motion.div>
-            )}
 
-            {quizState === "active" && questions.length > 0 && (
-              <motion.div
-                key="active"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                style={{ maxWidth: 900, margin: "0 auto" }}
-              >
-                <div
-                  className="glass"
-                  style={{
-                    padding: isMobile ? "1.5rem" : "3rem",
-                    borderRadius: isMobile ? "16px" : "24px",
-                    position: "relative",
-                  }}
-                >
-                  {/* Timer & Progress */}
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      marginBottom: isMobile ? "1.5rem" : "2rem",
-                      alignItems: "center",
-                    }}
+                {/* Navigation */}
+                <div className="mt-16 flex justify-between gap-6">
+                  <button
+                    disabled={currentIndex === 0}
+                    onClick={() => setCurrentIndex((prev) => prev - 1)}
+                    className="px-10 py-4 rounded-2xl bg-slate-50 text-slate-500 font-bold hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                   >
-                    <div
-                      style={{
-                        background: "rgba(99,102,241,0.1)",
-                        padding: "0.5rem 1rem",
-                        borderRadius: "12px",
-                        border: "1px solid rgba(99,102,241,0.2)",
-                      }}
-                    >
-                      <span
-                        style={{
-                          color: "#818cf8",
-                          fontWeight: 800,
-                          fontSize: "1.2rem",
-                        }}
-                      >
-                        {formatTime(timeLeft)}
-                      </span>
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "0.9rem",
-                        color: "#94a3b8",
-                        fontWeight: 700,
-                      }}
-                    >
-                      Question {currentIndex + 1} of {questions.length}
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      width: "100%",
-                      height: "6px",
-                      background: "rgba(255,255,255,0.05)",
-                      borderRadius: "3px",
-                      marginBottom: isMobile ? "2rem" : "3rem",
-                    }}
-                  >
-                    <motion.div
-                      style={{
-                        height: "100%",
-                        background: "linear-gradient(90deg, #6366f1, #ec4899)",
-                        borderRadius: "3px",
-                      }}
-                      initial={{ width: 0 }}
-                      animate={{
-                        width: `${((currentIndex + 1) / questions.length) * 100}%`,
-                      }}
-                    />
-                  </div>
-
-                  {/* Question */}
-                  <h2
-                    style={{
-                      fontSize: isMobile ? "1.3rem" : "1.8rem",
-                      fontWeight: 700,
-                      marginBottom: isMobile ? "1.5rem" : "2.5rem",
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {questions[currentIndex].question}
-                  </h2>
-
-                  {/* Options */}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "1rem",
-                    }}
-                  >
-                    {questions[currentIndex].options.map((opt, i) => (
-                      <button
-                        key={i}
-                        onClick={() => handleAnswer(opt)}
-                        style={{
-                          textAlign: "left",
-                          padding: isMobile ? "1rem" : "1.2rem 2rem",
-                          borderRadius: "12px",
-                          background:
-                            answers[currentIndex] === opt
-                              ? "rgba(99,102,241,0.2)"
-                              : "rgba(255,255,255,0.03)",
-                          border: `1px solid ${answers[currentIndex] === opt ? "#6366f1" : "rgba(255,255,255,0.1)"}`,
-                          color:
-                            answers[currentIndex] === opt ? "#fff" : "#cbd5e1",
-                          fontSize: isMobile ? "0.95rem" : "1.1rem",
-
-                          fontWeight: 500,
-                          cursor: "pointer",
-                          transition: "all 0.2s",
-                        }}
-                      >
-                        <span
-                          style={{
-                            display: "inline-block",
-                            width: "30px",
-                            height: "30px",
-                            borderRadius: "8px",
-                            background:
-                              answers[currentIndex] === opt
-                                ? "#6366f1"
-                                : "rgba(255,255,255,0.05)",
-                            textAlign: "center",
-                            lineHeight: "30px",
-                            marginRight: "1rem",
-                            fontSize: "0.9rem",
-                            fontWeight: 800,
-                          }}
-                        >
-                          {String.fromCharCode(65 + i)}
-                        </span>
-                        {opt}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Nav buttons */}
-                  <div
-                    style={{
-                      marginTop: isMobile ? "2rem" : "3.5rem",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      gap: "1rem",
-                    }}
-                  >
+                    Previous
+                  </button>
+                  {currentIndex < questions.length - 1 ? (
                     <button
-                      disabled={currentIndex === 0}
-                      onClick={() => setCurrentIndex((prev) => prev - 1)}
-                      className="btn btn-outline"
-                      style={{
-                        opacity: currentIndex === 0 ? 0.3 : 1,
-                        padding: isMobile ? "0.6rem 1rem" : "0.75rem 1.5rem",
-                        fontSize: isMobile ? "0.9rem" : "1rem",
-                      }}
+                      onClick={() => setCurrentIndex((prev) => prev + 1)}
+                      className="px-10 py-4 rounded-2xl bg-slate-900 text-white font-bold hover:bg-indigo-600 disabled:opacity-50 transition-all shadow-lg hover:shadow-indigo-600/20"
+                      disabled={!answers[currentIndex]}
                     >
-                      Back
+                      Next Question
                     </button>
-                    {currentIndex < questions.length - 1 ? (
-                      <button
-                        onClick={() => setCurrentIndex((prev) => prev + 1)}
-                        className="btn btn-primary"
-                        disabled={!answers[currentIndex]}
-                        style={{
-                          padding: isMobile ? "0.6rem 1rem" : "0.75rem 1.5rem",
-                          fontSize: isMobile ? "0.9rem" : "1rem",
-                        }}
-                      >
-                        Next
-                      </button>
-                    ) : (
-                      <button
-                        onClick={finishQuiz}
-                        className="btn btn-primary"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, #10b981, #059669)",
-                          padding: isMobile ? "0.6rem 1rem" : "0.75rem 1.5rem",
-                          fontSize: isMobile ? "0.9rem" : "1rem",
-                        }}
-                        disabled={!answers[currentIndex]}
-                      >
-                        Finish
-                      </button>
-                    )}
+                  ) : (
+                    <button
+                      onClick={finishQuiz}
+                      className="px-12 py-4 rounded-2xl bg-emerald-600 text-white font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-600/20"
+                      disabled={!answers[currentIndex]}
+                    >
+                      Finish Arena
+                    </button>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {quizState === "results" && (
+            <motion.div
+              key="results"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="max-w-2xl mx-auto"
+            >
+              <div className="bg-white rounded-[48px] p-16 text-center border border-slate-100 shadow-premium">
+                <div className="text-8xl mb-10 drop-shadow-2xl">🏆</div>
+                <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                  Arena Conquered!
+                </h2>
+                <p className="text-slate-400 font-medium text-lg mb-12">
+                  Excellent focus. Here's your performance breakdown.
+                </p>
+
+                <div className="grid grid-cols-2 gap-8 mb-16">
+                  <div className="bg-slate-50 p-10 rounded-[32px] border border-slate-100">
+                    <span className="text-slate-400 text-xs font-black uppercase tracking-widest block mb-2">Final Score</span>
+                    <div className="text-5xl font-black text-indigo-600 tabular-nums">{score} <span className="text-2xl text-slate-300">/ 20</span></div>
+                  </div>
+                  <div className="bg-slate-50 p-10 rounded-[32px] border border-slate-100">
+                    <span className="text-slate-400 text-xs font-black uppercase tracking-widest block mb-2">Accuracy</span>
+                    <div className="text-5xl font-black text-emerald-500 tabular-nums">{((score / 20) * 100).toFixed(0)}%</div>
                   </div>
                 </div>
-              </motion.div>
-            )}
 
-            {quizState === "results" && (
-              <motion.div
-                key="results"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                style={{ textAlign: "center", maxWidth: 600, margin: "0 auto" }}
-              >
-                <div
-                  className="glass"
-                  style={{ padding: "4rem 2rem", borderRadius: "32px" }}
-                >
-                  <div style={{ fontSize: "5rem", marginBottom: "1.5rem" }}>
-                    🏆
-                  </div>
-                  <h2
-                    style={{
-                      fontSize: "2.5rem",
-                      fontWeight: 800,
-                      marginBottom: "1rem",
-                    }}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button onClick={startQuiz} className="px-10 py-4 rounded-2xl bg-slate-900 text-white font-bold hover:bg-indigo-600 transition-all shadow-lg">
+                    Try Different Set
+                  </button>
+                  <button
+                    onClick={() => setQuizState("landing")}
+                    className="px-10 py-4 rounded-2xl bg-slate-50 text-slate-600 font-bold hover:bg-slate-100 transition-all"
                   >
-                    Quiz Completed!
-                  </h2>
-                  <p
-                    style={{
-                      color: "#94a3b8",
-                      fontSize: "1.1rem",
-                      marginBottom: "3rem",
-                    }}
-                  >
-                    Great effort! Here's how you performed:
-                  </p>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      gap: isMobile ? "1rem" : "2rem",
-                      marginBottom: "4rem",
-                      flexDirection: isMobile ? "column" : "row",
-                    }}
-                  >
-                    <div
-                      className="glass"
-                      style={{
-                        padding: isMobile ? "1.5rem" : "2rem",
-                        borderRadius: "24px",
-                        flex: 1,
-                      }}
-                    >
-                      <h4
-                        style={{
-                          color: "#94a3b8",
-                          fontSize: "0.8rem",
-                          textTransform: "uppercase",
-                          marginBottom: "0.5rem",
-                        }}
-                      >
-                        Score
-                      </h4>
-                      <p
-                        style={{
-                          fontSize: isMobile ? "1.8rem" : "2.5rem",
-                          fontWeight: 800,
-                          color: "#818cf8",
-                        }}
-                      >
-                        {score}/20
-                      </p>
-                    </div>
-                    <div
-                      className="glass"
-                      style={{
-                        padding: isMobile ? "1.5rem" : "2rem",
-                        borderRadius: "24px",
-                        flex: 1,
-                      }}
-                    >
-                      <h4
-                        style={{
-                          color: "#94a3b8",
-                          fontSize: "0.8rem",
-                          textTransform: "uppercase",
-                          marginBottom: "0.5rem",
-                        }}
-                      >
-                        Accuracy
-                      </h4>
-                      <p
-                        style={{
-                          fontSize: isMobile ? "1.8rem" : "2.5rem",
-                          fontWeight: 800,
-                          color: "#10b981",
-                        }}
-                      >
-                        {((score / 20) * 100).toFixed(0)}%
-                      </p>
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "1rem",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <button onClick={startQuiz} className="btn btn-primary">
-                      Try Another Set
-                    </button>
-                    <button
-                      onClick={() => setQuizState("landing")}
-                      className="btn btn-outline"
-                    >
-                      Back to Home
-                    </button>
-                  </div>
+                    Return to Lobby
+                  </button>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

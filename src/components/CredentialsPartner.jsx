@@ -1,62 +1,57 @@
 import React from "react";
-import { motion } from "framer-motion";
+
+const PARTNER_LOGOS = [
+  "WhatsApp Image 2026-05-09 at 6.32.51 PM.jpeg",
+  "WhatsApp Image 2026-05-09 at 6.33.05 PM.jpeg",
+  "WhatsApp Image 2026-05-09 at 6.37.21 PM.jpeg",
+  "WhatsApp Image 2026-05-09 at 6.39.58 PM.jpeg",
+  "WhatsApp Image 2026-05-09 at 6.41.12 PM.jpeg",
+  "WhatsApp Image 2026-05-09 at 6.59.16 PM.jpeg"
+];
 
 const CredentialsPartner = () => {
-  const partnerImages = [
-    "WhatsApp Image 2026-05-09 at 6.32.51 PM.jpeg",
-    "WhatsApp Image 2026-05-09 at 6.33.05 PM.jpeg",
-    "WhatsApp Image 2026-05-09 at 6.37.21 PM.jpeg",
-    "WhatsApp Image 2026-05-09 at 6.39.58 PM.jpeg",
-    "WhatsApp Image 2026-05-09 at 6.41.12 PM.jpeg",
-    "WhatsApp Image 2026-05-09 at 6.59.16 PM.jpeg",
-  ];
-
-  // Double the images to create a seamless loop
-  const displayImages = [...partnerImages, ...partnerImages];
+  const scrollLogos = [...PARTNER_LOGOS, ...PARTNER_LOGOS, ...PARTNER_LOGOS];
 
   return (
-    <section
-      className="credentials-section"
-      style={{
-        padding: "80px 0",
-        overflow: "hidden",
-        background: "rgba(255,255,255,0.01)",
-      }}
-    >
-      <div className="container">
-        <div
-          className="section-header"
-          style={{ marginBottom: "60px" }}
-          data-reveal
-        >
-          <h2 className="section-title">
-            Our <span className="gradient-text">Credential Partners</span>
-          </h2>
-          <p style={{ color: "#94a3b8", fontSize: "1.1rem" }}>
-            We collaborate with industry-leading organizations to bring you the best learning experience.
-          </p>
-        </div>
+    <section className="py-16 bg-white overflow-hidden border-t border-slate-50">
+      <div className="max-w-7xl mx-auto px-6 mb-10 text-center">
+        <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em] mb-3">Our Credentials & Partners</p>
+        <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+          Certified & Recognized by <span className="text-indigo-600">Leading Institutions</span>
+        </h2>
       </div>
 
-      <div
-        className="placement-marquee-container"
-        style={{ width: "100%", position: "relative" }}
-      >
-        <div className="placement-marquee" style={{ animationDuration: "30s" }}>
-          {displayImages.map((img, idx) => (
-            <div key={idx} className="placement-card-wrap">
-              <div className="placement-card glass" data-reveal>
-                <img
-                  src={`/images/courses/Creditional_partner/${img}`}
-                  alt={`Partner ${idx + 1}`}
-                  className="placement-img"
-                  style={{ objectFit: "contain", padding: "20px" }}
-                />
-              </div>
+      <div className="relative w-full">
+        {/* Gradient Fades */}
+        <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+        <div className="flex animate-scroll-mid whitespace-nowrap gap-12 md:gap-20 items-center">
+          {scrollLogos.map((logo, i) => (
+            <div key={i} className="flex-shrink-0 bg-slate-50 p-8 rounded-3xl border border-slate-200/50 flex items-center justify-center w-64 h-36 transition-transform hover:scale-105 duration-300">
+              <img 
+                src={`/images/courses/Creditional_partner/${logo}`} 
+                alt="Partner Credential" 
+                className="max-h-full max-w-full object-contain grayscale-[20%] hover:grayscale-0 transition-all duration-500 opacity-80 hover:opacity-100"
+              />
             </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes scroll-mid {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-scroll-mid {
+          animation: scroll-mid 35s linear infinite;
+          width: max-content;
+        }
+        .animate-scroll-mid:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   );
 };

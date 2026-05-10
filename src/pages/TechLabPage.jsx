@@ -20,483 +20,106 @@ import {
   Sparkles,
 } from "lucide-react";
 
-/* ─── Responsive Hook ─── */
-const useWindowSize = () => {
-  const [size, setSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-  useEffect(() => {
-    const handleResize = () =>
-      setSize({ width: window.innerWidth, height: window.innerHeight });
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-  return size;
-};
-
 const TechLabPage = () => {
-  const { width } = useWindowSize();
-  const isMobile = width < 768;
-  const isTablet = width < 1024;
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const labTypes = [
-    {
-      name: "LiveLAB",
-      icon: <Zap size={32} className="text-yellow-400" />,
-      desc: "Real-time interactive environments",
-      color: "from-yellow-500/20 to-yellow-600/5",
-    },
-    {
-      name: "CloudLAB",
-      icon: <Cloud size={32} className="text-blue-400" />,
-      desc: "Scalable cloud infrastructure training",
-      color: "from-blue-500/20 to-blue-600/5",
-    },
-    {
-      name: "CyberRange",
-      icon: <ShieldCheck size={32} className="text-red-400" />,
-      desc: "Security simulations and defense",
-      color: "from-red-500/20 to-red-600/5",
-    },
-    {
-      name: "CodeLAB",
-      icon: <Code size={32} className="text-green-400" />,
-      desc: "Hands-on programming practice",
-      color: "from-green-500/20 to-green-600/5",
-    },
-    {
-      name: "HardwareSIM",
-      icon: <Cpu size={32} className="text-purple-400" />,
-      desc: "Virtual hardware configuration",
-      color: "from-purple-500/20 to-purple-600/5",
-    },
-    {
-      name: "SoftwareSIM",
-      icon: <Layout size={32} className="text-cyan-400" />,
-      desc: "Application workflow simulations",
-      color: "from-cyan-500/20 to-cyan-600/5",
-    },
-    {
-      name: "ScenarioSIM",
-      icon: <Terminal size={32} className="text-orange-400" />,
-      desc: "Role-based task simulations",
-      color: "from-orange-500/20 to-orange-600/5",
-    },
-    {
-      name: "MathsLAB",
-      icon: <Award size={32} className="text-indigo-400" />,
-      desc: "Quantitative analysis playground",
-      color: "from-indigo-500/20 to-indigo-600/5",
-    },
-    {
-      name: "SmartChat",
-      icon: <RefreshCw size={32} className="text-pink-400" />,
-      desc: "AI-powered learning assistance",
-      color: "from-pink-500/20 to-pink-600/5",
-    },
+    { name: "LiveLAB", icon: <Zap size={32} />, desc: "Real-time interactive environments", color: "indigo" },
+    { name: "CloudLAB", icon: <Cloud size={32} />, desc: "Scalable cloud infrastructure", color: "blue" },
+    { name: "CyberRange", icon: <ShieldCheck size={32} />, desc: "Security simulations", color: "rose" },
+    { name: "CodeLAB", icon: <Code size={32} />, desc: "Programming practice", color: "emerald" },
+    { name: "HardwareSIM", icon: <Cpu size={32} />, desc: "Virtual hardware config", color: "violet" },
+    { name: "SoftwareSIM", icon: <Layout size={32} />, desc: "Workflow simulations", color: "cyan" },
+    { name: "ScenarioSIM", icon: <Terminal size={32} />, desc: "Role-based simulations", color: "orange" },
+    { name: "MathsLAB", icon: <Award size={32} />, desc: "Analysis playground", color: "amber" },
+    { name: "SmartChat", icon: <RefreshCw size={32} />, desc: "AI-powered assistance", color: "pink" },
   ];
-
-  const features = [
-    {
-      title: "Real-World Simulations",
-      desc: "Flexibility to train in a live, non-production environment that mimics actual scenarios.",
-      icon: <Globe size={24} />,
-    },
-    {
-      title: "No Installations Required",
-      desc: "Experiment with hardware/software without spending on licenses or configuration.",
-      icon: <Settings size={24} />,
-    },
-    {
-      title: "Guided Learning",
-      desc: "Step-by-step guided experience aligned perfectly with your lesson objectives.",
-      icon: <CheckCircle2 size={24} />,
-    },
-    {
-      title: "Easy Integration",
-      desc: "Cloud-based solution that easily integrates with any LMS through SSO.",
-      icon: <RefreshCw size={24} />,
-    },
-    {
-      title: "Deep Linking",
-      desc: "Go directly from your LMS to any educational resource like videos or labs.",
-      icon: <LinkIcon size={24} />,
-    },
-    {
-      title: "Gradebook Syncing",
-      desc: "Automate grade transfers into your LMS for a consolidated view of progress.",
-      icon: <Layout size={24} />,
-    },
-  ];
-
-  const containerStyle = {
-    color: "white",
-    minHeight: "100vh",
-    overflow: "hidden",
-  };
-
-  const glassStyle = {
-    background: "rgba(255, 255, 255, 0.05)",
-    backdropFilter: "blur(10px)",
-    border: "1px solid rgba(255, 255, 255, 0.1)",
-    borderRadius: "24px",
-  };
-
-  const gradientTextStyle = {
-    background:
-      "linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #06b6d4 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text",
-  };
-
-  const buttonStyle = {
-    background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
-    border: "none",
-    padding: "16px 32px",
-    borderRadius: "12px",
-    color: "white",
-    fontWeight: "600",
-    cursor: "pointer",
-    fontSize: "16px",
-    transition: "all 0.3s ease",
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "8px",
-    boxShadow: "0 10px 30px rgba(99, 102, 241, 0.2)",
-  };
 
   return (
-    <div className="page page-tight" style={containerStyle}>
-      {/* Animated Background Elements */}
-      {!isMobile && (
-        <>
-          <div
-            style={{
-              position: "fixed",
-              top: "0",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "min(92vw, 1000px)",
-              height: "min(56vw, 600px)",
-              background:
-                "radial-gradient(ellipse at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%)",
-              filter: "blur(120px)",
-              zIndex: "-1",
-            }}
-          />
-
-          <div
-            style={{
-              position: "fixed",
-              bottom: "10%",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "min(70vw, 600px)",
-              height: "min(70vw, 600px)",
-              background:
-                "radial-gradient(ellipse at center, rgba(236, 72, 153, 0.1) 0%, transparent 70%)",
-              filter: "blur(100px)",
-              zIndex: "-1",
-            }}
-          />
-        </>
-      )}
-
+    <div className="bg-white text-slate-900 min-h-screen" style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Hero Section */}
-      <section
-        style={{
-          paddingTop: 0,
-          paddingBottom: isMobile ? "40px" : "80px",
-          position: "relative",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            paddingLeft: isMobile ? "16px" : "24px",
-            paddingRight: isMobile ? "16px" : "24px",
-            textAlign: "center",
-          }}
-        >
-          {/* Badge */}
+      <section className="pt-40 pb-24 relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 w-[800px] h-[800px] bg-indigo-50/50 rounded-full blur-[120px] -z-10 -translate-x-1/2 -translate-y-1/2" />
+        
+        <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            style={{
-              display: "inline-block",
-              padding: "8px 16px",
-              borderRadius: "9999px",
-              background: "rgba(99, 102, 241, 0.1)",
-              border: "1px solid rgba(99, 102, 241, 0.2)",
-              color: "#a5b4fc",
-              fontSize: "12px",
-              fontWeight: "700",
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-              marginBottom: "24px",
-            }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs font-black uppercase tracking-[0.2em]"
           >
-            <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <Sparkles size={14} />
-              PreppRight TECH LABS
-            </span>
+            <Sparkles size={14} />
+            PreppRight TECH LABS
           </motion.div>
 
-          {/* Main Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            style={{
-              fontSize: "clamp(2.5rem, 10vw, 4.5rem)",
-              fontWeight: "700",
-              lineHeight: "1.2",
-              marginBottom: "32px",
-              letterSpacing: "-1px",
-            }}
+            className="text-5xl md:text-7xl font-extrabold mb-10 tracking-tighter leading-tight"
+            style={{ fontFamily: "'Lexend', sans-serif" }}
           >
-            Why Must You Choose{" "}
-            <span style={gradientTextStyle}>PreppRight</span> <br /> As Your
-            Training Partner?
+            Ultimate Hands-On <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600">Training Partner</span>
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            style={{
-              color: "#9ca3af",
-              fontSize: "20px",
-              maxWidth: "800px",
-              margin: "0 auto 48px",
-              lineHeight: "1.8",
-            }}
+            className="text-slate-500 text-xl max-w-3xl mx-auto leading-relaxed mb-16"
           >
-            We're your one-stop shop for building in-demand IT skills and
-            achieving real-world job readiness through our industry-leading
-            virtual labs.
+            Bridge the gap between theory and practice with our world-class virtual labs. Master complex IT scenarios in a safe, guided environment.
           </motion.p>
 
-          {/* Three Feature Cards */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: "32px",
-              marginTop: "64px",
-            }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                title: "Practical Application",
-                text: "We immerse you in realistic, scenario-based simulations that mirror real-world IT tasks for targeted practice.",
-                border: "from-indigo-500",
-              },
-              {
-                title: "Improved Accessibility",
-                text: "Our unique approach centers on outcome-based scenarios, all accessible through any web browser.",
-                border: "from-pink-500",
-              },
-              {
-                title: "Cost-Effective",
-                text: "No more budget blowouts! Virtual labs are a cost-effective alternative to expensive physical infrastructure.",
-                border: "from-cyan-500",
-              },
-            ].map((card, idx) => (
+              { title: "Practical Mastery", text: "Realistic simulations mirroring actual enterprise IT environments for targeted practice.", color: "indigo" },
+              { title: "Zero Installation", text: "Access high-end hardware and software configurations directly from your browser.", color: "emerald" },
+              { title: "Cost Efficiency", text: "Eliminate expensive physical infrastructure costs while maintaining high learning standards.", color: "violet" },
+            ].map((card, i) => (
               <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3 + idx * 0.1 }}
-                style={{
-                  ...glassStyle,
-                  padding: "32px",
-                  textAlign: "left",
-                  borderLeft: "4px solid",
-                  borderImage: `linear-gradient(180deg, ${card.border === "from-indigo-500" ? "#6366f1" : card.border === "from-pink-500" ? "#ec4899" : "#06b6d4"}, transparent) 1`,
-                  transition: "all 0.3s ease",
-                  cursor: "pointer",
-                }}
-                whileHover={{
-                  transform: "translateY(-8px)",
-                  boxShadow: "0 20px 50px rgba(99, 102, 241, 0.1)",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "24px",
-                    fontWeight: "700",
-                    marginBottom: "16px",
-                  }}
-                >
-                  {card.title}
-                </h3>
-                <p style={{ color: "#d1d5db", lineHeight: "1.6" }}>
-                  {card.text}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section
-        style={{
-          padding: "80px 24px",
-          background:
-            "linear-gradient(180deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%)",
-          borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
-        }}
-      >
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-              gap: "48px",
-              textAlign: "center",
-            }}
-          >
-            {[
-              { number: "1000+", label: "Hands-On Courses" },
-              { number: "3M+", label: "Happy Customers" },
-              { number: "50+", label: "Countries Served" },
-            ].map((stat, idx) => (
-              <motion.div
-                key={idx}
+                key={i}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + i * 0.1 }}
+                className="bg-white p-10 rounded-[40px] border border-slate-100 text-left hover:shadow-premium transition-all duration-500 hover:-translate-y-2 group"
               >
-                <h2
-                  style={{
-                    fontSize: "60px",
-                    fontWeight: "700",
-                    marginBottom: "8px",
-                    background:
-                      "linear-gradient(135deg, #6366f1 0%, #ec4899 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  {stat.number}
-                </h2>
-                <p
-                  style={{
-                    color: "#6366f1",
-                    fontWeight: "700",
-                    fontSize: "12px",
-                    letterSpacing: "2px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {stat.label}
-                </p>
+                <div className={`w-12 h-12 rounded-2xl mb-8 flex items-center justify-center transition-all ${
+                  i === 0 ? "bg-indigo-50 text-indigo-600" : i === 1 ? "bg-emerald-50 text-emerald-600" : "bg-violet-50 text-violet-600"
+                }`}>
+                  {i === 0 ? <Layout size={24} /> : i === 1 ? <Settings size={24} /> : <Award size={24} />}
+                </div>
+                <h3 className="text-2xl font-bold mb-4 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>{card.title}</h3>
+                <p className="text-slate-500 font-medium leading-relaxed">{card.text}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Lab Types Grid */}
-      <section style={{ padding: "96px 24px", background: "#0a0f1d" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "80px" }}>
-            <h2
-              style={{
-                fontSize: "clamp(2rem, 8vw, 3.5rem)",
-                fontWeight: "700",
-                marginBottom: "24px",
-                letterSpacing: "-1px",
-              }}
-            >
-              Types of Labs You Can Benefit From
-            </h2>
-            <p
-              style={{
-                color: "#9ca3af",
-                maxWidth: "600px",
-                margin: "0 auto",
-                fontSize: "18px",
-              }}
-            >
-              Recognize and correct your mistakes with our specialized labs to
-              reduce errors while on the job.
-            </p>
+      {/* Lab Ecosystem Grid */}
+      <section className="py-24 bg-slate-50/50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>Specialized Lab Ecosystem</h2>
+            <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto">Diverse sandbox environments tailored for every technical domain.</p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: "24px",
-            }}
-          >
-            {labTypes.map((lab, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {labTypes.map((lab, i) => (
               <motion.div
-                key={index}
-                whileHover={{
-                  y: -12,
-                  boxShadow: "0 20px 40px rgba(99, 102, 241, 0.15)",
-                }}
-                style={{
-                  ...glassStyle,
-                  padding: "24px",
-                  textAlign: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "16px",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                  background: `linear-gradient(135deg, ${lab.color})`,
-                }}
+                key={i}
+                whileHover={{ y: -8 }}
+                className="bg-white p-8 rounded-[32px] border border-slate-100 flex items-center gap-6 group hover:border-indigo-100 hover:shadow-premium transition-all duration-300 cursor-pointer"
               >
-                <div
-                  style={{
-                    width: "64px",
-                    height: "64px",
-                    borderRadius: "16px",
-                    background: "rgba(255, 255, 255, 0.1)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                  }}
-                >
+                <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-all">
                   {lab.icon}
                 </div>
                 <div>
-                  <h4
-                    style={{
-                      fontWeight: "700",
-                      fontSize: "18px",
-                      marginBottom: "8px",
-                    }}
-                  >
-                    {lab.name}
-                  </h4>
-                  <p
-                    style={{
-                      fontSize: "12px",
-                      color: "#9ca3af",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.5px",
-                    }}
-                  >
-                    {lab.desc}
-                  </p>
+                  <h4 className="text-lg font-bold text-slate-900 mb-1">{lab.name}</h4>
+                  <p className="text-xs text-slate-400 font-black uppercase tracking-widest">{lab.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -504,225 +127,61 @@ const TechLabPage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section style={{ padding: "96px 24px", background: "transparent" }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: isMobile || isTablet ? "1fr" : "1fr 1fr",
-              gap: isMobile ? "40px" : "64px",
-              alignItems: "center",
-            }}
-          >
-            {/* Left Column */}
-            <div>
-              <h2
-                style={{
-                  fontSize: "clamp(2rem, 8vw, 3.5rem)",
-                  fontWeight: "700",
-                  marginBottom: "32px",
-                  letterSpacing: "-1px",
-                }}
-              >
-                Safe Place to Build Strong IT Skills
-              </h2>
-              <p
-                style={{
-                  color: "#9ca3af",
-                  marginBottom: "40px",
-                  fontSize: "18px",
-                  lineHeight: "1.8",
-                }}
-              >
-                Get ready for real-world challenges with our hands-on labs that
-                simulate actual job tasks. No risk, all reward.
-              </p>
-
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: "32px 32px",
-                }}
-              >
-                {features.map((feat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    style={{ display: "flex", gap: "16px" }}
-                  >
-                    <div
-                      style={{
-                        color: "#6366f1",
-                        flexShrink: 0,
-                        marginTop: "4px",
-                      }}
-                    >
-                      {feat.icon}
+      {/* Deep Integration Section */}
+      <section className="py-32">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="bg-slate-950 rounded-[64px] p-12 md:p-24 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-600/20 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-black text-white mb-8 tracking-tighter leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                  Seamless Integration <br />
+                  <span className="text-indigo-400">With Any Platform</span>
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+                  {[
+                    { icon: <Globe size={20} />, title: "SSO Ready", desc: "Enterprise-grade auth" },
+                    { icon: <RefreshCw size={20} />, title: "LMS Sync", desc: "Gradebook automation" },
+                    { icon: <LinkIcon size={20} />, title: "Deep Linking", desc: "Direct access to labs" },
+                    { icon: <Layout size={20} />, title: "White Label", desc: "Custom branding" },
+                  ].map((feat, i) => (
+                    <div key={i} className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-indigo-400">
+                        {feat.icon}
+                      </div>
+                      <div>
+                        <div className="text-sm font-black text-white">{feat.title}</div>
+                        <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{feat.desc}</div>
+                      </div>
                     </div>
-                    <div>
-                      <h4
-                        style={{
-                          fontWeight: "700",
-                          marginBottom: "8px",
-                          fontSize: "16px",
-                        }}
-                      >
-                        {feat.title}
-                      </h4>
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          color: "#9ca3af",
-                          lineHeight: "1.5",
-                        }}
-                      >
-                        {feat.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                  ))}
+                </div>
+                <button className="px-10 py-4 rounded-2xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/20">
+                  Request Enterprise Demo
+                </button>
               </div>
-            </div>
 
-            {/* Right Column */}
-            <div style={{ position: "relative" }}>
-              <div
-                style={{
-                  position: "absolute",
-                  inset: "0",
-                  background:
-                    "radial-gradient(ellipse at center, rgba(99, 102, 241, 0.2) 0%, transparent 70%)",
-                  filter: "blur(100px)",
-                  borderRadius: "50%",
-                }}
-              />
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                style={{
-                  ...glassStyle,
-                  padding: "40px",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                {/* Decorative elements */}
-                {!isMobile && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "-50%",
-                      right: "-20%",
-                      width: "300px",
-                      height: "300px",
-                      background:
-                        "radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%)",
-                      borderRadius: "50%",
-                    }}
-                  />
-                )}
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "16px",
-                    marginBottom: "32px",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "56px",
-                      height: "56px",
-                      borderRadius: "50%",
-                      background:
-                        "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Users size={28} color="white" />
+              <div className="bg-white/5 border border-white/10 rounded-[48px] p-12 backdrop-blur-xl">
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center">
+                    <Users size={24} color="white" />
                   </div>
                   <div>
-                    <h4
-                      style={{
-                        fontSize: "20px",
-                        fontWeight: "700",
-                        marginBottom: "4px",
-                      }}
-                    >
-                      Team Collaboration
-                    </h4>
-                    <p
-                      style={{
-                        fontSize: "12px",
-                        color: "#6366f1",
-                        fontWeight: "700",
-                        textTransform: "uppercase",
-                        letterSpacing: "1px",
-                      }}
-                    >
-                      Lesson Plan Adaptability
-                    </p>
+                    <div className="text-lg font-bold text-white">Scenario Engine</div>
+                    <div className="text-xs text-indigo-400 font-black uppercase tracking-widest">Adaptive Learning</div>
                   </div>
                 </div>
-
-                <p
-                  style={{
-                    color: "#d1d5db",
-                    fontSize: "18px",
-                    lineHeight: "1.8",
-                    marginBottom: "40px",
-                  }}
-                >
-                  PreppRight LABS can be mapped to any course, textbook, or
-                  training program to provide a "hands-on" learning experience.
-                  The objective of these simulated environments is to improve
-                  comprehension and retention by adding a practical element.
+                <p className="text-slate-400 text-lg leading-relaxed mb-10 font-medium">
+                  PreppRight LABS map to any course, textbook, or training program. Our engine dynamically adjusts scenarios based on student performance.
                 </p>
-
-                <div
-                  style={{
-                    padding: "32px",
-                    borderRadius: "24px",
-                    background:
-                      "linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.1) 100%)",
-                    border: "1px solid rgba(99, 102, 241, 0.3)",
-                  }}
-                >
-                  <h5
-                    style={{
-                      fontSize: "20px",
-                      fontWeight: "700",
-                      marginBottom: "16px",
-                    }}
-                  >
-                    Ready to explore?
-                  </h5>
-                  <button
-                    style={buttonStyle}
-                    onMouseEnter={(e) => {
-                      e.target.style.transform = "translateY(-4px)";
-                      e.target.style.boxShadow =
-                        "0 15px 40px rgba(99, 102, 241, 0.3)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.transform = "translateY(0)";
-                      e.target.style.boxShadow =
-                        "0 10px 30px rgba(99, 102, 241, 0.2)";
-                    }}
-                  >
-                    Find Lab-Rich Courses
-                    <ArrowRight size={20} />
-                  </button>
+                <div className="p-8 rounded-3xl bg-indigo-600/10 border border-indigo-500/20">
+                  <div className="text-white font-bold mb-4">98% Completion Rate</div>
+                  <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                    <motion.div initial={{ width: 0 }} whileInView={{ width: "98%" }} className="h-full bg-indigo-400" />
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

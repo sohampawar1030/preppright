@@ -12,7 +12,7 @@ export const courseDetails = {
     students_enrolled: "15,420+",
     prerequisites: ["Basic understanding of programming logic", "A laptop with at least 8GB RAM", "Dedication to learn and practice daily"],
     tools_learned: ["IntelliJ IDEA", "Maven", "JUnit", "Spring Boot", "MySQL", "Git"],
-    image_url: "/images/courses/java_programming.png",
+    image_url: "/images/courses/abc/java.png",
     career_outcomes: ["Java Developer", "Backend Engineer", "System Architect", "Full Stack Developer"],
     syllabus: [
       { 
@@ -71,7 +71,7 @@ export const courseDetails = {
     students_enrolled: "22,150+",
     prerequisites: ["Familiarity with computer basics", "Basic logical thinking", "Willingness to code for 4+ hours daily"],
     tools_learned: ["VS Code", "Node.js", "React", "MongoDB", "Express", "Docker", "AWS"],
-    image_url: "/images/courses/web_development.png",
+    image_url: "/images/courses/abc/fullstack .png",
     career_outcomes: ["Full Stack Developer", "Frontend Developer", "Backend Developer", "MERN Developer"],
     syllabus: [
       { 
@@ -124,7 +124,7 @@ export const courseDetails = {
     students_enrolled: "8,240+",
     prerequisites: ["Basic understanding of mathematics", "Familiarity with Microsoft Excel", "Interest in finance and markets"],
     tools_learned: ["Microsoft Excel", "SAP FICO", "QuickBooks", "Power BI", "Tableau"],
-    image_url: "/images/courses/financial_management.png",
+    image_url: "/images/courses/abc/Financial.png",
     career_outcomes: ["Financial Analyst", "Investment Banker", "Risk Manager", "Corporate Controller"],
     syllabus: [
       { 
@@ -178,7 +178,7 @@ export const courseDetails = {
     students_enrolled: "12,800+",
     prerequisites: ["Basic Python knowledge", "Understanding of statistics", "Problem-solving mindset"],
     tools_learned: ["Python", "Pandas", "NumPy", "Scikit-Learn", "SQL", "Tableau", "Jupyter"],
-    image_url: "/images/courses/data_science.png",
+    image_url: "/images/courses/abc/datascience.png",
     career_outcomes: ["Data Scientist", "Data Analyst", "ML Engineer", "Business Intelligence Developer"],
     syllabus: [
       { 
@@ -218,7 +218,7 @@ export const courseDetails = {
     students_enrolled: "18,900+",
     prerequisites: ["No prior experience needed", "A curious mind", "Willingness to experiment"],
     tools_learned: ["Python", "React", "SQL", "MongoDB", "Express"],
-    image_url: "/images/courses/python_mastery.png",
+    image_url: "/images/courses/abc/pythonmystry.png",
     career_outcomes: ["Python Developer", "Automation Engineer", "Backend Developer", "Scripting Expert"],
     syllabus: [
       { 
@@ -291,7 +291,7 @@ export const courseDetails = {
     students_enrolled: "10,500+",
     prerequisites: ["Basic internet knowledge", "Creative mindset", "Passion for storytelling"],
     tools_learned: ["Google Analytics", "SEMrush", "Meta Ads Manager", "Canva", "Mailchimp", "WordPress"],
-    image_url: "/images/courses/digital_marketing.png",
+    image_url: "/images/courses/abc/digitalmarkerting.png",
     career_outcomes: ["Digital Marketing Manager", "SEO Specialist", "Social Media Strategist", "Content Marketer"],
     syllabus: [
       { title: "Module 1: SEO & SEM", description: "Mastering search engine algorithms and paid search strategies.", lessons: ["Keyword Research", "On-Page SEO", "Google Ads", "Competitor Analysis"] },
@@ -320,7 +320,7 @@ export const courseDetails = {
     students_enrolled: "6,800+",
     prerequisites: ["Communication skills", "Interest in people management", "Basic computer literacy"],
     tools_learned: ["Darwinbox", "ZOHO People", "GreytHR", "LinkedIn Recruiter", "Microsoft Teams"],
-    image_url: "/images/courses/hr_management.png",
+    image_url: "/images/courses/abc/HR.png",
     career_outcomes: ["HR Manager", "Talent Acquisition Specialist", "Payroll Executive", "Employee Relations Lead"],
     syllabus: [
       { title: "Module 1: Recruitment & Selection", description: "Modern techniques for sourcing and hiring top talent.", lessons: ["Job Analysis", "Interviewing Skills", "Offer Negotiation", "Onboarding"] }
@@ -348,7 +348,7 @@ export const courseDetails = {
     students_enrolled: "7,200+",
     prerequisites: ["Basic networking knowledge", "Understanding of OS (Windows/Linux)", "Ethical mindset"],
     tools_learned: [],
-    image_url: "/images/courses/cybersecurity.png",
+    image_url: "/images/courses/abc/cybersecurity.png",
     career_outcomes: ["Security Analyst", "Ethical Hacker", "Security Consultant", "Network Administrator"],
     syllabus: [
       { title: "Module 1: Network Security", description: "Securing network infrastructure and monitoring traffic.", lessons: ["TCP/IP Security", "Firewalls & VPNs", "IDS/IPS", "Wireless Security"] }
@@ -376,7 +376,7 @@ export const courseDetails = {
     students_enrolled: "5,500+",
     prerequisites: ["Basic Linux commands", "Understanding of web servers", "Networking basics"],
     tools_learned: [],
-    image_url: "/images/courses/cloud_computing.png",
+    image_url: "/images/courses/abc/cloudcomputing.png",
     career_outcomes: ["Cloud Architect", "DevOps Engineer", "Cloud Administrator", "Infrastructure Engineer"],
     syllabus: [
       { title: "Module 1: AWS Core Services", description: "Mastering EC2, S3, RDS, and Lambda.", lessons: ["Compute (EC2)", "Storage (S3)", "VPC Networking", "IAM Roles"] }
@@ -436,50 +436,93 @@ export const courseDetails = {
   "hybrid-ev": {
     id: "hybrid-ev",
     title: "Hybrid & Electric Vehicles",
-    subtitle: "Drive the future of sustainable automotive technology.",
-    description: "The automotive industry is going electric. Master the design, battery management, and control systems of Hybrid and Electric Vehicles to lead the green revolution in transportation.",
-    rating: "4.5/5",
-    duration: "2 Months",
-    price: "₹5,000",
-    projects_count: "3",
+    subtitle: "Master HEV technology and build a successful career in electric vehicle engineering.",
+    description: "The automotive industry is undergoing a massive shift towards electrification. This program provides deep technical expertise in EV powertrains, Battery Management Systems (BMS), and power electronics. You will learn to design and simulate EV components using industry-standard tools, preparing you for roles in India's leading automotive companies.",
+    rating: "4.9/5",
+    duration: "4 Months",
+    price: "₹6,000",
+    projects_count: "4",
     placement_assist: "100%",
-    students_enrolled: "2,500+",
-    prerequisites: ["Mechanical or Electrical basics", "Automotive interest", "Basic Physics"],
-    tools_learned: [],
-    image_url: "/images/courses/web_development.png",
-    career_outcomes: ["EV Design Engineer", "BMS Specialist", "Automotive Analyst", "Powertrain Engineer"],
+    students_enrolled: "4,500+",
+    prerequisites: ["Mechanical or Electrical Engineering background", "Basic understanding of thermodynamics", "Interest in sustainable technology"],
+    tools_learned: ["MATLAB", "Simulink", "Ansys", "SolidWorks", "BMS Algorithms"],
+    image_url: "/images/courses/abc/hybried.png",
+    career_outcomes: ["EV Design Engineer", "BMS Specialist", "Powertrain Architect", "Automotive Systems Engineer"],
     syllabus: [
-      { title: "Module 1: EV Architecture", description: "Understanding the components of an electric drivetrain.", lessons: ["Battery Technology", "Motor Types", "Inverter Design", "Regenerative Braking"] }
+      { 
+        title: "Module 1: EV Foundations & Powertrains", 
+        description: "Introduction to EV/HEV architecture, energy flow, and efficiency calculations.",
+        lessons: ["History of Electrification", "Series vs Parallel Hybrids", "Energy Density Analysis", "Torque & Power Curves"]
+      },
+      { 
+        title: "Module 2: Battery Management Systems (BMS)", 
+        description: "Mastering Lithium-ion technology, State of Charge (SoC) estimation, and thermal management.",
+        lessons: ["Cell Chemistry", "BMS Architecture", "Passive & Active Balancing", "Thermal Runaway Prevention"]
+      },
+      { 
+        title: "Module 3: Motor Control & Power Electronics", 
+        description: "Deep dive into BLDC, PMSM motors, and high-voltage inverter design.",
+        lessons: ["DC-DC Converters", "Regenerative Braking", "PWM Control", "Motor Drive Systems"]
+      },
+      { 
+        title: "Module 4: EV Simulation & Testing", 
+        description: "Hands-on simulation of electric drivetrains using MATLAB/Simulink.",
+        lessons: ["Drive Cycle Simulation", "Hardware-in-the-Loop (HiL)", "Standard Safety Protocols", "Regulatory Compliance"]
+      }
     ],
-    projects: [{ title: "Battery Thermal Model", description: "Simulate and optimize the cooling system for a high-density EV battery pack.", tech: ["MATLAB", "Simulink"] }],
-    instructors: [{ name: "Pankaj Deshmukh", role: "Senior EV Engineer @ Tata Motors", bio: "Pankaj was part of the core team that designed India's first mass-market electric SUV." }]
+    projects: [
+      { title: "Virtual EV Drivetrain Build", description: "Design and simulate a full electric powertrain for a commuter car.", tech: ["MATLAB", "Simulink"] },
+      { title: "Advanced BMS Logic", description: "Develop an algorithm for accurate State of Health (SoH) prediction.", tech: ["Python", "BMS Simulator"] }
+    ],
+    instructors: [
+      { name: "Pankaj Deshmukh", role: "Senior EV Engineer @ Tata Motors", bio: "Pankaj was part of the core team that designed India's first mass-market electric SUV." },
+      { name: "Dr. Smita Rao", role: "Battery Researcher @ IIT Madras", bio: "Expert in solid-state batteries and next-gen energy storage systems." }
+    ]
   },
   "autocad": {
     id: "autocad",
     title: "AutoCAD Training Program",
-    subtitle: "Master the industry-standard tool for 2D and 3D design.",
-    description: "Learn to create precise technical drawings and sophisticated 3D models. This course is essential for civil, mechanical, and architectural students looking to master digital drafting and design visualization.",
-    rating: "4.5/5",
+    subtitle: "Master AutoCAD and build a successful career in design and drafting.",
+    description: "AutoCAD is the foundation of modern engineering design. This course takes you from basic 2D sketching to advanced 3D modeling and photorealistic rendering. Whether you are in Civil, Mechanical, or Architecture, mastering AutoCAD is your first step towards professional design excellence.",
+    rating: "4.7/5",
     duration: "2 Months",
-    price: "₹3,000",
+    price: "₹4,000",
     projects_count: "5",
     placement_assist: "100%",
-    students_enrolled: "5,200+",
-    prerequisites: ["Basic geometry knowledge", "Attention to detail", "Interest in design"],
-    tools_learned: [],
-    image_url: "/images/courses/business_analytics.png",
-    career_outcomes: ["CAD Designer", "Draftsman", "Design Engineer", "Architectural Assistant"],
+    students_enrolled: "8,200+",
+    prerequisites: ["Basic computer literacy", "Understanding of technical drawings", "Attention to detail"],
+    tools_learned: ["AutoCAD 2024", "Autodesk Fusion", "DraftSight", "Revit Basics"],
+    image_url: "/images/courses/abc/AutoCAD.png",
+    career_outcomes: ["CAD Designer", "Draftsman", "Design Engineer", "Architectural Consultant"],
     syllabus: [
-      { title: "Module 1: 2D Drafting", description: "Mastering the core tools for technical drawing.", lessons: ["Precision Drawing", "Layers & Blocks", "Annotating", "Plotting & Publishing"] }
-    ],
-    projects: [{ title: "Residential House Plan", description: "Create a full set of architectural drawings for a modern two-story residence.", tech: ["AutoCAD"] }],
-    instructors: [
       { 
-        name: "Garima Mittal", 
-        role: "Product Manager @ TCS | CAD Specialist", 
-        bio: "Expert in technical product management and industrial design workflows at TCS.",
-        linkedin: "https://www.linkedin.com/in/garima-mittal-mie-ceng-india-4a722b77/"
+        title: "Module 1: 2D Drafting Masterclass", 
+        description: "Precision drawing, layer management, and technical annotation.",
+        lessons: ["Coordinate Systems", "Dynamic Blocks", "Dimensioning Standards", "XRefs & Layouts"]
+      },
+      { 
+        title: "Module 2: Advanced 3D Modeling", 
+        description: "Creating complex surfaces, solids, and meshes.",
+        lessons: ["Extrude & Revolve", "Boolean Operations", "Sweep & Loft", "Mesh Editing"]
+      },
+      { 
+        title: "Module 3: Visualization & Rendering", 
+        description: "Applying materials, lighting, and generating realistic renders.",
+        lessons: ["Material Browser", "Sun & Sky Simulation", "Camera Setup", "High-res Rendering"]
+      },
+      { 
+        title: "Module 4: Industry-Specific Workflows", 
+        description: "Customizing AutoCAD for Civil, Mechanical, and Electrical projects.",
+        lessons: ["Parametric Constraints", "Sheet Set Manager", "LISP Routine Basics", "Data Extraction"]
       }
+    ],
+    projects: [
+      { title: "Smart City Infrastructure Plan", description: "Design a comprehensive layout for a modern residential community.", tech: ["AutoCAD 2D"] },
+      { title: "Mechanical Engine Component", description: "Create a detailed 3D model with technical specifications for manufacturing.", tech: ["AutoCAD 3D"] }
+    ],
+    instructors: [
+      { name: "Garima Mittal", role: "CAD Specialist @ Autodesk Certified", bio: "Garima has trained over 1000+ professionals in industrial design workflows." },
+      { name: "Rohan Joshi", role: "Lead Architect", bio: "Rohan specializes in large-scale urban design and technical drafting." }
     ]
   },
   "drone-engineering": {

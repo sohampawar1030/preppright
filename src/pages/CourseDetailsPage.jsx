@@ -257,8 +257,8 @@ const StatCard = ({ icon, label, value }) => (
       gap: 14,
       padding: "16px 20px",
       borderRadius: 16,
-      background: "rgba(255,255,255,.02)",
-      border: "1px solid rgba(255,255,255,.05)",
+      background: "rgba(0,0,0,0.03)",
+      border: "1px solid rgba(0,0,0,0.05)",
       transition: "all .3s",
     }}
   >
@@ -295,7 +295,7 @@ const StatCard = ({ icon, label, value }) => (
         style={{
           fontSize: 18,
           fontWeight: 800,
-          color: "#fff",
+          color: "#0f172a",
           margin: 0,
           lineHeight: 1.2,
         }}
@@ -343,7 +343,7 @@ const TickerBar = () => {
     <div
       style={{
         overflow: "hidden",
-        background: "rgba(255,255,255,.02)",
+        background: "rgba(0,0,0,0.03)",
         borderTop: "1px solid rgba(255,255,255,.05)",
         borderBottom: "1px solid rgba(255,255,255,.05)",
         padding: "20px 0",
@@ -389,8 +389,8 @@ const FaqItem = ({ q, a }) => {
       style={{
         padding: "20px 24px",
         borderRadius: 16,
-        border: "1px solid rgba(255,255,255,.07)",
-        background: "rgba(255,255,255,.02)",
+        border: "1px solid rgba(0,0,0,0.08)",
+        background: "rgba(0,0,0,0.03)",
         cursor: "pointer",
         transition: "border-color .3s",
         marginBottom: 10,
@@ -404,7 +404,7 @@ const FaqItem = ({ q, a }) => {
         }}
       >
         <p
-          style={{ margin: 0, fontWeight: 700, color: "#e2e8f0", fontSize: 15 }}
+          style={{ margin: 0, fontWeight: 700, color: "#0f172a", fontSize: 15 }}
         >
           {q}
         </p>
@@ -424,7 +424,7 @@ const FaqItem = ({ q, a }) => {
         <p
           style={{
             margin: "12px 0 0",
-            color: "#94a3b8",
+            color: "#64748b",
             fontSize: 14,
             lineHeight: 1.7,
           }}
@@ -561,6 +561,8 @@ const CourseDetailsPage = () => {
           position: "relative",
           overflowX: "hidden",
           paddingTop: "var(--nav-h, 90px)",
+          background: "#fff",
+          color: "#0f172a",
         }}
       >
 
@@ -583,7 +585,7 @@ const CourseDetailsPage = () => {
               width: "55vw",
               height: "55vw",
               background:
-                "radial-gradient(circle,rgba(99,102,241,0.05) 0%,transparent 70%)",
+                "radial-gradient(circle,rgba(99,102,241,0.08) 0%,transparent 70%)",
               borderRadius: "50%",
             }}
           />
@@ -595,7 +597,7 @@ const CourseDetailsPage = () => {
               width: "50vw",
               height: "50vw",
               background:
-                "radial-gradient(circle,rgba(236,72,153,0.03) 0%,transparent 70%)",
+                "radial-gradient(circle,rgba(236,72,153,0.05) 0%,transparent 70%)",
               borderRadius: "50%",
             }}
           />
@@ -619,703 +621,225 @@ const CourseDetailsPage = () => {
       ════════════════════════════════════ */}
       <section
         ref={heroRef}
-        style={{
-          position: "relative",
-          paddingTop: isMobile ? 18 : isTablet ? 26 : 34,
-          paddingBottom: isMobile ? 60 : isTablet ? 80 : 80,
-          zIndex: 10,
-        }}
+        className="pt-20 pb-24 relative z-10"
       >
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            padding: `0 ${isMobile ? "16px" : "24px"}`,
-          }}
-        >
-          <div
-            className="hero-grid-res"
-            style={{
-              display: "grid",
-              gridTemplateColumns: isTablet ? "1fr" : "1.2fr 0.8fr",
-              gap: isTablet ? 40 : 64,
-              alignItems: "center",
-            }}
-          >
-            {/* Left */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-              <div className="cdp-ani-1">
-                <Pill color="#6366f1" bg="rgba(99,102,241,0.08)">
-                  <span
-                    style={{
-                      width: 7,
-                      height: 7,
-                      background: "#6366f1",
-                      borderRadius: "50%",
-                      animation: "cdp-pulse 2s infinite",
-                    }}
-                  />
-                  {course.placement_assist} Placement Assisted
-                </Pill>
-              </div>
-
-              <h1
-                className="cdp-ani-2"
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "clamp(2.4rem,5vw,4.2rem)",
-                  fontWeight: 800,
-                  color: "#fff",
-                  lineHeight: 1.08,
-                  margin: 0,
-                }}
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center min-h-[500px]">
+            
+            <div className="relative z-10">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="flex flex-col gap-8"
               >
-                {course.title}
-              </h1>
-
-              <p
-                className="cdp-ani-3"
-                style={{
-                  fontSize: 17,
-                  color: "#94a3b8",
-                  lineHeight: 1.75,
-                  margin: 0,
-                  maxWidth: 520,
-                }}
-              >
-                {course.description?.split(".")[0]}. {course.subtitle}
-              </p>
-
-              {/* Rating row */}
-              <div
-                className="cdp-ani-3"
-                style={{ display: "flex", alignItems: "center", gap: 10 }}
-              >
-                <div style={{ display: "flex", gap: 2 }}>
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <IcStar key={i} />
-                  ))}
-                </div>
-                <span
-                  style={{ fontWeight: 700, color: "#fbbf24", fontSize: 15 }}
-                >
-                  4.9
-                </span>
-                <span style={{ color: "#64748b", fontSize: 14 }}>
-                  / 5 · 12,000+ reviews
-                </span>
-              </div>
-
-              {/* Stats row */}
-              <div
-                className="cdp-ani-4"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr",
-                  gap: 12,
-                }}
-              >
-                <StatCard
-                  icon={<IcClock />}
-                  label="Duration"
-                  value={course.duration}
-                />
-                <StatCard
-                  icon={<IcUsers />}
-                  label="Students"
-                  value={course.students_enrolled}
-                />
-                <StatCard
-                  icon={<IcBriefcase />}
-                  label="Projects"
-                  value={`${course.projects_count}+`}
-                />
-              </div>
-
-              {/* CTA buttons */}
-              <div
-                className="cdp-ani-4"
-                style={{
-                  display: "flex",
-                  gap: 14,
-                  flexWrap: "wrap",
-                  paddingTop: 8,
-                }}
-              >
-                <button
-                  className="cdp-enroll-btn"
-                  onClick={() =>
-                    window.open(
-                      "https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform",
-                      "_blank",
-                    )
-                  }
-                  style={{
-                    padding: "16px 36px",
-                    background: "linear-gradient(135deg,#6366f1,#8b5cf6)",
-                    color: "#fff",
-                    fontWeight: 800,
-                    fontSize: 16,
-                    borderRadius: 14,
-                    border: "none",
-                    cursor: "pointer",
-                    transition: "all .3s",
-                    boxShadow: "0 10px 30px rgba(99,102,241,.25)",
-                    letterSpacing: ".02em",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                  }}
-                >
-                  <IcLightning /> Enroll · {course.price}
-                </button>
-                <button
-                  style={{
-                    padding: "16px 28px",
-                    background: "rgba(255,255,255,.05)",
-                    border: "1px solid rgba(255,255,255,.1)",
-                    color: "#fff",
-                    fontWeight: 700,
-                    fontSize: 15,
-                    borderRadius: 14,
-                    cursor: "pointer",
-                    transition: "all .3s",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,.09)";
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,.05)";
-                  }}
-                >
-                  📄 Download Syllabus
-                </button>
-              </div>
-
-              {/* Trust badges */}
-              <div
-                className="cdp-ani-4"
-                style={{ display: "flex", gap: 16, flexWrap: "wrap" }}
-              >
-                {[
-                  "Money Back Guarantee",
-                  "Lifetime Access",
-                  "Certificate Included",
-                ].map((b, i) => (
-                  <span
-                    key={i}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 5,
-                      fontSize: 12,
-                      color: "#64748b",
-                      fontWeight: 600,
-                    }}
-                  >
-                    <IcShield /> {b}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Right — video thumbnail */}
-            <div className="cdp-ani-2" style={{ position: "relative" }}>
-              <div
-                style={{
-                  padding: 3,
-                  borderRadius: 32,
-                  background:
-                    "linear-gradient(135deg,rgba(99,102,241,.5),rgba(236,72,153,.3),rgba(99,102,241,.1))",
-                  boxShadow: "0 40px 80px rgba(0,0,0,.5)",
-                }}
-              >
-                <div
-                  style={{
-                    borderRadius: 30,
-                    overflow: "hidden",
-                    aspectRatio: "4/3",
-                    position: "relative",
-                    background: "#0d1324",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setPlayVideo((p) => !p)}
-                >
-                  <img
-                    src={course.image_url || `/images/courses/${id}.png`}
-                    alt={course.title}
-                    onError={(e) => {
-                      e.target.src = "/images/courses/java_programming.png";
-                    }}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                      transition: "transform .5s",
-                      transform: playVideo ? "scale(1.05)" : "scale(1)",
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background:
-                        "linear-gradient(to top,rgba(7,12,24,.8) 0%,transparent 50%)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: 76,
-                        height: 76,
-                        borderRadius: "50%",
-                        background: "rgba(99,102,241,.9)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "#fff",
-                        backdropFilter: "blur(8px)",
-                        border: "2px solid rgba(255,255,255,.25)",
-                        transition: "transform .2s, box-shadow .2s",
-                        animation: "cdp-glow 3s ease-in-out infinite",
-                      }}
-                      onMouseOver={(e) => {
-                        e.currentTarget.style.transform = "scale(1.1)";
-                      }}
-                      onMouseOut={(e) => {
-                        e.currentTarget.style.transform = "scale(1)";
-                      }}
-                    >
-                      <IcPlay />
-                    </div>
-                  </div>
-                  {/* bottom label */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      padding: "20px 24px",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "flex-end",
-                    }}
-                  >
-                    <div>
-                      <p
-                        style={{
-                          margin: 0,
-                          fontSize: 11,
-                          color: "#818cf8",
-                          fontWeight: 700,
-                          letterSpacing: ".1em",
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        Preview
-                      </p>
-                      <p
-                        style={{
-                          margin: 0,
-                          fontSize: 14,
-                          color: "#fff",
-                          fontWeight: 600,
-                        }}
-                      >
-                        {course.title}
-                      </p>
-                    </div>
+                <div className="cdp-ani-1">
+                  <Pill color="#6366f1" bg="rgba(99,102,241,0.08)">
                     <span
                       style={{
-                        fontSize: 11,
-                        color: "#64748b",
-                        fontWeight: 600,
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 4,
+                        width: 7,
+                        height: 7,
+                        background: "#6366f1",
+                        borderRadius: "50%",
+                        animation: "cdp-pulse 2s infinite",
                       }}
-                    >
-                      <IcVideo /> Free preview
-                    </span>
+                    />
+                    {course.placement_assist} Placement Assisted
+                  </Pill>
+                </div>
+
+                <h1
+                  className="cdp-ani-2"
+                  style={{
+                    fontFamily: "'Lexend', sans-serif",
+                    fontSize: "clamp(2.4rem, 5vw, 4rem)",
+                    fontWeight: 800,
+                    color: "#0f172a",
+                    lineHeight: 1.1,
+                    margin: 0,
+                    letterSpacing: "-0.02em"
+                  }}
+                >
+                  {course.title}
+                </h1>
+
+                <p
+                  className="cdp-ani-3 text-slate-500 text-xl leading-relaxed max-w-lg font-medium"
+                >
+                  {course.description?.split(".")[0]}. {course.subtitle}
+                </p>
+
+                <div className="cdp-ani-3 flex items-center gap-4">
+                  <div className="flex text-amber-400 text-lg">★★★★★</div>
+                  <span className="text-sm font-black text-slate-400 uppercase tracking-widest">{course.rating} (12.4k Reviews)</span>
+                </div>
+
+                <div className="cdp-ani-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
+                    <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Duration</div>
+                    <div className="text-lg font-black text-slate-900">{course.duration}</div>
+                  </div>
+                  <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
+                    <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Students</div>
+                    <div className="text-lg font-black text-slate-900">{course.students_enrolled}</div>
+                  </div>
+                  <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
+                    <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Projects</div>
+                    <div className="text-lg font-black text-slate-900">{course.projects_count}+</div>
                   </div>
                 </div>
-              </div>
 
-              {/* Floating review card */}
-              <div
-                className="cdp-float"
-                style={{
-                  position: "absolute",
-                  bottom: -28,
-                  left: -28,
-                  padding: "16px 20px",
-                  borderRadius: 18,
-                  background: "rgba(15,22,40,.95)",
-                  border: "1px solid rgba(99,102,241,.3)",
-                  backdropFilter: "blur(20px)",
-                  boxShadow: "0 20px 50px rgba(0,0,0,.5)",
-                  minWidth: 190,
-                }}
-              >
-                <div style={{ display: "flex", gap: 2, marginBottom: 5 }}>
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <IcStar key={i} />
-                  ))}
+                <div className="cdp-ani-4 flex flex-col sm:flex-row gap-5">
+                  <button
+                    onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform", "_blank")}
+                    className="px-10 py-5 rounded-[20px] bg-slate-950 text-white font-black text-sm uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-2xl shadow-slate-950/20 active:scale-95 text-center"
+                  >
+                    Enroll Now - {course.price}
+                  </button>
+                  <button
+                    className="px-10 py-5 rounded-[20px] bg-white border border-slate-100 text-slate-900 font-black text-sm uppercase tracking-widest hover:bg-slate-50 transition-all text-center"
+                  >
+                    Download Syllabus
+                  </button>
                 </div>
-                <p
-                  style={{
-                    margin: 0,
-                    fontWeight: 800,
-                    color: "#fff",
-                    fontSize: 14,
-                  }}
-                >
-                  4.9 / 5 Rating
-                </p>
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: 11,
-                    color: "#94a3b8",
-                    marginTop: 2,
-                  }}
-                >
-                  Based on 12,000+ reviews
-                </p>
-              </div>
-
-              {/* Floating enroll count */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: 20,
-                  right: -20,
-                  padding: "12px 18px",
-                  borderRadius: 16,
-                  background: "rgba(15,22,40,.95)",
-                  border: "1px solid rgba(236,72,153,.25)",
-                  backdropFilter: "blur(20px)",
-                }}
-              >
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: 11,
-                    color: "#f472b6",
-                    fontWeight: 700,
-                    letterSpacing: ".06em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  🔥 Trending
-                </p>
-                <p
-                  style={{
-                    margin: 0,
-                    fontWeight: 800,
-                    color: "#fff",
-                    fontSize: 13,
-                  }}
-                >
-                  {course.students_enrolled} enrolled
-                </p>
-              </div>
+              </motion.div>
             </div>
+
+            <div className="relative h-[500px]">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0"
+              >
+                <div className="relative z-10 bg-white p-4 rounded-[48px] shadow-premium border border-slate-100 h-full overflow-hidden">
+                  <div className="w-full h-full bg-slate-50 rounded-[36px] overflow-hidden group relative">
+                    <img 
+                      src={course.image_url || `/images/courses/${id}.png`}
+                      alt={course.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent" />
+                    <div className="absolute bottom-6 left-6 px-5 py-3 rounded-2xl bg-white/90 backdrop-blur-md border border-white/20 shadow-xl">
+                      <div className="text-sm font-black text-slate-900 uppercase tracking-widest" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                         🔥 Trending Choice
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
           </div>
         </div>
       </section>
-
       {/* ── Ticker ── */}
       <TickerBar />
 
       {/* ════════════════════════════════════
           WHO IS THIS FOR + CAREER OUTCOMES
       ════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "80px 0",
-          position: "relative",
-          zIndex: 10,
-          borderTop: "1px solid #1e293b",
-        }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: isTablet
-                ? "1fr"
-                : "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: isMobile ? 32 : 48,
-              alignItems: "start",
-            }}
-          >
+      <section className="py-24 relative z-10 border-t border-slate-100 bg-slate-50/30">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            
             {/* Prerequisites */}
-            <div>
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "6px 14px",
-                  borderRadius: 99,
-                  background: "rgba(99,102,241,.1)",
-                  border: "1px solid rgba(99,102,241,.2)",
-                  color: "#818cf8",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: ".08em",
-                  textTransform: "uppercase",
-                  marginBottom: 20,
-                }}
-              >
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col"
+            >
+              <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-[0.15em] w-fit mb-6">
                 👥 Who is this for?
               </div>
-              <h2
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "clamp(1.6rem,3vw,2.2rem)",
-                  fontWeight: 800,
-                  color: "#fff",
-                  margin: "0 0 28px",
-                }}
-              >
-                Is this the right course{" "}
-                <span style={{ color: "#818cf8" }}>for you?</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8 leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                Is this the right course <span className="text-indigo-600">for you?</span>
               </h2>
-              <div
-                style={{ display: "flex", flexDirection: "column", gap: 12 }}
-              >
+              
+              <div className="flex flex-col gap-4">
                 {course.prerequisites?.map((item, i) => (
-                  <div
+                  <motion.div
                     key={i}
-                    style={{
-                      display: "flex",
-                      gap: 14,
-                      padding: "16px 18px",
-                      borderRadius: 14,
-                      background: "rgba(255,255,255,.02)",
-                      border: "1px solid rgba(255,255,255,.05)",
-                      transition: "all .3s",
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.borderColor = "rgba(99,102,241,.3)";
-                      e.currentTarget.style.background =
-                        "rgba(255,255,255,.04)";
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.borderColor =
-                        "rgba(255,255,255,.05)";
-                      e.currentTarget.style.background =
-                        "rgba(255,255,255,.02)";
-                    }}
+                    whileHover={{ x: 8 }}
+                    className="flex gap-4 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all duration-300 group"
                   >
-                    <div
-                      style={{
-                        width: 24,
-                        height: 24,
-                        borderRadius: 8,
-                        background: "rgba(99,102,241,.2)",
-                        border: "1px solid rgba(99,102,241,.3)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "#818cf8",
-                        flexShrink: 0,
-                        marginTop: 1,
-                      }}
-                    >
+                    <div className="flex-shrink-0 w-6 h-6 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-200 group-hover:scale-110 transition-transform">
                       <IcCheck />
                     </div>
-                    <p
-                      style={{
-                        margin: 0,
-                        color: "#94a3b8",
-                        fontSize: 14,
-                        lineHeight: 1.65,
-                      }}
-                    >
+                    <p className="text-slate-600 font-medium text-base leading-relaxed">
                       {item}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Career outcomes */}
-            <div>
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "6px 14px",
-                  borderRadius: 99,
-                  background: "rgba(236,72,153,.1)",
-                  border: "1px solid rgba(236,72,153,.2)",
-                  color: "#f472b6",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: ".08em",
-                  textTransform: "uppercase",
-                  marginBottom: 20,
-                }}
-              >
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-col"
+            >
+              <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-100 text-pink-600 text-[10px] font-black uppercase tracking-[0.15em] w-fit mb-6">
                 🎯 Career Outcomes
               </div>
-              <h2
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "clamp(1.6rem,3vw,2.2rem)",
-                  fontWeight: 800,
-                  color: "#fff",
-                  margin: "0 0 28px",
-                }}
-              >
-                Where this course{" "}
-                <span style={{ color: "#f472b6" }}>takes you</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8 leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                Where this course <span className="text-pink-600">takes you</span>
               </h2>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-                  gap: 12,
-                  marginBottom: 20,
-                }}
-              >
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 {course.career_outcomes?.map((item, i) => (
                   <div
                     key={i}
-                    className="cdp-outcome-card"
-                    style={{
-                      padding: "18px 16px",
-                      borderRadius: 14,
-                      background: "rgba(255,255,255,.02)",
-                      border: "1px solid rgba(255,255,255,.05)",
-                      textAlign: "center",
-                      cursor: "default",
-                      transition: "all .3s",
-                      color: "#e2e8f0",
-                    }}
+                    className="p-5 rounded-2xl bg-slate-900 text-white font-bold text-sm text-center shadow-lg shadow-slate-200 hover:bg-indigo-600 hover:shadow-indigo-200 transition-all duration-300 cursor-default"
                   >
-                    <p style={{ margin: 0, fontWeight: 700, fontSize: 14 }}>
-                      {item}
-                    </p>
+                    {item}
                   </div>
                 ))}
               </div>
-              <div
-                style={{
-                  padding: "20px 24px",
-                  borderRadius: 16,
-                  background:
-                    "linear-gradient(135deg,rgba(99,102,241,.05),rgba(236,72,153,.02))",
-                  border: "1px solid rgba(99,102,241,.1)",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    marginBottom: 8,
-                  }}
-                >
+
+              {/* Success Metric Card */}
+              <div className="p-6 md:p-8 rounded-[32px] bg-gradient-to-br from-indigo-600 to-indigo-700 text-white shadow-2xl shadow-indigo-200 relative overflow-hidden group mb-10">
+                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-125 transition-transform duration-700">
                   <IcTrophy />
-                  <p
-                    style={{
-                      margin: 0,
-                      fontSize: 11,
-                      color: "#818cf8",
-                      fontWeight: 700,
-                      letterSpacing: ".08em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Alumni Success Metric
+                </div>
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center">
+                      <IcTrophy />
+                    </div>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/80">Alumni Success Metric</span>
+                  </div>
+                  <p className="text-lg md:text-xl font-bold leading-snug">
+                    Average salary hike of <span className="text-amber-300 text-2xl font-black">60%</span> observed for alumni of this program.
                   </p>
                 </div>
-                <p
-                  style={{
-                    margin: 0,
-                    color: "#fff",
-                    fontSize: 15,
-                    fontWeight: 600,
-                  }}
-                >
-                  Average salary hike of{" "}
-                  <span style={{ color: "#6366f1", fontWeight: 800 }}>60%</span>{" "}
-                  observed for alumni of this program.
-                </p>
               </div>
 
               {/* Skill bars */}
-              <div
-                style={{
-                  marginTop: 24,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 14,
-                }}
-              >
+              <div className="flex flex-col gap-6">
                 {skillBars.map((s, i) => (
-                  <div key={i}>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        marginBottom: 6,
-                      }}
-                    >
-                      <span
-                        style={{
-                          fontSize: 12,
-                          color: "#94a3b8",
-                          fontWeight: 600,
-                        }}
-                      >
-                        {s.label}
-                      </span>
-                      <span
-                        style={{
-                          fontSize: 12,
-                          color: "#6366f1",
-                          fontWeight: 700,
-                        }}
-                      >
-                        {s.pct}%
-                      </span>
+                  <div key={i} className="flex flex-col gap-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-bold text-slate-700">{s.label}</span>
+                      <span className="text-sm font-black text-indigo-600">{s.pct}%</span>
                     </div>
-                    <div
-                      style={{
-                        height: 6,
-                        background: "rgba(255,255,255,.07)",
-                        borderRadius: 99,
-                        overflow: "hidden",
-                      }}
-                    >
-                      <div
-                        className="cdp-stat-bar"
-                        style={{
-                          "--w": `${s.pct}%`,
-                          height: "100%",
-                          borderRadius: 99,
-                          background: "linear-gradient(90deg,#6366f1,#a78bfa)",
-                          animationDelay: `${i * 0.15}s`,
-                        }}
+                    <div className="h-3 w-full bg-slate-200 rounded-full overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${s.pct}%` }}
+                        transition={{ duration: 1, delay: 0.5 + (i * 0.1) }}
+                        className="h-full bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full"
                       />
                     </div>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
@@ -1323,305 +847,117 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           CURRICULUM / ROADMAP
       ════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "80px 0",
-          position: "relative",
-          zIndex: 10,
-          background: "rgba(255,255,255,.01)",
-          borderTop: "1px solid rgba(255,255,255,.04)",
-        }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-          <div
-            style={{
-              textAlign: "center",
-              maxWidth: 640,
-              margin: "0 auto 60px",
-            }}
-          >
-            <Pill>
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-              </svg>{" "}
-              Curriculum
-            </Pill>
-            <h2
-              style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: "clamp(2rem,4vw,3rem)",
-                fontWeight: 800,
-                color: "#fff",
-                margin: "18px 0 14px",
-              }}
-            >
-              Learning{" "}
-              <span
-                style={{
-                  background: "linear-gradient(90deg,#6366f1,#ec4899)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Roadmap
-              </span>
+      {/* ════════════════════════════════════
+          CURRICULUM / ROADMAP
+      ════════════════════════════════════ */}
+      <section className="py-24 relative z-10 border-t border-slate-100 bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          
+          <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-[0.15em] mb-6">
+              📚 Curriculum
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+              Learning <span className="bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-transparent">Roadmap</span>
             </h2>
-            <p style={{ color: "#64748b", fontSize: 16, margin: 0 }}>
-              A structured journey from fundamentals to enterprise-level
-              architecture.
+            <p className="text-slate-500 text-lg font-medium">
+              A structured journey from fundamentals to enterprise-level architecture.
             </p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: isTablet ? "1fr" : "340px 1fr",
-              gap: 28,
-              alignItems: "start",
-            }}
-          >
-            {/* Module list */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 8,
-                position: "sticky",
-                top: "calc(var(--nav-h, 90px) + var(--cdp-offer-h, 60px) + 24px)",
-              }}
-            >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* Module Sidebar */}
+            <div className="lg:col-span-4 flex flex-col gap-3 sticky top-32">
               {course.syllabus.map((mod, i) => (
-                <div
+                <button
                   key={i}
-                  className="cdp-mod-item"
                   onClick={() => setActiveModule(i)}
-                  style={{
-                    padding: "16px 20px",
-                    borderRadius: 16,
-                    cursor: "pointer",
-                    border: `1px solid ${activeModule === i ? "#6366f1" : "rgba(255,255,255,.07)"}`,
-                    background:
-                      activeModule === i
-                        ? "linear-gradient(135deg,rgba(99,102,241,.1),rgba(139,92,246,.05))"
-                        : "rgba(255,255,255,.02)",
-                    transition: "all .25s",
-                    boxShadow:
-                      activeModule === i
-                        ? "0 8px 30px rgba(99,102,241,.2)"
-                        : "none",
-                  }}
+                  className={`flex flex-col gap-1 p-5 rounded-2xl text-left transition-all duration-300 border ${
+                    activeModule === i
+                    ? "bg-slate-950 border-slate-950 shadow-2xl shadow-slate-200"
+                    : "bg-white border-slate-100 hover:border-indigo-200 hover:bg-slate-50 shadow-sm"
+                  }`}
                 >
-                  <p
-                    style={{
-                      fontSize: 10,
-                      fontWeight: 700,
-                      color: activeModule === i ? "#6366f1" : "#475569",
-                      letterSpacing: ".1em",
-                      textTransform: "uppercase",
-                      margin: "0 0 4px",
-                    }}
-                  >
+                  <span className={`text-[10px] font-black uppercase tracking-widest ${
+                    activeModule === i ? "text-indigo-400" : "text-indigo-600"
+                  }`}>
                     Module {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <p
-                    style={{
-                      margin: 0,
-                      fontWeight: 700,
-                      fontSize: 15,
-                      color: activeModule === i ? "#fff" : "#94a3b8",
-                      lineHeight: 1.3,
-                    }}
-                  >
+                  </span>
+                  <span className={`text-base font-bold leading-tight ${
+                    activeModule === i ? "text-white" : "text-slate-900"
+                  }`}>
                     {mod.title}
-                  </p>
+                  </span>
                   {activeModule === i && (
-                    <div
-                      style={{
-                        marginTop: 8,
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 5,
-                        color: "#818cf8",
-                        fontSize: 11,
-                        fontWeight: 700,
-                      }}
+                    <motion.div 
+                      layoutId="active-indicator"
+                      className="mt-3 flex items-center gap-2 text-indigo-400 text-[11px] font-bold"
                     >
-                      <IcArrow /> Active
-                    </div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+                      Now Viewing
+                    </motion.div>
                   )}
-                </div>
+                </button>
               ))}
             </div>
 
-            {/* Module detail */}
-            <div
-              style={{
-                padding: isMobile ? "24px" : "40px 44px",
-                borderRadius: 28,
-                background: "rgba(255,255,255,.02)",
-                border: "1px solid rgba(255,255,255,.07)",
-                minHeight: isMobile ? "auto" : 480,
-                position: "relative",
-                overflow: "hidden",
-              }}
-            >
-              {/* Glow accent */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: -60,
-                  right: -60,
-                  width: 200,
-                  height: 200,
-                  background:
-                    "radial-gradient(circle,rgba(99,102,241,.1),transparent 70%)",
-                  borderRadius: "50%",
-                  pointerEvents: "none",
-                }}
-              />
-
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  marginBottom: 20,
-                  position: "relative",
-                }}
-              >
-                <div>
-                  <p
-                    style={{
-                      fontSize: 11,
-                      color: "#6366f1",
-                      fontWeight: 700,
-                      letterSpacing: ".1em",
-                      textTransform: "uppercase",
-                      margin: "0 0 6px",
-                    }}
-                  >
-                    Module {String(activeModule + 1).padStart(2, "0")}
-                  </p>
-                  <h3
-                    style={{
-                      fontFamily: "'Outfit', sans-serif",
-                      fontSize: "clamp(1.4rem,3vw,1.9rem)",
-                      fontWeight: 800,
-                      color: "#fff",
-                      margin: 0,
-                    }}
-                  >
-                    {course.syllabus[activeModule]?.title}
-                  </h3>
-                </div>
-                <span
-                  style={{
-                    padding: "6px 14px",
-                    borderRadius: 99,
-                    background: "rgba(99,102,241,.1)",
-                    color: "#6366f1",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    border: "1px solid rgba(99,102,241,.2)",
-                    flexShrink: 0,
-                    marginTop: 4,
-                  }}
+            {/* Active Module Content */}
+            <div className="lg:col-span-8">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeModule}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="p-8 md:p-12 rounded-[40px] bg-slate-50 border border-slate-100 shadow-inner relative overflow-hidden"
                 >
-                  Active Module
-                </span>
-              </div>
-
-              <p
-                style={{
-                  fontSize: 15,
-                  color: "#94a3b8",
-                  lineHeight: 1.75,
-                  marginBottom: 32,
-                }}
-              >
-                {course.syllabus[activeModule]?.description}
-              </p>
-
-              <p
-                style={{
-                  fontSize: 11,
-                  fontWeight: 700,
-                  color: "#fff",
-                  textTransform: "uppercase",
-                  letterSpacing: ".1em",
-                  marginBottom: 16,
-                }}
-              >
-                Key Lessons
-              </p>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: width < 640 ? "1fr" : "1fr 1fr",
-                  gap: 10,
-                }}
-              >
-                {course.syllabus[activeModule]?.lessons?.map((lesson, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 12,
-                      padding: "14px 16px",
-                      borderRadius: 12,
-                      background: "rgba(255,255,255,.02)",
-                      border: "1px solid rgba(255,255,255,.05)",
-                      transition: "background .2s",
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.background = "rgba(99,102,241,.08)";
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.background =
-                        "rgba(255,255,255,.02)";
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: 28,
-                        height: 28,
-                        borderRadius: 8,
-                        background: "rgba(99,102,241,.2)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "#818cf8",
-                        fontWeight: 700,
-                        fontSize: 11,
-                        flexShrink: 0,
-                      }}
-                    >
-                      {i + 1}
+                  {/* Decorative background accent */}
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
+                  
+                  <div className="relative z-10">
+                    <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+                      <div>
+                        <span className="text-indigo-600 text-[11px] font-black uppercase tracking-[0.2em] block mb-2">
+                          Module {String(activeModule + 1).padStart(2, "0")}
+                        </span>
+                        <h3 className="text-2xl md:text-3xl font-black text-slate-950 leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                          {course.syllabus[activeModule]?.title}
+                        </h3>
+                      </div>
+                      <div className="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-500 text-[10px] font-black uppercase tracking-widest shadow-sm">
+                        Comprehensive Guide
+                      </div>
                     </div>
-                    <span
-                      style={{
-                        color: "#cbd5e1",
-                        fontSize: 13,
-                        fontWeight: 500,
-                      }}
-                    >
-                      {lesson}
-                    </span>
+
+                    <p className="text-slate-600 text-base md:text-lg leading-relaxed font-medium mb-10">
+                      {course.syllabus[activeModule]?.description}
+                    </p>
+
+                    <div className="mb-6">
+                      <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-4">Key Lessons Covered</span>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {course.syllabus[activeModule]?.lessons?.map((lesson, i) => (
+                          <div
+                            key={i}
+                            className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-100 shadow-sm hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group"
+                          >
+                            <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-950 text-white flex items-center justify-center font-black text-xs group-hover:bg-indigo-600 transition-colors">
+                              {i + 1}
+                            </div>
+                            <span className="text-slate-800 font-bold text-sm">
+                              {lesson}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                ))}
-              </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
+
           </div>
         </div>
       </section>
@@ -1667,7 +1003,7 @@ const CourseDetailsPage = () => {
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(1.8rem,3.5vw,2.6rem)",
                 fontWeight: 800,
-                color: "#fff",
+                color: "#0f172a",
                 margin: "16px 0 10px",
               }}
             >
@@ -1816,7 +1152,7 @@ const CourseDetailsPage = () => {
                       height: 54,
                       borderRadius: 14,
                       background: "rgba(255,255,255,.03)",
-                      border: "1px solid rgba(255,255,255,.07)",
+                      border: "1px solid rgba(0,0,0,0.08)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -1903,7 +1239,7 @@ const CourseDetailsPage = () => {
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "clamp(1.8rem,3.5vw,2.6rem)",
                   fontWeight: 800,
-                  color: "#fff",
+                  color: "#0f172a",
                   margin: "16px 0 0",
                 }}
               >
@@ -1937,7 +1273,7 @@ const CourseDetailsPage = () => {
                 style={{
                   padding: "36px 32px",
                   borderRadius: 28,
-                  background: "rgba(255,255,255,.02)",
+                  background: "rgba(0,0,0,0.03)",
                   border: "1px solid rgba(255,255,255,.06)",
                   transition: "all .35s",
                   position: "relative",
@@ -2013,7 +1349,7 @@ const CourseDetailsPage = () => {
                     fontFamily: "'Outfit', sans-serif",
                     fontWeight: 800,
                     fontSize: 20,
-                    color: "#fff",
+                    color: "#0f172a",
                     margin: "0 0 12px",
                     transition: "color .3s",
                   }}
@@ -2037,7 +1373,7 @@ const CourseDetailsPage = () => {
                       style={{
                         padding: "4px 10px",
                         borderRadius: 99,
-                        background: "rgba(255,255,255,.05)",
+                        background: "rgba(0,0,0,0.05)",
                         border: "1px solid rgba(255,255,255,.1)",
                         fontSize: 10,
                         fontWeight: 700,
@@ -2069,7 +1405,7 @@ const CourseDetailsPage = () => {
       >
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
-            <Pill color="#10b981" bg="rgba(16,185,129,.1)">
+            <Pill color="#6366f1" bg="rgba(99,102,241,0.1)">
               🚀 Journey
             </Pill>
             <h2
@@ -2077,11 +1413,11 @@ const CourseDetailsPage = () => {
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(2rem,4vw,3.2rem)",
                 fontWeight: 800,
-                color: "#fff",
+                color: "#0f172a",
                 margin: "20px 0 16px",
               }}
             >
-              Your Path to <span style={{ color: "#10b981" }}>Expertise</span>
+              Your Path to <span style={{ color: "#6366f1" }}>Expertise</span>
             </h2>
             <p style={{ color: "#64748b", fontSize: 16 }}>
               A structured 4-phase roadmap to transform you from zero to
@@ -2096,11 +1432,11 @@ const CourseDetailsPage = () => {
                 position: "absolute",
                 left: isMobile ? "20px" : "50%",
                 transform: isMobile ? "none" : "translateX(-50%)",
-                width: 4,
+                width: 2,
                 height: "100%",
                 background:
-                  "linear-gradient(to bottom, #6366f1, #10b981, #6366f1)",
-                opacity: 0.2,
+                  "linear-gradient(to bottom, transparent, #6366f1, #818cf8, #6366f1, transparent)",
+                opacity: 0.3,
                 borderRadius: 2,
               }}
             />
@@ -2108,30 +1444,30 @@ const CourseDetailsPage = () => {
             {[
               {
                 phase: "01",
-                title: "The Foundation",
-                desc: "Setting up tools, environment, and mastering the core basics.",
-                icon: "🌱",
+                title: "Foundation & Setup",
+                desc: "Setting up professional grade tools and mastering core logic with hands-on labs.",
+                label: "The Beginning",
                 align: "left",
               },
               {
                 phase: "02",
-                title: "Building Logic",
-                desc: "Deep dive into problem solving, data handling, and core functionalities.",
-                icon: "⚡",
+                title: "Advanced Logic",
+                desc: "Deep dive into architecture, optimization, and complex data structures.",
+                label: "Level Up",
                 align: "right",
               },
               {
                 phase: "03",
-                title: "Real-World Projects",
-                desc: "Developing 4+ capstone projects with industry-standard best practices.",
-                icon: "🛠️",
+                title: "Industrial Grade Projects",
+                desc: "Developing 4+ end-to-end applications using enterprise best practices.",
+                label: "Real World",
                 align: "left",
               },
               {
                 phase: "04",
-                title: "Job Ready & Career",
-                desc: "Final portfolio polish, mock interviews, and placement assistance.",
-                icon: "🏆",
+                title: "Job Readiness",
+                desc: "Portfolio refinement, mock interviews, and direct placement assistance.",
+                label: "Final Mile",
                 align: "right",
               },
             ].map((step, i) => (
@@ -2139,10 +1475,11 @@ const CourseDetailsPage = () => {
                 key={i}
                 initial={{
                   opacity: 0,
-                  x: isMobile ? 20 : step.align === "left" ? -50 : 50,
+                  y: 40,
                 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
                 style={{
                   display: "flex",
                   justifyContent: isMobile
@@ -2151,9 +1488,9 @@ const CourseDetailsPage = () => {
                       ? "flex-start"
                       : "flex-end",
                   width: "100%",
-                  marginBottom: isMobile ? 40 : 60,
+                  marginBottom: isMobile ? 40 : 80,
                   position: "relative",
-                  paddingLeft: isMobile ? 50 : 0,
+                  paddingLeft: isMobile ? 60 : 0,
                 }}
               >
                 {/* Dot */}
@@ -2161,42 +1498,77 @@ const CourseDetailsPage = () => {
                   style={{
                     position: "absolute",
                     left: isMobile ? "20px" : "50%",
-                    top: 20,
+                    top: 24,
                     transform: "translateX(-50%)",
-                    width: 16,
-                    height: 16,
+                    width: 14,
+                    height: 14,
                     borderRadius: "50%",
-                    background: "#10b981",
-                    border: "3px solid rgba(15, 23, 42, 0.95)",
+                    background: "#6366f1",
+                    border: "4px solid #fff",
                     zIndex: 2,
-                    boxShadow: "0 0 15px rgba(16,185,129,.5)",
+                    boxShadow: "0 0 20px rgba(99,102,241,0.4)",
                   }}
                 />
 
                 <div
                   style={{
                     width: isMobile ? "100%" : "45%",
-                    padding: isMobile ? "20px" : "30px",
-                    borderRadius: 24,
-                    background: "rgba(255,255,255,.02)",
-                    border: "1px solid rgba(255,255,255,.05)",
-                    backdropFilter: "blur(10px)",
+                    padding: "32px",
+                    borderRadius: 32,
+                    background: "#fff",
+                    border: "1px solid rgba(0,0,0,0.06)",
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.02)",
                     textAlign: isMobile ? "left" : step.align,
+                    position: "relative",
+                    overflow: "hidden",
                   }}
                 >
-                  <span style={{ fontSize: 40 }}>{step.icon}</span>
+                  {/* Subtle Background Number */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: -10,
+                      [step.align === "left" ? "right" : "left"]: -10,
+                      fontSize: 100,
+                      fontWeight: 900,
+                      color: "rgba(0,0,0,0.02)",
+                      fontFamily: "'Syne', sans-serif",
+                      pointerEvents: "none",
+                    }}
+                  >
+                    {step.phase}
+                  </div>
+
+                  <p
+                    style={{
+                      fontSize: 10,
+                      fontWeight: 800,
+                      color: "#6366f1",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.2em",
+                      margin: "0 0 12px",
+                    }}
+                  >
+                    {step.label}
+                  </p>
                   <h4
                     style={{
-                      color: "#10b981",
+                      fontFamily: "'Outfit', sans-serif",
+                      color: "#0f172a",
                       fontWeight: 800,
-                      margin: "15px 0 10px",
-                      fontSize: 20,
+                      fontSize: 22,
+                      margin: "0 0 12px",
                     }}
                   >
                     Phase {step.phase}: {step.title}
                   </h4>
                   <p
-                    style={{ color: "#94a3b8", fontSize: 14, lineHeight: 1.6 }}
+                    style={{
+                      color: "#64748b",
+                      fontSize: 15,
+                      lineHeight: 1.7,
+                      margin: 0,
+                    }}
                   >
                     {step.desc}
                   </p>
@@ -2213,7 +1585,7 @@ const CourseDetailsPage = () => {
       <section style={{ padding: "100px 0", position: "relative", zIndex: 10 }}>
         <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 24px" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
-            <Pill color="#f59e0b" bg="rgba(245,158,11,.1)">
+            <Pill color="#6366f1" bg="rgba(99,102,241,0.1)">
               ⚖️ Comparison
             </Pill>
             <h2
@@ -2221,11 +1593,11 @@ const CourseDetailsPage = () => {
                 fontFamily: "'Syne',sans-serif",
                 fontSize: "clamp(2rem,4vw,3rem)",
                 fontWeight: 800,
-                color: "#fff",
+                color: "#0f172a",
                 margin: "20px 0 16px",
               }}
             >
-              Why <span style={{ color: "#f59e0b" }}>PreppRight</span> is
+              Why <span style={{ color: "#6366f1" }}>PreppRight</span> is
               Different
             </h2>
           </div>
@@ -2235,7 +1607,7 @@ const CourseDetailsPage = () => {
               overflowX: "auto",
               borderRadius: 24,
               border: "1px solid rgba(255,255,255,.08)",
-              background: "rgba(255,255,255,.02)",
+              background: "rgba(0,0,0,0.03)",
               WebkitOverflowScrolling: "touch",
             }}
           >
@@ -2247,11 +1619,11 @@ const CourseDetailsPage = () => {
               }}
             >
               <thead>
-                <tr style={{ background: "rgba(255,255,255,.05)" }}>
+                <tr style={{ background: "rgba(0,0,0,0.05)" }}>
                   <th
                     style={{
                       padding: "25px 30px",
-                      color: "#fff",
+                      color: "#0f172a",
                       fontSize: 18,
                     }}
                   >
@@ -2315,7 +1687,7 @@ const CourseDetailsPage = () => {
                     <td
                       style={{
                         padding: "20px 30px",
-                        color: "#cbd5e1",
+                        color: "#64748b",
                         fontWeight: 600,
                       }}
                     >
@@ -2324,7 +1696,7 @@ const CourseDetailsPage = () => {
                     <td
                       style={{
                         padding: "20px 30px",
-                        color: "#fff",
+                        color: "#0f172a",
                         fontWeight: 700,
                         textAlign: "center",
                         background: "rgba(245,158,11,.03)",
@@ -2465,7 +1837,7 @@ const CourseDetailsPage = () => {
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: "2.4rem",
                   fontWeight: 800,
-                  color: "#fff",
+                  color: "#0f172a",
                   margin: "16px 0 20px",
                 }}
               >
@@ -2505,7 +1877,7 @@ const CourseDetailsPage = () => {
                       display: "flex",
                       alignItems: "center",
                       gap: 10,
-                      color: "#cbd5e1",
+                      color: "#64748b",
                       fontSize: 14,
                       fontWeight: 600,
                     }}
@@ -2519,7 +1891,7 @@ const CourseDetailsPage = () => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        color: "#fff",
+                        color: "#0f172a",
                       }}
                     >
                       ✓
@@ -2547,7 +1919,7 @@ const CourseDetailsPage = () => {
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(2rem,4vw,3.2rem)",
                 fontWeight: 800,
-                color: "#fff",
+                color: "#0f172a",
                 margin: "20px 0 16px",
               }}
             >
@@ -2585,7 +1957,7 @@ const CourseDetailsPage = () => {
                 style={{
                   padding: 30,
                   borderRadius: 28,
-                  background: "rgba(255,255,255,.02)",
+                  background: "rgba(0,0,0,0.03)",
                   border: "1px solid rgba(255,255,255,.06)",
                   position: "relative",
                 }}
@@ -2615,7 +1987,7 @@ const CourseDetailsPage = () => {
                     <IcUser />
                   </div>
                   <div>
-                    <h5 style={{ color: "#fff", fontWeight: 800, margin: 0 }}>
+                    <h5 style={{ color: "#0f172a", fontWeight: 800, margin: 0 }}>
                       {rev.name}
                     </h5>
                     <p
@@ -2778,8 +2150,8 @@ const CourseDetailsPage = () => {
                 style={{
                   padding: isMobile ? "32px 24px" : "44px 40px",
                   borderRadius: 28,
-                  background: "rgba(255,255,255,.02)",
-                  border: "1px solid rgba(255,255,255,.05)",
+                  background: "rgba(0,0,0,0.03)",
+                  border: "1px solid rgba(0,0,0,0.05)",
                   textAlign: "center",
                 }}
               >
@@ -2810,7 +2182,7 @@ const CourseDetailsPage = () => {
                     <span
                       style={{
                         fontSize: 18,
-                        color: "#64748b",
+                        color: "#94a3b8",
                         textDecoration: "line-through",
                         fontWeight: 600,
                       }}
@@ -2932,7 +2304,7 @@ const CourseDetailsPage = () => {
       >
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
-            <Pill color="#10b981" bg="rgba(16,185,129,.1)">
+            <Pill color="#6366f1" bg="rgba(99,102,241,0.1)">
               <svg
                 width="14"
                 height="14"
@@ -2955,11 +2327,11 @@ const CourseDetailsPage = () => {
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(2rem,4vw,3.2rem)",
                 fontWeight: 800,
-                color: "#fff",
+                color: "#0f172a",
                 margin: "20px 0 16px",
               }}
             >
-              Meet Your <span style={{ color: "#10b981" }}>Industry</span>{" "}
+              Meet Your <span style={{ color: "#6366f1" }}>Industry</span>{" "}
               Mentors
             </h2>
             <p
@@ -2993,7 +2365,7 @@ const CourseDetailsPage = () => {
                   maxWidth: 450,
                   padding: "40px",
                   borderRadius: 32,
-                  background: "rgba(255,255,255,.02)",
+                  background: "rgba(0,0,0,0.03)",
                   border: "1px solid rgba(255,255,255,.06)",
                   position: "relative",
                   transition: "all .3s",
@@ -3012,14 +2384,14 @@ const CourseDetailsPage = () => {
                       width: 80,
                       height: 80,
                       borderRadius: 24,
-                      background: "linear-gradient(135deg, #10b981, #6366f1)",
+                      background: "linear-gradient(135deg, #6366f1, #818cf8)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       fontSize: 32,
-                      color: "#fff",
+                      color: "#0f172a",
                       fontWeight: 800,
-                      boxShadow: "0 10px 30px rgba(16,185,129,.3)",
+                      boxShadow: "0 10px 30px rgba(99,102,241,0.3)",
                     }}
                   >
                     {mentor.name.charAt(0)}
@@ -3030,7 +2402,7 @@ const CourseDetailsPage = () => {
                         fontFamily: "'Outfit', sans-serif",
                         fontSize: 22,
                         fontWeight: 800,
-                        color: "#fff",
+                        color: "#0f172a",
                         margin: "0 0 4px",
                       }}
                     >
@@ -3038,7 +2410,7 @@ const CourseDetailsPage = () => {
                     </h3>
                     <p
                       style={{
-                        color: "#10b981",
+                        color: "#6366f1",
                         fontSize: 14,
                         fontWeight: 700,
                         textTransform: "uppercase",
@@ -3137,7 +2509,7 @@ const CourseDetailsPage = () => {
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(2rem,4vw,3.2rem)",
                 fontWeight: 800,
-                color: "#fff",
+                color: "#0f172a",
                 margin: "20px 0 16px",
               }}
             >
@@ -3164,10 +2536,10 @@ const CourseDetailsPage = () => {
               gridTemplateColumns: isTablet ? "1fr" : "1fr 1fr",
               gap: isTablet ? 40 : 80,
               alignItems: "center",
-              background: "rgba(255,255,255,.02)",
+              background: "rgba(0,0,0,0.03)",
               padding: isMobile ? "30px" : "60px",
               borderRadius: isMobile ? 24 : 40,
-              border: "1px solid rgba(255,255,255,.05)",
+              border: "1px solid rgba(0,0,0,0.05)",
               backdropFilter: "blur(20px)",
             }}
           >
@@ -3245,7 +2617,7 @@ const CourseDetailsPage = () => {
                     <div>
                       <h4
                         style={{
-                          color: "#fff",
+                          color: "#0f172a",
                           fontSize: 18,
                           fontWeight: 700,
                           margin: "0 0 8px",
@@ -3292,7 +2664,7 @@ const CourseDetailsPage = () => {
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: "clamp(1.8rem,3.5vw,2.4rem)",
                 fontWeight: 800,
-                color: "#fff",
+                color: "#0f172a",
                 margin: "18px 0 10px",
               }}
             >

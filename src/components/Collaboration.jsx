@@ -1,60 +1,55 @@
 import React from "react";
-import { motion } from "framer-motion";
+
+const COLLAB_LOGOS = [
+  "WhatsApp Image 2026-05-09 at 7.01.54 PM.jpeg",
+  "WhatsApp Image 2026-05-09 at 7.02.05 PM.jpeg",
+  "WhatsApp Image 2026-05-09 at 7.03.45 PM.jpeg",
+  "WhatsApp Image 2026-05-09 at 7.04.41 PM.jpeg"
+];
 
 const Collaboration = () => {
-  const collabImages = [
-    "WhatsApp Image 2026-05-09 at 7.01.54 PM.jpeg",
-    "WhatsApp Image 2026-05-09 at 7.02.05 PM.jpeg",
-    "WhatsApp Image 2026-05-09 at 7.03.45 PM.jpeg",
-    "WhatsApp Image 2026-05-09 at 7.04.41 PM.jpeg",
-  ];
-
-  // Double the images to create a seamless loop
-  const displayImages = [...collabImages, ...collabImages];
+  const scrollLogos = [...COLLAB_LOGOS, ...COLLAB_LOGOS, ...COLLAB_LOGOS]; // More repeats for smaller lists
 
   return (
-    <section
-      className="collaboration-section"
-      style={{
-        padding: "80px 0",
-        overflow: "hidden",
-        background: "rgba(255,255,255,0.01)",
-      }}
-    >
-      <div className="container">
-        <div
-          className="section-header"
-          style={{ marginBottom: "60px" }}
-          data-reveal
-        >
-          <h2 className="section-title">
-            Our <span className="gradient-text">Collaborations</span>
-          </h2>
-          <p style={{ color: "#94a3b8", fontSize: "1.1rem" }}>
-            Working together with global leaders to empower our community.
-          </p>
-        </div>
+    <section className="py-16 bg-slate-50/50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-10 text-center">
+        <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em] mb-3">Industry Collaborations</p>
+        <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+          Bridging the Gap Between <span className="text-indigo-600">Academia & Industry</span>
+        </h2>
       </div>
 
-      <div
-        className="placement-marquee-container"
-        style={{ width: "100%", position: "relative" }}
-      >
-        <div className="placement-marquee" style={{ animationDirection: "reverse", animationDuration: "25s" }}>
-          {displayImages.map((img, idx) => (
-            <div key={idx} className="placement-card-wrap">
-              <div className="placement-card glass" data-reveal>
-                <img
-                  src={`/images/courses/Collaboration/${img}`}
-                  alt={`Collaboration ${idx + 1}`}
-                  className="placement-img"
-                  style={{ objectFit: "contain", padding: "20px" }}
-                />
-              </div>
+      <div className="relative w-full">
+        {/* Gradient Fades */}
+        <div className="absolute inset-y-0 left-0 w-32 md:w-64 bg-gradient-to-r from-slate-50/50 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 md:w-64 bg-gradient-to-l from-slate-50/50 to-transparent z-10 pointer-events-none" />
+
+        <div className="flex animate-scroll-reverse whitespace-nowrap gap-12 md:gap-24 items-center">
+          {scrollLogos.map((logo, i) => (
+            <div key={i} className="flex-shrink-0 bg-white p-8 rounded-3xl border border-slate-200/50 flex items-center justify-center w-72 h-40 shadow-sm transition-transform hover:scale-105 duration-300">
+              <img 
+                src={`/images/courses/Collaboration/${logo}`} 
+                alt="Collaboration Partner" 
+                className="max-h-full max-w-full object-contain grayscale-[20%] hover:grayscale-0 transition-all duration-500 opacity-80 hover:opacity-100"
+              />
             </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes scroll-reverse {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .animate-scroll-reverse {
+          animation: scroll-reverse 25s linear infinite;
+          width: max-content;
+        }
+        .animate-scroll-reverse:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   );
 };
