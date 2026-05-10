@@ -4,15 +4,15 @@ import Footer from "../components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 
 const CATEGORIES = [
-  { name: "Development", img: "/images/categories/development.png", count: 3, desc: "Web, mobile, backend & full-stack engineering.", tag: "Most Popular", color: "indigo" },
-  { name: "Business", img: "/images/categories/business.png", count: 1, desc: "Entrepreneurship, strategy & leadership essentials.", tag: "Trending", color: "emerald" },
-  { name: "Design", img: "/images/categories/design.png", count: 1, desc: "UI/UX, branding, motion & visual communication.", tag: "Creative", color: "violet" },
-  { name: "Marketing", img: "/images/categories/marketing.png", count: 1, desc: "SEO, social media, growth hacking & strategy.", tag: "High Demand", color: "blue" },
-  { name: "Finance", img: "/images/categories/finance.png", count: 1, desc: "Investing, fintech, trading & financial modelling.", tag: "Career Boost", color: "amber" },
-  { name: "IT & Software", img: "/images/categories/it.png", count: 4, desc: "Cloud, DevOps, cybersecurity & infrastructure.", tag: "Hot", color: "rose" },
-  { name: "Data Science", img: "/images/categories/datascience.png", count: 2, desc: "ML, AI, Python analytics & deep learning.", tag: "Future-Ready", color: "cyan" },
-  { name: "Drone Tech", img: "/images/categories/drone.png", count: 1, desc: "Unmanned aerial vehicles, flight physics & assembly.", tag: "Most Popular", color: "indigo" },
-  { name: "IoT & Robotics", img: "/images/categories/robotics.png", count: 2, desc: "Embedded systems, automation & smart sensors.", tag: "High Demand", color: "orange" },
+  { name: "Development", img: "/images/categories/development.png", count: 3, desc: "Master web, mobile, backend & full-stack engineering with hands-on industry projects.", tag: "Most Popular", color: "indigo", jobs: "1,200+", salary: "6-18 LPA" },
+  { name: "Business", img: "/images/categories/business.png", count: 1, desc: "Scale your career with entrepreneurship, strategy, leadership & management essentials.", tag: "Trending", color: "emerald", jobs: "450+", salary: "5-15 LPA" },
+  { name: "Design", img: "/images/categories/design.png", count: 1, desc: "Master UI/UX, branding, motion graphics & visual communication for modern digital brands.", tag: "Creative", color: "violet", jobs: "300+", salary: "4-12 LPA" },
+  { name: "Marketing", img: "/images/categories/marketing.png", count: 1, desc: "Drive growth with SEO, social media, performance marketing & digital growth strategies.", tag: "High Demand", color: "blue", jobs: "800+", salary: "3-10 LPA" },
+  { name: "Finance", img: "/images/categories/finance.png", count: 1, desc: "Master investing, fintech, algorithmic trading & advanced financial modelling techniques.", tag: "Career Boost", color: "amber", jobs: "200+", salary: "6-20 LPA" },
+  { name: "IT & Software", img: "/images/categories/it.png", count: 4, desc: "Build scalable infra with cloud computing, DevOps, cybersecurity & modern infrastructure.", tag: "Hot", color: "rose", jobs: "1,500+", salary: "5-25 LPA" },
+  { name: "Data Science", img: "/images/categories/datascience.png", count: 2, desc: "Unlock insights with ML, AI, Python analytics, deep learning & big data engineering.", tag: "Future-Ready", color: "cyan", jobs: "600+", salary: "8-30 LPA" },
+  { name: "Drone Tech", img: "/images/categories/drone.png", count: 1, desc: "Explore unmanned aerial vehicles, flight physics, drone assembly & autonomous flight.", tag: "Most Popular", color: "indigo", jobs: "100+", salary: "4-12 LPA" },
+  { name: "IoT & Robotics", img: "/images/categories/robotics.png", count: 2, desc: "Build smart systems with embedded electronics, industrial automation & smart sensors.", tag: "High Demand", color: "orange", jobs: "250+", salary: "5-15 LPA" },
 ];
 
 const FILTERS = ["All", "Most Popular", "Trending", "High Demand", "Hot"];
@@ -156,34 +156,56 @@ const CategoriesPage = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ delay: i * 0.05 }}
                   onClick={() => setSelectedCategory(cat)}
-                  className="group relative bg-white rounded-xl p-10 border border-slate-100 hover:border-indigo-100 transition-all duration-500 hover:shadow-premium cursor-pointer overflow-hidden"
+                  className="group relative bg-white rounded-2xl p-4 border border-slate-100 hover:border-indigo-100 transition-all duration-500 hover:shadow-premium cursor-pointer overflow-hidden flex items-start gap-5"
                 >
-                  {/* Icon/Image */}
-                  <div className="relative mb-8">
-                    <div className="w-16 h-16 rounded-xl bg-slate-50 flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform duration-500">
-                      {cat.img ? (
-                        <img src={cat.img} alt={cat.name} className="w-full h-full object-cover" />
-                      ) : (
-                        <span className="text-3xl">📚</span>
-                      )}
-                    </div>
+                  {/* Category Image - Left Side */}
+                  <div className="w-24 h-24 flex-shrink-0 rounded-2xl bg-slate-50 overflow-hidden relative border border-slate-100">
+                    {cat.img ? (
+                      <img 
+                        src={cat.img} 
+                        alt={cat.name} 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-3xl">📚</div>
+                    )}
                   </div>
 
-                  <div className="mb-8">
-                    <div className="text-xs font-black text-indigo-600 uppercase tracking-widest mb-2">{cat.tag}</div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>{cat.name}</h3>
-                    <p className="text-slate-500 leading-relaxed font-medium line-clamp-2">
-                      {cat.desc}
-                    </p>
-                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col h-full">
+                      <div className="mb-3">
+                        <div className="inline-block px-2 py-0.5 rounded bg-indigo-50 text-[8px] font-black text-indigo-600 uppercase tracking-widest mb-1.5 shadow-sm border border-indigo-100/50">
+                          {cat.tag}
+                        </div>
+                        <h3 className="text-lg font-black text-slate-900 mb-1 tracking-tight leading-tight group-hover:text-indigo-600 transition-colors" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                          {cat.name}
+                        </h3>
+                        <p className="text-slate-500 text-[11px] leading-relaxed font-medium line-clamp-1">
+                          {cat.desc}
+                        </p>
+                      </div>
 
-                  <div className="flex items-center justify-between pt-8 border-t border-slate-50">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-indigo-600" />
-                      <span className="text-sm font-black text-slate-900">{cat.count} Courses</span>
-                    </div>
-                    <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                      <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+                      <div className="flex gap-4 p-2.5 rounded-xl bg-slate-50/50 border border-slate-100/50 mb-4">
+                        <div className="flex-1">
+                          <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Jobs</div>
+                          <div className="text-[11px] font-black text-slate-900 tracking-tight">{cat.jobs}</div>
+                        </div>
+                        <div className="w-px h-6 bg-slate-200/60" />
+                        <div className="flex-1">
+                          <div className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-0.5">Salary</div>
+                          <div className="text-[11px] font-black text-slate-900 tracking-tight">{cat.salary}</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between pt-2.5 border-t border-slate-50">
+                        <div className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
+                          <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">{cat.count} Courses</span>
+                        </div>
+                        <div className="w-8 h-8 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
+                          <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
