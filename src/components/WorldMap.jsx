@@ -2,81 +2,112 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const WorldMap = () => {
-  const locations = [
-    { name: "USA", top: "38%", left: "12%" },
-    { name: "Brazil", top: "68%", left: "28%" },
-    { name: "Europe", top: "28%", left: "48%" },
-    { name: "Africa", top: "55%", left: "48%" },
-    { name: "India", top: "52%", left: "65%" },
-    { name: "UAE", top: "42%", left: "60%" },
-    { name: "Australia", top: "64%", left: "80%" },
-  ];
-
   return (
-    <section className="py-20 bg-slate-950 relative overflow-hidden">
-      {/* Background Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
-
+    <section className="py-16 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
           <h2
-            className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight"
+            className="text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight"
             style={{ fontFamily: "'Lexend', sans-serif" }}
           >
             Connecting Learners <br />{" "}
-            <span className="text-indigo-400">Around the World</span>
+            <span className="text-indigo-600">Around the World</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
+          <p className="text-slate-500 text-lg max-w-2xl mx-auto font-medium">
             We dedicate ourselves to helping every student improve in every
             place. Join a truly global community.
           </p>
         </div>
 
-        <div className="relative max-w-5xl mx-auto overflow-x-auto pb-10 custom-scrollbar">
-          <div className="min-w-[800px] relative">
+        <div className="max-w-5xl mx-auto relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
             <img
-              src="/world_map.png"
-              alt="World Map"
-              className="w-full h-auto opacity-20 filter invert brightness-200"
+              src="/map.png"
+              alt="Global Connections"
+              className="w-full h-auto drop-shadow-sm mb-16"
               onError={(e) => {
-                e.target.style.opacity = "0.1";
+                e.target.src = "/world_map.png";
               }}
             />
 
-            {/* Pins */}
-            {locations.map((loc, i) => (
+            {/* Indigo Pins */}
+            {[
+              { t: "35%", l: "18%", n: "USA" }, 
+              { t: "62%", l: "28%", n: "Brazil" }, 
+              { t: "25%", l: "48%", n: "Europe" }, 
+              { t: "50%", l: "50%", n: "Africa" }, 
+              { t: "38%", l: "55%", n: "UAE" }, 
+              { t: "48%", l: "65%", n: "India" }, 
+              { t: "28%", l: "68%", n: "Russia" }, 
+              { t: "65%", l: "82%", n: "Australia" },
+            ].map((loc, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.1 }}
-                style={{ top: loc.top, left: loc.left }}
-                className="absolute flex flex-col items-center gap-2 z-10"
+                transition={{ delay: 0.4 + (i * 0.1) }}
+                style={{ top: loc.t, left: loc.l }}
+                className="absolute z-10"
               >
-                <div className="relative">
-                  <div className="w-3 h-3 bg-indigo-500 rounded-full shadow-[0_0_15px_rgba(99,102,241,0.8)]" />
-                  <div className="absolute inset-0 w-3 h-3 bg-indigo-500 rounded-full animate-ping opacity-75" />
-                </div>
-                <div className="bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10 shadow-2xl">
-                  <span className="text-[10px] font-black text-white uppercase tracking-widest">
-                    {loc.name}
+                <div className="relative group flex flex-col items-center">
+                  <svg 
+                    width="18" height="18" viewBox="0 0 24 24" fill="none" 
+                    className="text-indigo-600 drop-shadow-md group-hover:scale-125 transition-transform cursor-pointer"
+                  >
+                    <path 
+                      d="M12 21C16 17 20 13.4183 20 9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9C4 13.4183 8 17 12 21Z" 
+                      fill="currentColor" 
+                      fillOpacity="0.2"
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                    />
+                    <circle cx="12" cy="9" r="3" fill="currentColor" />
+                  </svg>
+                  <div className="absolute inset-0 w-full h-full bg-indigo-500 rounded-full animate-ping opacity-20" />
+                  
+                  {/* Label */}
+                  <span className="mt-1 px-2 py-0.5 rounded bg-white/80 backdrop-blur-sm border border-slate-100 text-[9px] font-black text-slate-800 uppercase tracking-tighter shadow-sm opacity-0 group-hover:opacity-100 md:opacity-100 transition-opacity">
+                    {loc.n}
                   </span>
                 </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Feature Points */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+            {[
+              { label: "Global Mentorship", icon: "🌍", color: "#6366f1" },
+              { label: "24/7 Support", icon: "🕒", color: "#ec4899" },
+              { label: "Industry Partners", icon: "🤝", color: "#f59e0b" },
+              { label: "Remote Learning", icon: "💻", color: "#10b981" },
+            ].map((point, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="flex flex-col items-center text-center group"
+              >
+                <div 
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-4 transition-all duration-300 group-hover:scale-110 shadow-sm"
+                  style={{ background: `${point.color}10`, color: point.color }}
+                >
+                  {point.icon}
+                </div>
+                <span className="text-sm font-black text-slate-900 uppercase tracking-widest leading-tight">
+                  {point.label}
+                </span>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
-
-      <style>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          height: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(255,255,255,0.1);
-          border-radius: 10px;
-        }
-      `}</style>
     </section>
   );
 };
