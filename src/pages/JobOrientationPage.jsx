@@ -71,9 +71,9 @@ const JobOrientationPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white p-10 rounded-[40px] border border-slate-100 hover:shadow-premium transition-all duration-500 group"
+                className="bg-white p-10 rounded-xl border border-slate-100 hover:shadow-premium transition-all duration-500 group"
               >
-                <div className={`w-14 h-14 rounded-2xl mb-8 flex items-center justify-center bg-slate-50 text-slate-400 group-hover:bg-rose-50 group-hover:text-rose-600 transition-all`}>
+                <div className={`w-14 h-14 rounded-lg mb-8 flex items-center justify-center bg-slate-50 text-slate-400 group-hover:bg-rose-50 group-hover:text-rose-600 transition-all`}>
                   {feature.icon}
                 </div>
                 <h3 className="text-2xl font-bold mb-4 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>{feature.title}</h3>
@@ -109,13 +109,13 @@ const JobOrientationPage = () => {
               </div>
             </div>
             
-            <div className="bg-white/5 border border-white/10 rounded-[48px] p-12 backdrop-blur-xl">
+            <div className="bg-white/5 border border-white/10 rounded-xl p-12 backdrop-blur-xl">
               <div className="text-6xl font-black mb-4">98%</div>
               <div className="text-xl font-bold mb-6 text-rose-500">Placement Rate</div>
               <p className="text-slate-400 text-lg leading-relaxed mb-10">
                 Our comprehensive curriculum doesn't end with learning; it ends with you landing the job you've always wanted. We support you until you are placed.
               </p>
-              <button className="w-full py-5 rounded-2xl bg-white text-slate-950 font-black text-sm uppercase tracking-widest hover:bg-rose-500 hover:text-white transition-all">
+              <button className="w-full py-5 rounded-xl bg-white text-slate-950 font-black text-sm uppercase tracking-widest hover:bg-rose-500 hover:text-white transition-all">
                 Speak to a Career Expert
               </button>
             </div>

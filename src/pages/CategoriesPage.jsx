@@ -80,14 +80,17 @@ const CategoriesPage = () => {
               {/* Modern Search */}
               <div className="relative max-w-md group">
                 <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-600 transition-colors">
-                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.3-4.3" />
+                  </svg>
                 </div>
                 <input 
                   type="text" 
                   placeholder="Search categories..." 
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full pl-16 pr-8 py-5 rounded-[24px] border border-slate-100 bg-white shadow-premium focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 outline-none transition-all text-lg font-medium"
+                  className="w-full pl-16 pr-8 py-5.5 rounded-xl border border-slate-100 bg-white shadow-premium focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 outline-none transition-all text-lg font-medium"
                 />
               </div>
             </div>
@@ -102,13 +105,13 @@ const CategoriesPage = () => {
                 <img 
                   src="/category_hero.png" 
                   alt="Learning illustration" 
-                  className="w-full h-auto drop-shadow-[0_32px_64px_rgba(79,70,229,0.15)] rounded-3xl"
+                  className="w-full h-auto drop-shadow-[0_32px_64px_rgba(79,70,229,0.15)] rounded-xl"
                 />
               </motion.div>
               {/* Floating element */}
-              <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-3xl shadow-premium border border-slate-50 z-20 animate-bounce-slow">
+              <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-xl shadow-premium border border-slate-50 z-20 animate-bounce-slow">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-xl">✓</div>
+                  <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-lg flex items-center justify-center text-xl">✓</div>
                   <div>
                     <div className="text-sm font-black text-slate-900">Placement Assisted</div>
                     <div className="text-xs text-slate-400 font-bold">100% Industry Support</div>
@@ -127,7 +130,7 @@ const CategoriesPage = () => {
             <button 
               key={f}
               onClick={() => setActiveFilter(f)}
-              className={`px-8 py-3 rounded-2xl text-sm font-bold transition-all whitespace-nowrap ${
+              className={`px-8 py-4 rounded-xl text-sm font-bold transition-all whitespace-nowrap ${
                 activeFilter === f 
                 ? "bg-slate-900 text-white shadow-xl shadow-slate-900/20" 
                 : "bg-white text-slate-500 hover:bg-slate-50 border border-slate-100"
@@ -153,11 +156,11 @@ const CategoriesPage = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ delay: i * 0.05 }}
                   onClick={() => setSelectedCategory(cat)}
-                  className="group relative bg-white rounded-[40px] p-10 border border-slate-100 hover:border-indigo-100 transition-all duration-500 hover:shadow-premium cursor-pointer overflow-hidden"
+                  className="group relative bg-white rounded-xl p-10 border border-slate-100 hover:border-indigo-100 transition-all duration-500 hover:shadow-premium cursor-pointer overflow-hidden"
                 >
                   {/* Icon/Image */}
                   <div className="relative mb-8">
-                    <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform duration-500">
+                    <div className="w-16 h-16 rounded-xl bg-slate-50 flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform duration-500">
                       {cat.img ? (
                         <img src={cat.img} alt={cat.name} className="w-full h-full object-cover" />
                       ) : (
@@ -205,7 +208,7 @@ const CategoriesPage = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="bg-white w-full max-w-5xl rounded-[48px] overflow-hidden relative z-10 shadow-2xl flex flex-col max-h-full"
+              className="bg-white w-full max-w-5xl rounded-xl overflow-hidden relative z-10 shadow-2xl flex flex-col max-h-full"
             >
               <div className="p-10 border-b border-slate-50 flex justify-between items-center bg-slate-50/30">
                 <div>
@@ -216,7 +219,7 @@ const CategoriesPage = () => {
                 </div>
                 <button 
                   onClick={() => setSelectedCategory(null)}
-                  className="w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:shadow-lg transition-all"
+                  className="w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:shadow-lg transition-all"
                 >
                   <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
                 </button>
@@ -229,7 +232,7 @@ const CategoriesPage = () => {
                       <Link 
                         key={course.id} 
                         to={`/course/${course.id}`}
-                        className="group bg-slate-50/50 rounded-3xl overflow-hidden border border-slate-100 hover:border-indigo-100 hover:bg-white hover:shadow-premium transition-all duration-500"
+                        className="group bg-slate-50/50 rounded-xl overflow-hidden border border-slate-100 hover:border-indigo-100 hover:bg-white hover:shadow-premium transition-all duration-500"
                       >
                         <div className="aspect-video overflow-hidden">
                           <img src={course.img} alt={course.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -247,7 +250,7 @@ const CategoriesPage = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-20 bg-slate-50/50 rounded-[32px] border border-dashed border-slate-200">
+                  <div className="text-center py-20 bg-slate-50/50 rounded-xl border border-dashed border-slate-200">
                     <div className="text-6xl mb-6">🏗️</div>
                     <h3 className="text-2xl font-bold text-slate-900 mb-2">Curriculum Underway</h3>
                     <p className="text-slate-400 font-medium">We're finalizing world-class content for this path. Stay tuned!</p>

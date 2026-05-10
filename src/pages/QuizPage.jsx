@@ -74,9 +74,9 @@ const QuizPage = () => {
                 {[1, 2, 3].map((i) => (
                   <div
                     key={i}
-                    className="group bg-white rounded-[32px] p-10 text-left border border-slate-100 hover:border-indigo-100 hover:shadow-premium transition-all duration-500 hover:-translate-y-2"
+                    className="group bg-white rounded-xl p-10 text-left border border-slate-100 hover:border-indigo-100 hover:shadow-premium transition-all duration-500 hover:-translate-y-2"
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-3xl mb-8 group-hover:bg-indigo-50 group-hover:scale-110 transition-all">
+                    <div className="w-16 h-16 rounded-xl bg-slate-50 flex items-center justify-center text-3xl mb-8 group-hover:bg-indigo-50 group-hover:scale-110 transition-all">
                       📝
                     </div>
                     <h3 className="text-2xl font-bold mb-3 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
@@ -90,7 +90,7 @@ const QuizPage = () => {
                       <span className="text-emerald-500 font-black text-lg uppercase tracking-widest">Free</span>
                       <button 
                         onClick={startQuiz} 
-                        className="px-8 py-3.5 rounded-2xl bg-slate-900 text-white text-sm font-bold hover:bg-indigo-600 transition-all shadow-lg hover:shadow-indigo-600/20"
+                        className="px-8 py-3.5 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-indigo-600 transition-all shadow-lg hover:shadow-indigo-600/20"
                       >
                         Start Arena
                       </button>
@@ -108,11 +108,11 @@ const QuizPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               className="max-w-3xl mx-auto"
             >
-              <div className="bg-white rounded-[40px] p-10 md:p-16 border border-slate-100 shadow-2xl shadow-slate-200/50">
+              <div className="bg-white rounded-xl p-10 md:p-16 border border-slate-100 shadow-2xl shadow-slate-200/50">
                 {/* Header Stats */}
                 <div className="flex justify-between items-center mb-12">
                   <div className="flex items-center gap-4">
-                    <div className="px-5 py-2.5 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 font-black text-xl tabular-nums">
+                    <div className="px-5 py-2.5 rounded-xl bg-indigo-50 border border-indigo-100 text-indigo-600 font-black text-xl tabular-nums">
                       {formatTime(timeLeft)}
                     </div>
                     <span className="text-slate-400 text-xs font-black uppercase tracking-widest">Time Remaining</span>
@@ -143,7 +143,7 @@ const QuizPage = () => {
                     <button
                       key={i}
                       onClick={() => handleAnswer(opt)}
-                      className={`w-full text-left p-6 rounded-2xl border-2 transition-all duration-300 flex items-center gap-6 group ${
+                      className={`w-full text-left p-6 rounded-xl border-2 transition-all duration-300 flex items-center gap-6 group ${
                         answers[currentIndex] === opt
                           ? "border-indigo-600 bg-indigo-50/30"
                           : "border-slate-50 bg-slate-50/50 hover:border-slate-200 hover:bg-white"
@@ -170,14 +170,14 @@ const QuizPage = () => {
                   <button
                     disabled={currentIndex === 0}
                     onClick={() => setCurrentIndex((prev) => prev - 1)}
-                    className="px-10 py-4 rounded-2xl bg-slate-50 text-slate-500 font-bold hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                    className="px-10 py-4 rounded-xl bg-slate-50 text-slate-500 font-bold hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                   >
                     Previous
                   </button>
                   {currentIndex < questions.length - 1 ? (
                     <button
                       onClick={() => setCurrentIndex((prev) => prev + 1)}
-                      className="px-10 py-4 rounded-2xl bg-slate-900 text-white font-bold hover:bg-indigo-600 disabled:opacity-50 transition-all shadow-lg hover:shadow-indigo-600/20"
+                      className="px-10 py-4 rounded-xl bg-slate-900 text-white font-bold hover:bg-indigo-600 disabled:opacity-50 transition-all shadow-lg hover:shadow-indigo-600/20"
                       disabled={!answers[currentIndex]}
                     >
                       Next Question
@@ -185,7 +185,7 @@ const QuizPage = () => {
                   ) : (
                     <button
                       onClick={finishQuiz}
-                      className="px-12 py-4 rounded-2xl bg-emerald-600 text-white font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-600/20"
+                      className="px-12 py-4 rounded-xl bg-emerald-600 text-white font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-600/20"
                       disabled={!answers[currentIndex]}
                     >
                       Finish Arena
@@ -203,7 +203,7 @@ const QuizPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               className="max-w-2xl mx-auto"
             >
-              <div className="bg-white rounded-[48px] p-16 text-center border border-slate-100 shadow-premium">
+              <div className="bg-white rounded-xl p-16 text-center border border-slate-100 shadow-premium">
                 <div className="text-8xl mb-10 drop-shadow-2xl">🏆</div>
                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter" style={{ fontFamily: "'Lexend', sans-serif" }}>
                   Arena Conquered!
@@ -213,23 +213,23 @@ const QuizPage = () => {
                 </p>
 
                 <div className="grid grid-cols-2 gap-8 mb-16">
-                  <div className="bg-slate-50 p-10 rounded-[32px] border border-slate-100">
+                  <div className="bg-slate-50 p-10 rounded-xl border border-slate-100">
                     <span className="text-slate-400 text-xs font-black uppercase tracking-widest block mb-2">Final Score</span>
                     <div className="text-5xl font-black text-indigo-600 tabular-nums">{score} <span className="text-2xl text-slate-300">/ 20</span></div>
                   </div>
-                  <div className="bg-slate-50 p-10 rounded-[32px] border border-slate-100">
+                  <div className="bg-slate-50 p-10 rounded-xl border border-slate-100">
                     <span className="text-slate-400 text-xs font-black uppercase tracking-widest block mb-2">Accuracy</span>
                     <div className="text-5xl font-black text-emerald-500 tabular-nums">{((score / 20) * 100).toFixed(0)}%</div>
                   </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button onClick={startQuiz} className="px-10 py-4 rounded-2xl bg-slate-900 text-white font-bold hover:bg-indigo-600 transition-all shadow-lg">
+                  <button onClick={startQuiz} className="px-10 py-4 rounded-xl bg-slate-950 text-white font-bold hover:bg-indigo-600 transition-all shadow-lg">
                     Try Different Set
                   </button>
                   <button
                     onClick={() => setQuizState("landing")}
-                    className="px-10 py-4 rounded-2xl bg-slate-50 text-slate-600 font-bold hover:bg-slate-100 transition-all"
+                    className="px-10 py-4 rounded-xl bg-slate-50 text-slate-600 font-bold hover:bg-slate-100 transition-all"
                   >
                     Return to Lobby
                   </button>

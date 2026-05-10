@@ -177,11 +177,11 @@ const CoursesPage = () => {
                   transition={{ duration: 0.8 }}
                   className="absolute inset-0"
                 >
-                  <div className="w-full h-full rounded-[48px] overflow-hidden shadow-premium border border-slate-100 p-4 bg-white">
+                  <div className="w-full h-full rounded-xl overflow-hidden shadow-premium border border-slate-100 p-4 bg-white">
                     <img 
                       src={COURSE_HERO_SLIDES[currentSlide].img} 
                       alt="Course Category" 
-                      className="w-full h-full object-cover rounded-[36px]"
+                      className="w-full h-full object-cover rounded-xl"
                     />
                   </div>
                 </motion.div>
@@ -206,7 +206,7 @@ const CoursesPage = () => {
                     else if (cat === "Job Orientation") navigate("/job-orientation");
                     else setSelectedCategory(cat);
                   }}
-                  className={`px-6 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all ${
+                  className={`px-6 py-4 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all ${
                     selectedCategory === cat
                       ? "bg-indigo-600 text-white shadow-xl shadow-indigo-200 scale-105"
                       : "bg-white text-slate-400 hover:bg-slate-50 border border-slate-100"
@@ -223,9 +223,14 @@ const CoursesPage = () => {
                 placeholder="Search for your course..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-14 pr-8 py-5 rounded-2xl bg-white border border-slate-100 focus:border-indigo-600 outline-none transition-all shadow-premium group-hover:border-indigo-200 font-medium"
+                className="w-full pl-14 pr-8 py-5.5 rounded-xl bg-white border border-slate-100 focus:border-indigo-600 outline-none transition-all shadow-premium group-hover:border-indigo-200 font-medium"
               />
-              <span className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300 text-xl group-hover:text-indigo-600 transition-colors">🔍</span>
+              <span className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 transition-colors">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+              </span>
             </div>
           </div>
 
@@ -239,7 +244,7 @@ const CoursesPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4, delay: idx * 0.05 }}
-                  className="group bg-white rounded-[40px] border border-slate-100 hover:border-indigo-100 transition-all duration-500 hover:shadow-premium overflow-hidden flex flex-col"
+                  className="group bg-white rounded-xl border border-slate-100 hover:border-indigo-100 transition-all duration-500 hover:shadow-premium overflow-hidden flex flex-col"
                 >
                   <div className="aspect-[16/10] overflow-hidden relative">
                     <img 
@@ -284,7 +289,14 @@ const CoursesPage = () => {
           
           {filteredCourses.length === 0 && (
             <div className="text-center py-20">
-              <div className="text-6xl mb-6">🔍</div>
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-300">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                </div>
+              </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">No courses found</h3>
               <p className="text-slate-500">Try adjusting your search or category filter.</p>
             </div>

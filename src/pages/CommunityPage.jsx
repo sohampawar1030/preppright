@@ -81,13 +81,13 @@ const CommunityPage = () => {
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="relative w-full max-w-sm aspect-square bg-slate-100 rounded-[80px] overflow-hidden shadow-2xl shadow-slate-200"
+              className="relative w-full max-w-sm aspect-square bg-slate-100 rounded-xl overflow-hidden shadow-2xl shadow-slate-200"
             >
                {/* Simplified Community Visual */}
                <div className="absolute inset-0 flex items-center justify-center">
                   <div className="grid grid-cols-3 gap-4 p-8">
                      {[...Array(9)].map((_, i) => (
-                        <div key={i} className="w-12 h-12 rounded-2xl bg-white shadow-lg flex items-center justify-center text-xl animate-bounce" style={{ animationDelay: `${i * 0.1}s` }}>
+                        <div key={i} className="w-12 h-12 rounded-lg bg-white shadow-lg flex items-center justify-center text-xl animate-bounce" style={{ animationDelay: `${i * 0.1}s` }}>
                            👤
                         </div>
                      ))}
@@ -105,9 +105,9 @@ const CommunityPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group p-8 rounded-[40px] bg-white border border-slate-100 hover:border-indigo-200 hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500"
+                className="group p-8 rounded-xl bg-white border border-slate-100 hover:border-indigo-200 hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500"
               >
-                <div className={`w-14 h-14 rounded-2xl ${forum.color} text-white flex items-center justify-center text-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
+                <div className={`w-14 h-14 rounded-lg ${forum.color} text-white flex items-center justify-center text-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
                   {forum.icon}
                 </div>
                 <h3 className="text-xl font-black text-slate-900 mb-2 leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
@@ -130,15 +130,15 @@ const CommunityPage = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-20 p-12 md:p-20 rounded-[64px] bg-slate-950 text-white text-center relative overflow-hidden"
+            className="mt-20 p-12 md:p-20 rounded-xl bg-slate-950 text-white text-center relative overflow-hidden"
           >
              <div className="relative z-10 max-w-2xl mx-auto">
                 <h2 className="text-4xl md:text-5xl font-black mb-8" style={{ fontFamily: "'Lexend', sans-serif" }}>Ready to join the conversation?</h2>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                   <button className="w-full sm:w-auto px-10 py-5 rounded-3xl bg-indigo-600 text-white font-black text-sm uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-2xl shadow-indigo-600/30">
+                   <button className="w-full sm:w-auto px-10 py-5 rounded-xl bg-indigo-600 text-white font-black text-sm uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-2xl shadow-indigo-600/30">
                       Join Global Discord
                    </button>
-                   <Link to="/discuss" className="w-full sm:w-auto px-10 py-5 rounded-3xl bg-white/10 text-white font-black text-sm uppercase tracking-widest hover:bg-white/20 transition-all backdrop-blur-md">
+                   <Link to="/discuss" className="w-full sm:w-auto px-10 py-5 rounded-xl bg-white/10 text-white font-black text-sm uppercase tracking-widest hover:bg-white/20 transition-all backdrop-blur-md">
                       Go to Forums
                    </Link>
                 </div>

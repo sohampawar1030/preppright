@@ -84,9 +84,9 @@ const TechLabPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + i * 0.1 }}
-                className="bg-white p-10 rounded-[40px] border border-slate-100 text-left hover:shadow-premium transition-all duration-500 hover:-translate-y-2 group"
+                className="bg-white p-10 rounded-xl border border-slate-100 text-left hover:shadow-premium transition-all duration-500 hover:-translate-y-2 group"
               >
-                <div className={`w-12 h-12 rounded-2xl mb-8 flex items-center justify-center transition-all ${
+                <div className={`w-12 h-12 rounded-lg mb-8 flex items-center justify-center transition-all ${
                   i === 0 ? "bg-indigo-50 text-indigo-600" : i === 1 ? "bg-emerald-50 text-emerald-600" : "bg-violet-50 text-violet-600"
                 }`}>
                   {i === 0 ? <Layout size={24} /> : i === 1 ? <Settings size={24} /> : <Award size={24} />}
@@ -112,9 +112,9 @@ const TechLabPage = () => {
               <motion.div
                 key={i}
                 whileHover={{ y: -8 }}
-                className="bg-white p-8 rounded-[32px] border border-slate-100 flex items-center gap-6 group hover:border-indigo-100 hover:shadow-premium transition-all duration-300 cursor-pointer"
+                className="bg-white p-8 rounded-xl border border-slate-100 flex items-center gap-6 group hover:border-indigo-100 hover:shadow-premium transition-all duration-300 cursor-pointer"
               >
-                <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-all">
+                <div className="w-14 h-14 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-all">
                   {lab.icon}
                 </div>
                 <div>
@@ -130,7 +130,7 @@ const TechLabPage = () => {
       {/* Deep Integration Section */}
       <section className="py-32">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="bg-slate-950 rounded-[64px] p-12 md:p-24 relative overflow-hidden">
+          <div className="bg-slate-950 rounded-xl p-12 md:p-24 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-600/20 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
@@ -157,14 +157,14 @@ const TechLabPage = () => {
                     </div>
                   ))}
                 </div>
-                <button className="px-10 py-4 rounded-2xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/20">
+                <button className="px-10 py-4 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/20">
                   Request Enterprise Demo
                 </button>
               </div>
 
-              <div className="bg-white/5 border border-white/10 rounded-[48px] p-12 backdrop-blur-xl">
+              <div className="bg-white/5 border border-white/10 rounded-xl p-12 backdrop-blur-xl">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-lg bg-indigo-600 flex items-center justify-center">
                     <Users size={24} color="white" />
                   </div>
                   <div>
@@ -175,7 +175,7 @@ const TechLabPage = () => {
                 <p className="text-slate-400 text-lg leading-relaxed mb-10 font-medium">
                   PreppRight LABS map to any course, textbook, or training program. Our engine dynamically adjusts scenarios based on student performance.
                 </p>
-                <div className="p-8 rounded-3xl bg-indigo-600/10 border border-indigo-500/20">
+                <div className="p-8 rounded-xl bg-indigo-600/10 border border-indigo-500/20">
                   <div className="text-white font-bold mb-4">98% Completion Rate</div>
                   <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
                     <motion.div initial={{ width: 0 }} whileInView={{ width: "98%" }} className="h-full bg-indigo-400" />

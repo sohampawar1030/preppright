@@ -59,7 +59,7 @@ const ContactPage = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white p-10 md:p-16 rounded-[48px] border border-slate-100 shadow-premium relative z-10"
+              className="bg-white p-10 md:p-16 rounded-xl border border-slate-100 shadow-premium relative z-10"
             >
               {submitted ? (
                 <div className="text-center py-12">
@@ -70,7 +70,7 @@ const ContactPage = () => {
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="mt-10 px-8 py-3 rounded-2xl bg-slate-50 text-slate-600 font-bold hover:bg-slate-100 transition-all"
+                    className="mt-10 px-8 py-3 rounded-xl bg-slate-50 text-slate-600 font-bold hover:bg-slate-100 transition-all"
                   >
                     Send Another Message
                   </button>
@@ -91,12 +91,12 @@ const ContactPage = () => {
                       onChange={handleChange}
                       required
                       rows="4"
-                      className="w-full px-6 py-4 rounded-2xl border border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 outline-none transition-all font-medium resize-none"
+                      className="w-full px-6 py-4 rounded-xl border border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 outline-none transition-all font-medium resize-none"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-5 rounded-[24px] bg-slate-950 text-white font-black uppercase tracking-widest text-sm hover:bg-indigo-600 transition-all shadow-xl shadow-slate-950/10 hover:shadow-indigo-600/20"
+                    className="w-full py-5 rounded-xl bg-slate-950 text-white font-black uppercase tracking-widest text-sm hover:bg-indigo-600 transition-all shadow-xl shadow-slate-950/10 hover:shadow-indigo-600/20"
                   >
                     Request Call Back
                   </button>
@@ -114,7 +114,7 @@ const ContactPage = () => {
 
 const ContactInfoItem = ({ icon, title, detail }) => (
   <div className="flex gap-6 items-center">
-    <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-2xl shadow-sm">
+    <div className="w-14 h-14 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-2xl shadow-sm">
       {icon}
     </div>
     <div>
@@ -129,7 +129,7 @@ const InputGroup = ({ label, ...props }) => (
     <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">{label}</label>
     <input 
       {...props} 
-      className="w-full px-6 py-4 rounded-2xl border border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 outline-none transition-all font-medium"
+      className="w-full px-6 py-4 rounded-xl border border-slate-100 bg-slate-50/50 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 outline-none transition-all font-medium"
     />
   </div>
 );

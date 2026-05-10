@@ -6,7 +6,7 @@ const PARTNER_LOGOS = [
   "WhatsApp Image 2026-05-09 at 6.37.21 PM.jpeg",
   "WhatsApp Image 2026-05-09 at 6.39.58 PM.jpeg",
   "WhatsApp Image 2026-05-09 at 6.41.12 PM.jpeg",
-  "WhatsApp Image 2026-05-09 at 6.59.16 PM.jpeg"
+  "WhatsApp Image 2026-05-09 at 6.59.16 PM.jpeg",
 ];
 
 const CredentialsPartner = () => {
@@ -15,9 +15,15 @@ const CredentialsPartner = () => {
   return (
     <section className="py-16 bg-white overflow-hidden border-t border-slate-50">
       <div className="max-w-7xl mx-auto px-6 mb-10 text-center">
-        <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em] mb-3">Our Credentials & Partners</p>
-        <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
-          Certified & Recognized by <span className="text-indigo-600">Leading Institutions</span>
+        <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em] mb-3">
+          Our Credentials & Partners
+        </p>
+        <h2
+          className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight"
+          style={{ fontFamily: "'Lexend', sans-serif" }}
+        >
+          Certified & Recognized by{" "}
+          <span className="text-indigo-600">Leading Institutions</span>
         </h2>
       </div>
 
@@ -28,10 +34,13 @@ const CredentialsPartner = () => {
 
         <div className="flex animate-scroll-mid whitespace-nowrap gap-12 md:gap-20 items-center">
           {scrollLogos.map((logo, i) => (
-            <div key={i} className="flex-shrink-0 bg-slate-50 p-8 rounded-3xl border border-slate-200/50 flex items-center justify-center w-64 h-36 transition-transform hover:scale-105 duration-300">
-              <img 
-                src={`/images/courses/Creditional_partner/${logo}`} 
-                alt="Partner Credential" 
+            <div
+              key={i}
+              className="flex-shrink-0 bg-slate-50 p-8 rounded-3xl border border-slate-200/50 flex items-center justify-center w-64 h-36 transition-transform hover:scale-105 duration-300"
+            >
+              <img
+                src={`/images/courses/Creditional_partner/${logo}`}
+                alt="Partner Credential"
                 className="max-h-full max-w-full object-contain grayscale-[20%] hover:grayscale-0 transition-all duration-500 opacity-80 hover:opacity-100"
               />
             </div>

@@ -28,7 +28,7 @@ const Footer = () => (
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300"
+                className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300"
               >
                 {social.icon === "youtube" ? (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -62,14 +62,14 @@ const Footer = () => (
         </div>
 
         {/* Newsletter */}
-        <div className="bg-white/5 p-6 md:p-8 rounded-[32px] border border-white/10 text-center sm:text-left">
+        <div className="bg-white/5 p-6 md:p-8 rounded-xl border border-white/10 text-center sm:text-left">
           <h4 className="text-white font-bold text-lg mb-4" style={{ fontFamily: "'Lexend', sans-serif" }}>Newsletter</h4>
           <p className="text-slate-400 text-sm mb-6 leading-relaxed">Stay updated with our latest courses and career opportunities.</p>
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center w-full min-h-[48px] px-6 rounded-2xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-600/20 active:scale-95"
+            className="flex items-center justify-center w-full min-h-[48px] px-6 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-600/20 active:scale-95"
           >
             Subscribe Now
           </a>

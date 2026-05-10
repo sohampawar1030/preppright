@@ -64,7 +64,7 @@ const AdvantageDetailPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <div className="inline-block px-3 py-1 mb-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[10px] font-black uppercase tracking-widest">
+            <div className="inline-block px-3 py-1 mb-8 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[10px] font-black uppercase tracking-widest">
               The Advantage
             </div>
             <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tight leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
@@ -92,8 +92,8 @@ const AdvantageDetailPage = () => {
               </p>
               <div className="space-y-6">
                 {data.features.map((feat, i) => (
-                  <div key={i} className="flex gap-4 p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:border-indigo-100 transition-all">
-                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm text-indigo-600 font-bold">0{i+1}</div>
+                  <div key={i} className="flex gap-4 p-6 rounded-xl bg-slate-50 border border-slate-100 hover:border-indigo-100 transition-all">
+                    <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm text-indigo-600 font-bold">0{i+1}</div>
                     <div>
                       <h4 className="font-bold text-slate-900 mb-1">{feat.title}</h4>
                       <p className="text-sm text-slate-400 font-medium leading-relaxed">{feat.desc}</p>
@@ -107,7 +107,7 @@ const AdvantageDetailPage = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative rounded-[48px] overflow-hidden shadow-premium"
+              className="relative rounded-xl overflow-hidden shadow-premium"
             >
               <img src={data.heroImg} alt={data.title} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent" />
@@ -125,13 +125,13 @@ const AdvantageDetailPage = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <button 
               onClick={() => navigate('/courses')}
-              className="px-10 py-4 rounded-2xl bg-indigo-600 text-white font-black text-sm uppercase tracking-widest hover:bg-indigo-700 hover:shadow-xl transition-all active:scale-95"
+              className="px-10 py-4 rounded-xl bg-indigo-600 text-white font-black text-sm uppercase tracking-widest hover:bg-indigo-700 hover:shadow-xl transition-all active:scale-95"
             >
               Explore Courses
             </button>
             <button 
               onClick={() => navigate('/')}
-              className="px-10 py-4 rounded-2xl bg-white border border-slate-200 text-slate-900 font-black text-sm uppercase tracking-widest hover:bg-slate-50 transition-all"
+              className="px-10 py-4 rounded-xl bg-white border border-slate-200 text-slate-900 font-black text-sm uppercase tracking-widest hover:bg-slate-50 transition-all"
             >
               Back to Home
             </button>

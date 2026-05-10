@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const CTA = () => (
   <section className="py-20 md:py-32 bg-white">
     <div className="w-full max-w-7xl mx-auto px-4 md:px-8">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
@@ -16,7 +16,7 @@ const CTA = () => (
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-violet-600/10 rounded-full blur-[100px] md:blur-[120px] translate-y-1/2 -translate-x-1/2" />
 
         <div className="relative z-10">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -24,13 +24,21 @@ const CTA = () => (
           >
             Start Your Transformation
           </motion.div>
-          
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-8 tracking-tighter leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
-            Ready to <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">Scale New Heights</span> <br /> In Your Career?
+
+          <h2
+            className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-8 tracking-tighter leading-tight"
+            style={{ fontFamily: "'Lexend', sans-serif" }}
+          >
+            Ready to{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+              Scale New Heights
+            </span>{" "}
+            <br /> In Your Career?
           </h2>
-          
+
           <p className="text-slate-400 text-base md:text-xl max-w-2xl mx-auto mb-12 md:mb-16 font-medium leading-relaxed">
-            Join 15,000+ students and professionals who have transformed their lives through PreppRight's industry-standard training.
+            Join 15,000+ students and professionals who have transformed their
+            lives through PreppRight's industry-standard training.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
@@ -42,8 +50,8 @@ const CTA = () => (
             >
               Get Started for Free
             </a>
-            <Link 
-              to="/courses" 
+            <Link
+              to="/courses"
               className="flex items-center justify-center min-h-[56px] px-10 rounded-2xl bg-white/5 border border-white/10 text-white font-black text-sm uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95"
             >
               Explore Courses

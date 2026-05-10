@@ -256,7 +256,7 @@ const StatCard = ({ icon, label, value }) => (
       alignItems: "center",
       gap: 14,
       padding: "16px 20px",
-      borderRadius: 16,
+      borderRadius: 12,
       background: "rgba(0,0,0,0.03)",
       border: "1px solid rgba(0,0,0,0.05)",
       transition: "all .3s",
@@ -266,7 +266,7 @@ const StatCard = ({ icon, label, value }) => (
       style={{
         width: 44,
         height: 44,
-        borderRadius: 12,
+        borderRadius: 8,
         background: "rgba(99,102,241,.15)",
         border: "1px solid rgba(99,102,241,.2)",
         display: "flex",
@@ -388,7 +388,7 @@ const FaqItem = ({ q, a }) => {
       className="cdp-faq-item"
       style={{
         padding: "20px 24px",
-        borderRadius: 16,
+        borderRadius: 12,
         border: "1px solid rgba(0,0,0,0.08)",
         background: "rgba(0,0,0,0.03)",
         cursor: "pointer",
@@ -621,7 +621,7 @@ const CourseDetailsPage = () => {
       ════════════════════════════════════ */}
       <section
         ref={heroRef}
-        className="pt-20 pb-24 relative z-10"
+        className="py-20 relative z-10"
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center min-h-[500px]">
@@ -675,15 +675,15 @@ const CourseDetailsPage = () => {
                 </div>
 
                 <div className="cdp-ani-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
+                  <div className="p-6 rounded-xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
                     <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Duration</div>
                     <div className="text-lg font-black text-slate-900">{course.duration}</div>
                   </div>
-                  <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
+                  <div className="p-6 rounded-xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
                     <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Students</div>
                     <div className="text-lg font-black text-slate-900">{course.students_enrolled}</div>
                   </div>
-                  <div className="p-6 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
+                  <div className="p-6 rounded-xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
                     <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Projects</div>
                     <div className="text-lg font-black text-slate-900">{course.projects_count}+</div>
                   </div>
@@ -692,12 +692,12 @@ const CourseDetailsPage = () => {
                 <div className="cdp-ani-4 flex flex-col sm:flex-row gap-5">
                   <button
                     onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform", "_blank")}
-                    className="px-10 py-5 rounded-[20px] bg-slate-950 text-white font-black text-sm uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-2xl shadow-slate-950/20 active:scale-95 text-center"
+                    className="px-10 py-5.5 rounded-xl bg-slate-950 text-white font-black text-sm uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-2xl shadow-slate-950/20 active:scale-95 text-center"
                   >
                     Enroll Now - {course.price}
                   </button>
                   <button
-                    className="px-10 py-5 rounded-[20px] bg-white border border-slate-100 text-slate-900 font-black text-sm uppercase tracking-widest hover:bg-slate-50 transition-all text-center"
+                    className="px-10 py-5.5 rounded-xl bg-white border border-slate-100 text-slate-900 font-black text-sm uppercase tracking-widest hover:bg-slate-50 transition-all text-center"
                   >
                     Download Syllabus
                   </button>
@@ -712,15 +712,15 @@ const CourseDetailsPage = () => {
                 transition={{ duration: 0.8 }}
                 className="absolute inset-0"
               >
-                <div className="relative z-10 bg-white p-4 rounded-[48px] shadow-premium border border-slate-100 h-full overflow-hidden">
-                  <div className="w-full h-full bg-slate-50 rounded-[36px] overflow-hidden group relative">
+                <div className="relative z-10 bg-white p-4 rounded-xl shadow-premium border border-slate-100 h-full overflow-hidden">
+                  <div className="w-full h-full bg-slate-50 rounded-lg overflow-hidden group relative">
                     <img 
                       src={course.image_url || `/images/courses/${id}.png`}
                       alt={course.title} 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent" />
-                    <div className="absolute bottom-6 left-6 px-5 py-3 rounded-2xl bg-white/90 backdrop-blur-md border border-white/20 shadow-xl">
+                    <div className="absolute bottom-6 left-6 px-5 py-3 rounded-lg bg-white/90 backdrop-blur-md border border-white/20 shadow-xl">
                       <div className="text-sm font-black text-slate-900 uppercase tracking-widest" style={{ fontFamily: "'Lexend', sans-serif" }}>
                          🔥 Trending Choice
                       </div>
@@ -739,7 +739,7 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           WHO IS THIS FOR + CAREER OUTCOMES
       ════════════════════════════════════ */}
-      <section className="py-24 relative z-10 border-t border-slate-100 bg-slate-50/30">
+      <section className="py-20 relative z-10 border-t border-slate-100 bg-slate-50/30">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             
@@ -794,7 +794,7 @@ const CourseDetailsPage = () => {
                 {course.career_outcomes?.map((item, i) => (
                   <div
                     key={i}
-                    className="p-5 rounded-2xl bg-slate-900 text-white font-bold text-sm text-center shadow-lg shadow-slate-200 hover:bg-indigo-600 hover:shadow-indigo-200 transition-all duration-300 cursor-default"
+                    className="p-5 rounded-xl bg-slate-900 text-white font-bold text-sm text-center shadow-lg shadow-slate-200 hover:bg-indigo-600 hover:shadow-indigo-200 transition-all duration-300 cursor-default"
                   >
                     {item}
                   </div>
@@ -802,7 +802,7 @@ const CourseDetailsPage = () => {
               </div>
 
               {/* Success Metric Card */}
-              <div className="p-6 md:p-8 rounded-[32px] bg-gradient-to-br from-indigo-600 to-indigo-700 text-white shadow-2xl shadow-indigo-200 relative overflow-hidden group mb-10">
+              <div className="p-6 md:p-8 rounded-xl bg-gradient-to-br from-indigo-600 to-indigo-700 text-white shadow-2xl shadow-indigo-200 relative overflow-hidden group mb-10">
                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-125 transition-transform duration-700">
                   <IcTrophy />
                 </div>
@@ -850,7 +850,7 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           CURRICULUM / ROADMAP
       ════════════════════════════════════ */}
-      <section className="py-24 relative z-10 border-t border-slate-100 bg-white">
+      <section className="py-20 relative z-10 border-t border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
@@ -873,7 +873,7 @@ const CourseDetailsPage = () => {
                 <button
                   key={i}
                   onClick={() => setActiveModule(i)}
-                  className={`flex flex-col gap-1 p-5 rounded-2xl text-left transition-all duration-300 border ${
+                  className={`flex flex-col gap-1 p-5 rounded-xl text-left transition-all duration-300 border ${
                     activeModule === i
                     ? "bg-slate-950 border-slate-950 shadow-2xl shadow-slate-200"
                     : "bg-white border-slate-100 hover:border-indigo-200 hover:bg-slate-50 shadow-sm"
@@ -911,7 +911,7 @@ const CourseDetailsPage = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.4 }}
-                  className="p-8 md:p-12 rounded-[40px] bg-slate-50 border border-slate-100 shadow-inner relative overflow-hidden"
+                  className="p-8 md:p-12 rounded-xl bg-slate-50 border border-slate-100 shadow-inner relative overflow-hidden"
                 >
                   {/* Decorative background accent */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
@@ -967,7 +967,7 @@ const CourseDetailsPage = () => {
       ════════════════════════════════════ */}
       <section
         style={{
-          padding: "70px 0",
+          padding: "80px 0",
           position: "relative",
           zIndex: 10,
           borderTop: "1px solid rgba(255,255,255,.04)",
@@ -1134,7 +1134,7 @@ const CourseDetailsPage = () => {
                   className="cdp-tool-card"
                   style={{
                     padding: "18px 22px",
-                    borderRadius: 18,
+                    borderRadius: 12,
                     background: "rgba(255,255,255,.03)",
                     border: "1px solid rgba(255,255,255,.08)",
                     display: "flex",
@@ -1150,7 +1150,7 @@ const CourseDetailsPage = () => {
                     style={{
                       width: 54,
                       height: 54,
-                      borderRadius: 14,
+                      borderRadius: 8,
                       background: "rgba(255,255,255,.03)",
                       border: "1px solid rgba(0,0,0,0.08)",
                       display: "flex",
@@ -1272,7 +1272,7 @@ const CourseDetailsPage = () => {
                 className="cdp-proj-card"
                 style={{
                   padding: "36px 32px",
-                  borderRadius: 28,
+                  borderRadius: 12,
                   background: "rgba(0,0,0,0.03)",
                   border: "1px solid rgba(255,255,255,.06)",
                   transition: "all .35s",
@@ -1296,7 +1296,7 @@ const CourseDetailsPage = () => {
                   style={{
                     width: 64,
                     height: 64,
-                    borderRadius: 20,
+                    borderRadius: 8,
                     background: "linear-gradient(135deg,#6366f1,#ec4899)",
                     marginBottom: 24,
                     display: "flex",
@@ -1397,7 +1397,7 @@ const CourseDetailsPage = () => {
       ════════════════════════════════════ */}
       <section
         style={{
-          padding: "100px 0",
+          padding: "80px 0",
           position: "relative",
           zIndex: 10,
           background: "rgba(255,255,255,.01)",
@@ -1514,7 +1514,7 @@ const CourseDetailsPage = () => {
                   style={{
                     width: isMobile ? "100%" : "45%",
                     padding: "32px",
-                    borderRadius: 32,
+                    borderRadius: 12,
                     background: "#fff",
                     border: "1px solid rgba(0,0,0,0.06)",
                     boxShadow: "0 20px 40px rgba(0,0,0,0.02)",
@@ -1582,7 +1582,7 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           COMPARISON TABLE
       ════════════════════════════════════ */}
-      <section style={{ padding: "100px 0", position: "relative", zIndex: 10 }}>
+      <section style={{ padding: "80px 0", position: "relative", zIndex: 10 }}>
         <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 24px" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <Pill color="#6366f1" bg="rgba(99,102,241,0.1)">
@@ -1605,7 +1605,7 @@ const CourseDetailsPage = () => {
           <div
             style={{
               overflowX: "auto",
-              borderRadius: 24,
+              borderRadius: 12,
               border: "1px solid rgba(255,255,255,.08)",
               background: "rgba(0,0,0,0.03)",
               WebkitOverflowScrolling: "touch",
@@ -1726,7 +1726,7 @@ const CourseDetailsPage = () => {
       ════════════════════════════════════ */}
       <section
         style={{
-          padding: "100px 0",
+          padding: "80px 0",
           position: "relative",
           zIndex: 10,
           background: "rgba(99,102,241,.02)",
@@ -1749,7 +1749,7 @@ const CourseDetailsPage = () => {
               <div
                 style={{
                   padding: isMobile ? 20 : 40,
-                  borderRadius: 40,
+                  borderRadius: 12,
                   background: "linear-gradient(135deg, #5865F2, #404EED)",
                   boxShadow: "0 30px 60px rgba(88,101,242,.3)",
                   position: "relative",
@@ -1886,7 +1886,7 @@ const CourseDetailsPage = () => {
                       style={{
                         width: 18,
                         height: 18,
-                        borderRadius: 6,
+                        borderRadius: 4,
                         background: "#10b981",
                         display: "flex",
                         alignItems: "center",
@@ -1908,7 +1908,7 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           STUDENT REVIEWS
       ════════════════════════════════════ */}
-      <section style={{ padding: "100px 0", position: "relative", zIndex: 10 }}>
+      <section style={{ padding: "80px 0", position: "relative", zIndex: 10 }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <Pill color="#ec4899" bg="rgba(236,72,153,.1)">
@@ -1956,7 +1956,7 @@ const CourseDetailsPage = () => {
                 whileHover={{ y: -10 }}
                 style={{
                   padding: 30,
-                  borderRadius: 28,
+                  borderRadius: 12,
                   background: "rgba(0,0,0,0.03)",
                   border: "1px solid rgba(255,255,255,.06)",
                   position: "relative",
@@ -2038,7 +2038,7 @@ const CourseDetailsPage = () => {
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
           <div
             style={{
-              borderRadius: 40,
+              borderRadius: 12,
               background: "#0f172a",
               border: "1px solid #1e293b",
               padding: isMobile ? "32px 24px" : "64px",
@@ -2129,7 +2129,7 @@ const CourseDetailsPage = () => {
                         style={{
                           width: 22,
                           height: 22,
-                          borderRadius: 8,
+                          borderRadius: 4,
                           background: "rgba(99,102,241,.1)",
                           display: "flex",
                           alignItems: "center",
@@ -2149,7 +2149,7 @@ const CourseDetailsPage = () => {
               <div
                 style={{
                   padding: isMobile ? "32px 24px" : "44px 40px",
-                  borderRadius: 28,
+                  borderRadius: 12,
                   background: "rgba(0,0,0,0.03)",
                   border: "1px solid rgba(0,0,0,0.05)",
                   textAlign: "center",
@@ -2198,7 +2198,7 @@ const CourseDetailsPage = () => {
                     <span
                       style={{
                         padding: "4px 10px",
-                        borderRadius: 8,
+                        borderRadius: 4,
                         background: "rgba(236, 72, 153, 0.1)",
                         color: "#ec4899",
                         fontSize: 12,
@@ -2296,7 +2296,7 @@ const CourseDetailsPage = () => {
       ════════════════════════════════════ */}
       <section
         style={{
-          padding: "100px 0",
+          padding: "80px 0",
           position: "relative",
           zIndex: 10,
           borderTop: "1px solid #1e293b",
@@ -2364,7 +2364,7 @@ const CourseDetailsPage = () => {
                   width: "100%",
                   maxWidth: 450,
                   padding: "40px",
-                  borderRadius: 32,
+                  borderRadius: 12,
                   background: "rgba(0,0,0,0.03)",
                   border: "1px solid rgba(255,255,255,.06)",
                   position: "relative",
@@ -2383,7 +2383,7 @@ const CourseDetailsPage = () => {
                     style={{
                       width: 80,
                       height: 80,
-                      borderRadius: 24,
+                      borderRadius: 8,
                       background: "linear-gradient(135deg, #6366f1, #818cf8)",
                       display: "flex",
                       alignItems: "center",
@@ -2444,7 +2444,7 @@ const CourseDetailsPage = () => {
                       alignItems: "center",
                       gap: 8,
                       padding: "12px 20px",
-                      borderRadius: 14,
+                      borderRadius: 8,
                       background: "rgba(10, 102, 194, 0.05)",
                       color: "#0a66c2",
                       fontSize: 13,
@@ -2479,7 +2479,7 @@ const CourseDetailsPage = () => {
       ════════════════════════════════════ */}
       <section
         style={{
-          padding: "100px 0",
+          padding: "80px 0",
           position: "relative",
           zIndex: 10,
           borderTop: "1px solid rgba(255,255,255,.04)",
@@ -2538,7 +2538,7 @@ const CourseDetailsPage = () => {
               alignItems: "center",
               background: "rgba(0,0,0,0.03)",
               padding: isMobile ? "30px" : "60px",
-              borderRadius: isMobile ? 24 : 40,
+              borderRadius: 12,
               border: "1px solid rgba(0,0,0,0.05)",
               backdropFilter: "blur(20px)",
             }}
@@ -2592,7 +2592,7 @@ const CourseDetailsPage = () => {
                       style={{
                         width: 48,
                         height: 48,
-                        borderRadius: 16,
+                        borderRadius: 8,
                         background: "rgba(129,140,248,.1)",
                         display: "flex",
                         alignItems: "center",
@@ -2703,7 +2703,7 @@ const CourseDetailsPage = () => {
               borderTop: isMobile
                 ? "1px solid rgba(255,255,255,.1)"
                 : "1px solid rgba(255,255,255,.1)",
-              borderRadius: isMobile ? 0 : 24,
+              borderRadius: isMobile ? 0 : 12,
               padding: isMobile ? "8px 10px" : "18px 28px",
               display: "flex",
               flexDirection: "row",

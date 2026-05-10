@@ -89,10 +89,10 @@ const PracticeAssessmentPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group p-8 md:p-12 rounded-[48px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500 relative overflow-hidden"
+                className="group p-8 md:p-12 rounded-xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200 transition-all duration-500 relative overflow-hidden"
               >
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className={`w-16 h-16 rounded-3xl ${item.color} text-white flex items-center justify-center text-3xl mb-8 shadow-2xl transition-transform group-hover:rotate-6`}>
+                  <div className={`w-16 h-16 rounded-xl ${item.color} text-white flex items-center justify-center text-3xl mb-8 shadow-2xl transition-transform group-hover:rotate-6`}>
                     {item.icon}
                   </div>
                   
@@ -120,7 +120,7 @@ const PracticeAssessmentPage = () => {
                       href="https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-8 py-4 rounded-2xl bg-slate-950 text-white font-black text-[11px] uppercase tracking-[0.1em] hover:bg-indigo-600 transition-all shadow-xl shadow-slate-200"
+                      className="px-8 py-4 rounded-xl bg-slate-950 text-white font-black text-[11px] uppercase tracking-[0.1em] hover:bg-indigo-600 transition-all shadow-xl shadow-slate-200"
                     >
                       Start Assessment
                     </a>
@@ -142,7 +142,7 @@ const PracticeAssessmentPage = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-20 p-10 md:p-16 rounded-[60px] bg-indigo-600 text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden"
+            className="mt-20 p-10 md:p-16 rounded-xl bg-indigo-600 text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden"
           >
              <div className="relative z-10 text-center md:text-left">
                 <h2 className="text-3xl md:text-4xl font-black mb-4" style={{ fontFamily: "'Lexend', sans-serif" }}>Join the Global Leaderboard</h2>
@@ -152,7 +152,7 @@ const PracticeAssessmentPage = () => {
                 href="https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative z-10 px-10 py-5 rounded-3xl bg-white text-indigo-600 font-black text-sm uppercase tracking-widest shadow-2xl hover:scale-105 active:scale-95 transition-all inline-block"
+                className="relative z-10 px-10 py-5 rounded-xl bg-white text-indigo-600 font-black text-sm uppercase tracking-widest shadow-2xl hover:scale-105 active:scale-95 transition-all inline-block"
               >
                 View Rankings
              </a>

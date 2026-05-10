@@ -11,7 +11,7 @@ const STUDENT_IMAGES = [
   "image copy 6.png",
   "image copy 7.png",
   "image copy 8.png",
-  "image copy 9.png"
+  "image copy 9.png",
 ];
 
 const Trust = () => {
@@ -19,7 +19,7 @@ const Trust = () => {
     <section className="py-20 md:py-32 bg-white overflow-hidden">
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 text-center">
         <div className="mb-12 md:mb-20">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -27,21 +27,22 @@ const Trust = () => {
           >
             Alumni Success
           </motion.p>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight" 
+            className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight"
             style={{ fontFamily: "'Lexend', sans-serif" }}
           >
-            Our Alumni Work At <span className="text-indigo-600">Global Giants</span>
+            Our Alumni Work At{" "}
+            <span className="text-indigo-600">Global Giants</span>
           </motion.h2>
         </div>
 
         {/* Student Photos Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 lg:gap-8">
           {STUDENT_IMAGES.map((img, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -49,11 +50,14 @@ const Trust = () => {
               viewport={{ once: true }}
               className="aspect-square sm:aspect-[4/3] rounded-[32px] overflow-hidden shadow-premium group border border-slate-50 bg-slate-50"
             >
-              <img 
-                src={`/images/Students_working/${img}`} 
-                alt="Alumni Success" 
+              <img
+                src={`/images/Students_working/${img}`}
+                alt="Alumni Success"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                onError={(e) => { e.target.src = "https://via.placeholder.com/400x300?text=Work"; }}
+                onError={(e) => {
+                  e.target.src =
+                    "https://via.placeholder.com/400x300?text=Work";
+                }}
               />
             </motion.div>
           ))}

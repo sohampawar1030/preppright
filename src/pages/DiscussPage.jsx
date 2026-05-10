@@ -51,12 +51,15 @@ const DiscussPage = () => {
           {/* Search Box */}
           <div className="relative max-w-2xl mx-auto group">
             <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-600 transition-colors">
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
             </div>
             <input 
               type="text" 
               placeholder="Search discussions, topics, or mentors..." 
-              className="w-full pl-16 pr-8 py-6 rounded-[32px] border border-slate-100 bg-white shadow-premium focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 outline-none transition-all text-lg font-medium"
+              className="w-full pl-16 pr-8 py-6 rounded-xl border border-slate-100 bg-white shadow-premium focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 outline-none transition-all text-lg font-medium"
             />
           </div>
         </div>
@@ -82,7 +85,7 @@ const DiscussPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="group bg-white p-8 rounded-[32px] border border-slate-100 hover:border-indigo-100 transition-all duration-300 hover:shadow-premium cursor-pointer"
+                  className="group bg-white p-8 rounded-xl border border-slate-100 hover:border-indigo-100 transition-all duration-300 hover:shadow-premium cursor-pointer"
                 >
                   <div className="flex gap-8 items-start">
                     <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-3xl group-hover:bg-indigo-50 group-hover:scale-110 transition-all">
@@ -106,7 +109,7 @@ const DiscussPage = () => {
                         ))}
                       </div>
                     </div>
-                    <div className="text-center px-6 py-4 bg-slate-50 rounded-2xl border border-slate-100 group-hover:border-indigo-100 transition-colors">
+                    <div className="text-center px-6 py-4 bg-slate-50 rounded-xl border border-slate-100 group-hover:border-indigo-100 transition-colors">
                       <div className="text-2xl font-black text-slate-900 leading-none mb-1">{thread.replies}</div>
                       <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Replies</div>
                     </div>
@@ -115,7 +118,7 @@ const DiscussPage = () => {
               ))}
 
               {/* Empty State / Coming Soon */}
-              <div className="bg-slate-50/50 rounded-[40px] p-16 text-center border-2 border-dashed border-slate-100">
+              <div className="bg-slate-50/50 rounded-xl p-16 text-center border-2 border-dashed border-slate-100">
                 <div className="text-5xl mb-6">🚀</div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">Expanding Community</h3>
                 <p className="text-slate-500 font-medium max-w-md mx-auto mb-10">
@@ -130,7 +133,7 @@ const DiscussPage = () => {
             {/* Sidebar */}
             <div className="space-y-8">
               {/* Stats Card */}
-              <div className="bg-slate-900 text-white p-10 rounded-[40px] shadow-2xl relative overflow-hidden">
+              <div className="bg-slate-900 text-white p-10 rounded-xl shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl" />
                 <h4 className="text-xl font-bold mb-8 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>Live Community Stats</h4>
                 <div className="space-y-6">
@@ -153,7 +156,7 @@ const DiscussPage = () => {
               </div>
 
               {/* Contributors */}
-              <div className="bg-white p-10 rounded-[40px] border border-slate-100 shadow-premium">
+              <div className="bg-white p-10 rounded-xl border border-slate-100 shadow-premium">
                 <h4 className="text-xl font-bold mb-2 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>Top Contributors</h4>
                 <p className="text-sm text-slate-400 font-medium mb-8">Most active this month</p>
                 <div className="space-y-6">
@@ -175,7 +178,7 @@ const DiscussPage = () => {
               </div>
 
               {/* CTA Card */}
-              <div className="bg-indigo-600 p-10 rounded-[40px] text-white text-center relative overflow-hidden group">
+              <div className="bg-indigo-600 p-10 rounded-xl text-white text-center relative overflow-hidden group">
                 <div className="relative z-10">
                   <h4 className="text-xl font-bold mb-4">Start a Discussion</h4>
                   <p className="text-indigo-100 text-sm mb-8 font-medium">Have a doubt? Ask the community now.</p>

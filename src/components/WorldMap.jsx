@@ -13,35 +13,40 @@ const WorldMap = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-950 relative overflow-hidden">
+    <section className="py-20 bg-slate-950 relative overflow-hidden">
       {/* Background Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
-            Connecting Learners <br /> <span className="text-indigo-400">Around the World</span>
+          <h2
+            className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight"
+            style={{ fontFamily: "'Lexend', sans-serif" }}
+          >
+            Connecting Learners <br />{" "}
+            <span className="text-indigo-400">Around the World</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
-            We dedicate ourselves to helping every student improve in every place. Join a truly global community.
+            We dedicate ourselves to helping every student improve in every
+            place. Join a truly global community.
           </p>
         </div>
 
         <div className="relative max-w-5xl mx-auto overflow-x-auto pb-10 custom-scrollbar">
           <div className="min-w-[800px] relative">
-            <img 
-              src="/world_map.png" 
-              alt="World Map" 
+            <img
+              src="/world_map.png"
+              alt="World Map"
               className="w-full h-auto opacity-20 filter invert brightness-200"
               onError={(e) => {
                 e.target.style.opacity = "0.1";
               }}
             />
-            
+
             {/* Pins */}
             {locations.map((loc, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: i * 0.1 }}
@@ -53,7 +58,9 @@ const WorldMap = () => {
                   <div className="absolute inset-0 w-3 h-3 bg-indigo-500 rounded-full animate-ping opacity-75" />
                 </div>
                 <div className="bg-white/10 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10 shadow-2xl">
-                  <span className="text-[10px] font-black text-white uppercase tracking-widest">{loc.name}</span>
+                  <span className="text-[10px] font-black text-white uppercase tracking-widest">
+                    {loc.name}
+                  </span>
                 </div>
               </motion.div>
             ))}

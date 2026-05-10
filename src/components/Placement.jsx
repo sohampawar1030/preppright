@@ -14,7 +14,7 @@ const PLACEMENT_LOGOS = [
   "WhatsApp Image 2026-05-09 at 5.39.47 PM (1).jpeg",
   "WhatsApp Image 2026-05-09 at 5.39.47 PM (2).jpeg",
   "WhatsApp Image 2026-05-09 at 5.39.47 PM.jpeg",
-  "WhatsApp Image 2026-05-09 at 5.39.48 PM.jpeg"
+  "WhatsApp Image 2026-05-09 at 5.39.48 PM.jpeg",
 ];
 
 const Placement = () => {
@@ -26,8 +26,12 @@ const Placement = () => {
         <div className="inline-block px-3 py-1 mb-4 rounded-lg bg-emerald-50 border border-emerald-100 text-emerald-600 text-[10px] font-black uppercase tracking-widest">
           Alumni Success
         </div>
-        <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
-          Our Students are <span className="text-indigo-600">Successfully Placed</span>
+        <h2
+          className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight"
+          style={{ fontFamily: "'Lexend', sans-serif" }}
+        >
+          Our Students are{" "}
+          <span className="text-indigo-600">Successfully Placed</span>
         </h2>
       </div>
 
@@ -39,12 +43,15 @@ const Placement = () => {
         <div className="flex animate-scroll-placement whitespace-nowrap gap-6 md:gap-8 items-center py-4">
           {scrollLogos.map((logo, i) => (
             <div key={i} className="flex-shrink-0">
-              <div className="w-[240px] h-[240px] md:w-[300px] md:h-[300px] rounded-3xl overflow-hidden bg-slate-50 border border-slate-100 shadow-md group hover:shadow-xl transition-all duration-300">
-                <img 
-                  src={`/images/courses/placement/${logo}`} 
-                  alt="Placed Student" 
-                  className="w-full h-full object-contain p-2"
-                  onError={(e) => { e.target.src = "https://via.placeholder.com/300x300?text=Success"; }}
+              <div className="w-[240px] h-[240px] md:w-[300px] md:h-[300px] rounded-xl overflow-hidden bg-slate-50 border border-slate-100 shadow-md group hover:shadow-xl transition-all duration-300">
+                <img
+                  src={`/images/courses/placement/${logo}`}
+                  alt="Placed Student"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.src =
+                      "https://via.placeholder.com/300x300?text=Success";
+                  }}
                 />
               </div>
             </div>

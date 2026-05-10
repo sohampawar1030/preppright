@@ -96,14 +96,14 @@ const SkillPathsPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group relative flex flex-col p-8 md:p-10 rounded-[40px] bg-slate-50 border border-slate-100 hover:border-indigo-200 transition-all duration-500 overflow-hidden"
+                className="group relative flex flex-col p-8 md:p-10 rounded-xl bg-slate-50 border border-slate-100 hover:border-indigo-200 transition-all duration-500 overflow-hidden"
               >
                 {/* Background Gradient Accent */}
                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${path.color} opacity-5 blur-[40px] group-hover:opacity-20 transition-opacity`} />
                 
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-8">
-                    <div className="w-16 h-16 rounded-3xl bg-white shadow-xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-500">
+                    <div className="w-16 h-16 rounded-xl bg-white shadow-xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-500">
                       {path.icon}
                     </div>
                     <div className="px-4 py-1.5 rounded-full bg-white border border-slate-200 text-slate-500 text-[10px] font-black uppercase tracking-widest">
@@ -135,7 +135,7 @@ const SkillPathsPage = () => {
                       href="https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 rounded-2xl bg-slate-950 text-white font-black text-[11px] uppercase tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl shadow-slate-200"
+                      className="px-6 py-3 rounded-xl bg-slate-950 text-white font-black text-[11px] uppercase tracking-widest hover:bg-indigo-600 transition-all active:scale-95 shadow-xl shadow-slate-200"
                     >
                       Start Path
                     </a>

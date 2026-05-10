@@ -16,7 +16,7 @@ const PolicyPage = ({ title, children }) => {
           {title}
         </h1>
         <div
-          className="prose prose-slate max-w-none bg-slate-50/50 p-10 md:p-16 rounded-[40px] border border-slate-100 shadow-sm leading-relaxed text-slate-600 font-medium"
+          className="prose prose-slate max-w-none bg-slate-50/50 p-10 md:p-16 rounded-xl border border-slate-100 shadow-sm leading-relaxed text-slate-600 font-medium"
         >
           {children}
         </div>
