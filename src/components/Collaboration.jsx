@@ -11,9 +11,9 @@ const Collaboration = () => {
   const scrollLogos = [...COLLAB_LOGOS, ...COLLAB_LOGOS, ...COLLAB_LOGOS]; // More repeats for smaller lists
 
   return (
-    <section className="py-16 bg-slate-50/50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 mb-10 text-center">
-        <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em] mb-3">
+    <section className="bg-slate-50/50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-8 md:mb-12 text-center">
+        <p className="text-sm md:text-base font-black text-indigo-600 uppercase tracking-[0.3em] mb-3">
           Industry Collaborations
         </p>
         <h2

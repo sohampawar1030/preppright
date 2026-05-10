@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { Cpu, Users, BarChart3 } from "lucide-react";
 
 const Empower = () => {
   const navigate = useNavigate();
@@ -10,15 +11,15 @@ const Empower = () => {
       title: "Interactive Modules",
       desc: "Engage with immersive courses, gamified quizzes, and high-fidelity multimedia tailored for modern learners.",
       img: "/images/categories/development.png",
-      icon: "💻",
-      accent: "bg-blue-500",
+      icon: <Cpu size={28} strokeWidth={2.5} />,
+      accent: "bg-blue-600",
     },
     {
       id: "mentorship-tracking",
       title: "Mentorship & Tracking",
       desc: "Get 1-on-1 human guidance and real-time progress insights to ensure you never lose your learning momentum.",
       img: "/images/categories/marketing.png",
-      icon: "🤝",
+      icon: <Users size={28} strokeWidth={2.5} />,
       accent: "bg-indigo-600",
     },
     {
@@ -26,7 +27,7 @@ const Empower = () => {
       title: "Advanced Analytics",
       desc: "Visualize your growth with deep-performance metrics, precision feedback, and AI-driven skill mapping.",
       img: "/images/categories/datascience.png",
-      icon: "📊",
+      icon: <BarChart3 size={28} strokeWidth={2.5} />,
       accent: "bg-purple-600",
     },
   ];
@@ -34,19 +35,19 @@ const Empower = () => {
   return (
     <section
       id="empower-section"
-      className="py-20 bg-white relative overflow-hidden"
+      className="bg-white relative overflow-hidden py-16 md:py-24"
     >
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-50/50 rounded-full blur-[100px] -z-10 -translate-x-1/2 -translate-y-1/2" />
 
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8">
-        <div className="flex flex-col lg:flex-row items-start justify-between mb-20 gap-10">
-          <div className="max-w-3xl text-left">
+        <div className="flex flex-col items-center text-center mb-12 md:mb-16 gap-6 md:gap-10">
+          <div className="max-w-4xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-slate-950 text-white text-[10px] font-black uppercase tracking-[0.2em]"
+              className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-slate-950 text-white text-xs md:text-sm font-black uppercase tracking-[0.2em]"
             >
               🚀 PreppRight Standard
             </motion.div>
@@ -54,7 +55,7 @@ const Empower = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-950 mb-0 tracking-tight leading-[1.05]"
+              className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-950 mb-6 tracking-tight leading-[1.05]"
               style={{ fontFamily: "'Lexend', sans-serif" }}
             >
               Experience a New <br />
@@ -66,7 +67,7 @@ const Empower = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-slate-500 font-medium text-lg md:text-xl max-w-sm lg:mb-4 leading-relaxed"
+            className="text-slate-500 font-medium text-lg md:text-xl max-w-2xl leading-relaxed mx-auto"
           >
             We don't just teach courses. We build careers with cutting-edge
             tools and personalized mentorship.
@@ -85,7 +86,7 @@ const Empower = () => {
             >
               <div className="p-10 pb-0">
                 <div
-                  className={`w-14 h-14 rounded-xl ${card.accent} text-white flex items-center justify-center text-2xl mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}
+                  className={`w-14 h-14 rounded-xl ${card.accent} text-white flex items-center justify-center mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}
                 >
                   {card.icon}
                 </div>

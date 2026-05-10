@@ -13,9 +13,9 @@ const CredentialsPartner = () => {
   const scrollLogos = [...PARTNER_LOGOS, ...PARTNER_LOGOS, ...PARTNER_LOGOS];
 
   return (
-    <section className="py-16 bg-white overflow-hidden border-t border-slate-50">
-      <div className="max-w-7xl mx-auto px-6 mb-10 text-center">
-        <p className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em] mb-3">
+    <section className="bg-white overflow-hidden border-t border-slate-50">
+      <div className="max-w-7xl mx-auto px-6 mb-8 md:mb-12 text-center">
+        <p className="text-sm md:text-base font-black text-indigo-600 uppercase tracking-[0.3em] mb-3">
           Our Credentials & Partners
         </p>
         <h2

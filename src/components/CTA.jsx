@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const CTA = () => (
-  <section className="py-20 md:py-32 bg-white">
+  <section className="bg-white">
     <div className="w-full max-w-7xl mx-auto px-4 md:px-8">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -20,7 +20,7 @@ const CTA = () => (
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-1.5 mb-8 rounded-full bg-white/5 border border-white/10 text-indigo-400 text-[10px] font-black uppercase tracking-widest"
+            className="inline-block px-4 py-2 mb-8 rounded-full bg-white/5 border border-white/10 text-indigo-400 text-sm md:text-base font-black uppercase tracking-widest"
           >
             Start Your Transformation
           </motion.div>

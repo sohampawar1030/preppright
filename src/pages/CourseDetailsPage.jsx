@@ -233,12 +233,12 @@ const Pill = ({ children, color = "#6366f1", bg = "rgba(99,102,241,.12)" }) => (
       display: "inline-flex",
       alignItems: "center",
       gap: 5,
-      padding: "4px 12px",
+      padding: "6px 16px",
       borderRadius: 99,
       background: bg,
       color,
-      fontSize: 11,
-      fontWeight: 700,
+      fontSize: 14,
+      fontWeight: 800,
       letterSpacing: ".08em",
       textTransform: "uppercase",
       border: `1px solid ${color}33`,
@@ -554,18 +554,17 @@ const CourseDetailsPage = () => {
   ];
 
   return (
-      <div
-        className="course-details-page"
-        style={{
-          minHeight: "100vh",
-          position: "relative",
-          overflowX: "hidden",
-          paddingTop: "var(--nav-h, 90px)",
-          background: "#fff",
-          color: "#0f172a",
-        }}
-      >
-
+    <div
+      className="course-details-page"
+      style={{
+        minHeight: "100vh",
+        position: "relative",
+        overflowX: "hidden",
+        paddingTop: "var(--nav-h, 90px)",
+        background: "#fff",
+        color: "#0f172a",
+      }}
+    >
       {/* ── Ambient blobs ── */}
       {!isMobile && (
         <div
@@ -619,19 +618,14 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           HERO
       ════════════════════════════════════ */}
-      <section
-        ref={heroRef}
-        className="py-20 relative z-10"
-      >
+      <section ref={heroRef} className="relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center min-h-[500px]">
-            
             <div className="relative z-10">
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="flex flex-col gap-8"
+                className="flex flex-col gap-6"
               >
                 <div className="cdp-ani-1">
                   <Pill color="#6366f1" bg="rgba(99,102,241,0.08)">
@@ -657,48 +651,63 @@ const CourseDetailsPage = () => {
                     color: "#0f172a",
                     lineHeight: 1.1,
                     margin: 0,
-                    letterSpacing: "-0.02em"
+                    letterSpacing: "-0.02em",
                   }}
                 >
                   {course.title}
                 </h1>
 
-                <p
-                  className="cdp-ani-3 text-slate-500 text-xl leading-relaxed max-w-lg font-medium"
-                >
+                <p className="cdp-ani-3 text-slate-500 text-xl leading-relaxed max-w-lg font-medium">
                   {course.description?.split(".")[0]}. {course.subtitle}
                 </p>
 
                 <div className="cdp-ani-3 flex items-center gap-4">
                   <div className="flex text-amber-400 text-lg">★★★★★</div>
-                  <span className="text-sm font-black text-slate-400 uppercase tracking-widest">{course.rating} (12.4k Reviews)</span>
+                  <span className="text-sm font-black text-slate-400 uppercase tracking-widest">
+                    {course.rating} (12.4k Reviews)
+                  </span>
                 </div>
 
                 <div className="cdp-ani-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="p-6 rounded-xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
-                    <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Duration</div>
-                    <div className="text-lg font-black text-slate-900">{course.duration}</div>
+                    <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">
+                      Duration
+                    </div>
+                    <div className="text-lg font-black text-slate-900">
+                      {course.duration}
+                    </div>
                   </div>
                   <div className="p-6 rounded-xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
-                    <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Students</div>
-                    <div className="text-lg font-black text-slate-900">{course.students_enrolled}</div>
+                    <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">
+                      Students
+                    </div>
+                    <div className="text-lg font-black text-slate-900">
+                      {course.students_enrolled}
+                    </div>
                   </div>
                   <div className="p-6 rounded-xl bg-slate-50 border border-slate-100 shadow-sm flex flex-col gap-1">
-                    <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Projects</div>
-                    <div className="text-lg font-black text-slate-900">{course.projects_count}+</div>
+                    <div className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">
+                      Projects
+                    </div>
+                    <div className="text-lg font-black text-slate-900">
+                      {course.projects_count}+
+                    </div>
                   </div>
                 </div>
 
                 <div className="cdp-ani-4 flex flex-col sm:flex-row gap-5">
                   <button
-                    onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform", "_blank")}
+                    onClick={() =>
+                      window.open(
+                        "https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform",
+                        "_blank",
+                      )
+                    }
                     className="px-10 py-5.5 rounded-xl bg-slate-950 text-white font-black text-sm uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-2xl shadow-slate-950/20 active:scale-95 text-center"
                   >
                     Enroll Now - {course.price}
                   </button>
-                  <button
-                    className="px-10 py-5.5 rounded-xl bg-white border border-slate-100 text-slate-900 font-black text-sm uppercase tracking-widest hover:bg-slate-50 transition-all text-center"
-                  >
+                  <button className="px-10 py-5.5 rounded-xl bg-white border border-slate-100 text-slate-900 font-black text-sm uppercase tracking-widest hover:bg-slate-50 transition-all text-center">
                     Download Syllabus
                   </button>
                 </div>
@@ -714,22 +723,24 @@ const CourseDetailsPage = () => {
               >
                 <div className="relative z-10 bg-white p-4 rounded-xl shadow-premium border border-slate-100 h-full overflow-hidden">
                   <div className="w-full h-full bg-slate-50 rounded-lg overflow-hidden group relative">
-                    <img 
+                    <img
                       src={course.image_url || `/images/courses/${id}.png`}
-                      alt={course.title} 
+                      alt={course.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent" />
                     <div className="absolute bottom-6 left-6 px-5 py-3 rounded-lg bg-white/90 backdrop-blur-md border border-white/20 shadow-xl">
-                      <div className="text-sm font-black text-slate-900 uppercase tracking-widest" style={{ fontFamily: "'Lexend', sans-serif" }}>
-                         🔥 Trending Choice
+                      <div
+                        className="text-sm font-black text-slate-900 uppercase tracking-widest"
+                        style={{ fontFamily: "'Lexend', sans-serif" }}
+                      >
+                        🔥 Trending Choice
                       </div>
                     </div>
                   </div>
                 </div>
               </motion.div>
             </div>
-
           </div>
         </div>
       </section>
@@ -739,24 +750,27 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           WHO IS THIS FOR + CAREER OUTCOMES
       ════════════════════════════════════ */}
-      <section className="py-20 relative z-10 border-t border-slate-100 bg-slate-50/30">
+      <section className="relative z-10 border-t border-slate-100 bg-slate-50/30">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-            
             {/* Prerequisites */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="flex flex-col"
             >
-              <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-[0.15em] w-fit mb-6">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-sm md:text-base font-black uppercase tracking-[0.15em] w-fit mb-8 md:mb-12">
                 👥 Who is this for?
               </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8 leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
-                Is this the right course <span className="text-indigo-600">for you?</span>
+              <h2
+                className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8 leading-tight"
+                style={{ fontFamily: "'Lexend', sans-serif" }}
+              >
+                Is this the right course{" "}
+                <span className="text-indigo-600">for you?</span>
               </h2>
-              
+
               <div className="flex flex-col gap-4">
                 {course.prerequisites?.map((item, i) => (
                   <motion.div
@@ -776,18 +790,22 @@ const CourseDetailsPage = () => {
             </motion.div>
 
             {/* Career outcomes */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               className="flex flex-col"
             >
-              <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-100 text-pink-600 text-[10px] font-black uppercase tracking-[0.15em] w-fit mb-6">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-pink-50 border border-pink-100 text-pink-600 text-sm md:text-base font-black uppercase tracking-[0.15em] w-fit mb-8 md:mb-12">
                 🎯 Career Outcomes
               </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8 leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
-                Where this course <span className="text-pink-600">takes you</span>
+              <h2
+                className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-8 leading-tight"
+                style={{ fontFamily: "'Lexend', sans-serif" }}
+              >
+                Where this course{" "}
+                <span className="text-pink-600">takes you</span>
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
@@ -811,10 +829,16 @@ const CourseDetailsPage = () => {
                     <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center">
                       <IcTrophy />
                     </div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/80">Alumni Success Metric</span>
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/80">
+                      Alumni Success Metric
+                    </span>
                   </div>
                   <p className="text-lg md:text-xl font-bold leading-snug">
-                    Average salary hike of <span className="text-amber-300 text-2xl font-black">60%</span> observed for alumni of this program.
+                    Average salary hike of{" "}
+                    <span className="text-amber-300 text-2xl font-black">
+                      60%
+                    </span>{" "}
+                    observed for alumni of this program.
                   </p>
                 </div>
               </div>
@@ -824,14 +848,18 @@ const CourseDetailsPage = () => {
                 {skillBars.map((s, i) => (
                   <div key={i} className="flex flex-col gap-2">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm font-bold text-slate-700">{s.label}</span>
-                      <span className="text-sm font-black text-indigo-600">{s.pct}%</span>
+                      <span className="text-sm font-bold text-slate-700">
+                        {s.label}
+                      </span>
+                      <span className="text-sm font-black text-indigo-600">
+                        {s.pct}%
+                      </span>
                     </div>
                     <div className="h-3 w-full bg-slate-200 rounded-full overflow-hidden">
-                      <motion.div 
+                      <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${s.pct}%` }}
-                        transition={{ duration: 1, delay: 0.5 + (i * 0.1) }}
+                        transition={{ duration: 1, delay: 0.5 + i * 0.1 }}
                         className="h-full bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full"
                       />
                     </div>
@@ -839,7 +867,6 @@ const CourseDetailsPage = () => {
                 ))}
               </div>
             </motion.div>
-
           </div>
         </div>
       </section>
@@ -850,23 +877,28 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           CURRICULUM / ROADMAP
       ════════════════════════════════════ */}
-      <section className="py-20 relative z-10 border-t border-slate-100 bg-white">
+      <section className="relative z-10 border-t border-slate-100 bg-white pt-16 md:pt-24 pb-4 md:pb-6">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          
-          <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-[10px] font-black uppercase tracking-[0.15em] mb-6">
+          <div className="text-center max-w-2xl mx-auto mb-8 md:mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-sm md:text-base font-black uppercase tracking-[0.15em] mb-6">
               📚 Curriculum
             </div>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
-              Learning <span className="bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-transparent">Roadmap</span>
+            <h2
+              className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight"
+              style={{ fontFamily: "'Lexend', sans-serif" }}
+            >
+              Learning{" "}
+              <span className="bg-gradient-to-r from-indigo-600 to-pink-600 bg-clip-text text-transparent">
+                Roadmap
+              </span>
             </h2>
             <p className="text-slate-500 text-lg font-medium">
-              A structured journey from fundamentals to enterprise-level architecture.
+              A structured journey from fundamentals to enterprise-level
+              architecture.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
             {/* Module Sidebar */}
             <div className="lg:col-span-4 flex flex-col gap-3 sticky top-32">
               {course.syllabus.map((mod, i) => (
@@ -875,22 +907,26 @@ const CourseDetailsPage = () => {
                   onClick={() => setActiveModule(i)}
                   className={`flex flex-col gap-1 p-5 rounded-xl text-left transition-all duration-300 border ${
                     activeModule === i
-                    ? "bg-slate-950 border-slate-950 shadow-2xl shadow-slate-200"
-                    : "bg-white border-slate-100 hover:border-indigo-200 hover:bg-slate-50 shadow-sm"
+                      ? "bg-slate-950 border-slate-950 shadow-2xl shadow-slate-200"
+                      : "bg-white border-slate-100 hover:border-indigo-200 hover:bg-slate-50 shadow-sm"
                   }`}
                 >
-                  <span className={`text-[10px] font-black uppercase tracking-widest ${
-                    activeModule === i ? "text-indigo-400" : "text-indigo-600"
-                  }`}>
+                  <span
+                    className={`text-[10px] font-black uppercase tracking-widest ${
+                      activeModule === i ? "text-indigo-400" : "text-indigo-600"
+                    }`}
+                  >
                     Module {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className={`text-base font-bold leading-tight ${
-                    activeModule === i ? "text-white" : "text-slate-900"
-                  }`}>
+                  <span
+                    className={`text-base font-bold leading-tight ${
+                      activeModule === i ? "text-white" : "text-slate-900"
+                    }`}
+                  >
                     {mod.title}
                   </span>
                   {activeModule === i && (
-                    <motion.div 
+                    <motion.div
                       layoutId="active-indicator"
                       className="mt-3 flex items-center gap-2 text-indigo-400 text-[11px] font-bold"
                     >
@@ -915,14 +951,17 @@ const CourseDetailsPage = () => {
                 >
                   {/* Decorative background accent */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
-                  
+
                   <div className="relative z-10">
                     <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
                       <div>
                         <span className="text-indigo-600 text-[11px] font-black uppercase tracking-[0.2em] block mb-2">
                           Module {String(activeModule + 1).padStart(2, "0")}
                         </span>
-                        <h3 className="text-2xl md:text-3xl font-black text-slate-950 leading-tight" style={{ fontFamily: "'Lexend', sans-serif" }}>
+                        <h3
+                          className="text-2xl md:text-3xl font-black text-slate-950 leading-tight"
+                          style={{ fontFamily: "'Lexend', sans-serif" }}
+                        >
                           {course.syllabus[activeModule]?.title}
                         </h3>
                       </div>
@@ -936,28 +975,31 @@ const CourseDetailsPage = () => {
                     </p>
 
                     <div className="mb-6">
-                      <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-4">Key Lessons Covered</span>
+                      <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-4">
+                        Key Lessons Covered
+                      </span>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {course.syllabus[activeModule]?.lessons?.map((lesson, i) => (
-                          <div
-                            key={i}
-                            className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-100 shadow-sm hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group"
-                          >
-                            <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-950 text-white flex items-center justify-center font-black text-xs group-hover:bg-indigo-600 transition-colors">
-                              {i + 1}
+                        {course.syllabus[activeModule]?.lessons?.map(
+                          (lesson, i) => (
+                            <div
+                              key={i}
+                              className="flex items-center gap-4 p-4 rounded-xl bg-white border border-slate-100 shadow-sm hover:border-indigo-200 hover:shadow-indigo-100/50 transition-all group"
+                            >
+                              <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-950 text-white flex items-center justify-center font-black text-xs group-hover:bg-indigo-600 transition-colors">
+                                {i + 1}
+                              </div>
+                              <span className="text-slate-800 font-bold text-sm">
+                                {lesson}
+                              </span>
                             </div>
-                            <span className="text-slate-800 font-bold text-sm">
-                              {lesson}
-                            </span>
-                          </div>
-                        ))}
+                          ),
+                        )}
                       </div>
                     </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
             </div>
-
           </div>
         </div>
       </section>
@@ -966,12 +1008,7 @@ const CourseDetailsPage = () => {
           TOOLS
       ════════════════════════════════════ */}
       <section
-        style={{
-          padding: "80px 0",
-          position: "relative",
-          zIndex: 10,
-          borderTop: "1px solid rgba(255,255,255,.04)",
-        }}
+        className="relative z-10 bg-white pt-4 md:pt-6 pb-16 md:pb-24"
       >
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
           <div
@@ -982,6 +1019,7 @@ const CourseDetailsPage = () => {
               marginBottom: 48,
               textAlign: "center",
             }}
+            className="mb-8 md:mb-12"
           >
             <Pill color="#22d3ee" bg="rgba(34,211,238,.1)">
               <svg
@@ -1031,13 +1069,15 @@ const CourseDetailsPage = () => {
           >
             {course.tools_learned?.map((tool, i) => {
               const toolLogos = {
-                "intellij idea": "https://cdn.simpleicons.org/intellijidea/000000",
+                "intellij idea":
+                  "https://cdn.simpleicons.org/intellijidea/000000",
                 maven: "https://cdn.simpleicons.org/apachemaven/C71A36",
                 junit: "https://cdn.simpleicons.org/junit5/25A239",
                 "spring boot": "https://cdn.simpleicons.org/springboot/6DB33F",
                 mysql: "https://cdn.simpleicons.org/mysql/4479A1",
                 git: "https://cdn.simpleicons.org/git/F05032",
-                "vs code": "https://cdn.simpleicons.org/visualstudiocode/007ACC",
+                "vs code":
+                  "https://cdn.simpleicons.org/visualstudiocode/007ACC",
                 "node.js": "https://cdn.simpleicons.org/nodedotjs/339933",
                 react: "https://cdn.simpleicons.org/react/61DAFB",
                 mongodb: "https://cdn.simpleicons.org/mongodb/47A248",
@@ -1051,32 +1091,38 @@ const CourseDetailsPage = () => {
                 pytorch: "https://cdn.simpleicons.org/pytorch/EE4C2C",
                 keras: "https://cdn.simpleicons.org/keras/D00000",
                 opencv: "https://cdn.simpleicons.org/opencv/5C3EE8",
-                "hugging face": "https://cdn.simpleicons.org/huggingface/FFD21E",
+                "hugging face":
+                  "https://cdn.simpleicons.org/huggingface/FFD21E",
                 cuda: "https://cdn.simpleicons.org/nvidia/76B900",
                 sql: "https://cdn.simpleicons.org/mysql/4479A1",
                 expressjs: "https://cdn.simpleicons.org/express/000000",
-                "microsoft excel": "https://cdn.simpleicons.org/microsoftexcel/217346",
+                "microsoft excel":
+                  "https://cdn.simpleicons.org/microsoftexcel/217346",
                 excel: "https://cdn.simpleicons.org/microsoftexcel/217346",
                 "sap fico": "https://cdn.simpleicons.org/sap/08639C",
                 "power bi": "https://cdn.simpleicons.org/powerbi/F2C811",
                 tableau: "https://cdn.simpleicons.org/tableau/E97627",
                 quickbooks: "https://cdn.simpleicons.org/quickbooks/2CA01C",
                 jupyter: "https://cdn.simpleicons.org/jupyter/F37626",
-                "google analytics": "https://cdn.simpleicons.org/googleanalytics/E37400",
+                "google analytics":
+                  "https://cdn.simpleicons.org/googleanalytics/E37400",
                 wordpress: "https://cdn.simpleicons.org/wordpress/21759B",
                 canva: "https://cdn.simpleicons.org/canva/00C4CC",
                 semrush: "https://cdn.simpleicons.org/semrush/FF642D",
                 "meta ads manager": "https://cdn.simpleicons.org/meta/0668E1",
                 mailchimp: "https://cdn.simpleicons.org/mailchimp/FFE01B",
-                "linkedin recruiter": "https://cdn.simpleicons.org/linkedin/0A66C2",
-                "microsoft teams": "https://cdn.simpleicons.org/microsoftteams/6264A7",
+                "linkedin recruiter":
+                  "https://cdn.simpleicons.org/linkedin/0A66C2",
+                "microsoft teams":
+                  "https://cdn.simpleicons.org/microsoftteams/6264A7",
                 "kali linux": "https://cdn.simpleicons.org/kalilinux/557C94",
                 wireshark: "https://cdn.simpleicons.org/wireshark/167EC6",
                 azure: "https://cdn.simpleicons.org/microsoftazure/0078D4",
                 terraform: "https://cdn.simpleicons.org/terraform/7B42BC",
                 kubernetes: "https://cdn.simpleicons.org/kubernetes/326CE5",
                 arduino: "https://cdn.simpleicons.org/arduino/00979D",
-                "raspberry pi": "https://cdn.simpleicons.org/raspberrypi/C51A4A",
+                "raspberry pi":
+                  "https://cdn.simpleicons.org/raspberrypi/C51A4A",
                 matlab: "https://cdn.simpleicons.org/mathworks/0076A8",
                 "autocad 2024": "https://cdn.simpleicons.org/autodesk/0696D7",
               };
@@ -1108,7 +1154,7 @@ const CourseDetailsPage = () => {
                       fontWeight: 800,
                       color: "#1e293b",
                       letterSpacing: "0.02em",
-                      fontFamily: "'Lexend', sans-serif"
+                      fontFamily: "'Lexend', sans-serif",
                     }}
                   >
                     {tool}
@@ -1123,15 +1169,7 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           PROJECTS
       ════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "80px 0",
-          position: "relative",
-          zIndex: 10,
-          background: "rgba(255,255,255,.01)",
-          borderTop: "1px solid rgba(255,255,255,.04)",
-        }}
-      >
+      <section className="relative z-10 border-t border-slate-100 bg-slate-50/30">
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
           <div
             style={{
@@ -1140,8 +1178,8 @@ const CourseDetailsPage = () => {
               justifyContent: "space-between",
               alignItems: isMobile ? "flex-start" : "flex-end",
               gap: 24,
-              marginBottom: 50,
             }}
+            className="mb-8 md:mb-12"
           >
             <div>
               <Pill color="#f472b6" bg="rgba(244,114,182,.1)">
@@ -1322,16 +1360,9 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           LEARNING ROADMAP
       ════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "80px 0",
-          position: "relative",
-          zIndex: 10,
-          background: "rgba(255,255,255,.01)",
-        }}
-      >
+      <section className="relative z-10 border-t border-slate-100 bg-white">
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
+          <div style={{ textAlign: "center" }} className="mb-8 md:mb-12">
             <Pill color="#6366f1" bg="rgba(99,102,241,0.1)">
               🚀 Journey
             </Pill>
@@ -1509,9 +1540,9 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           COMPARISON TABLE
       ════════════════════════════════════ */}
-      <section style={{ padding: "80px 0", position: "relative", zIndex: 10 }}>
+      <section className="relative z-10 border-t border-slate-100 bg-slate-50/30">
         <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
+          <div style={{ textAlign: "center" }} className="mb-8 md:mb-12">
             <Pill color="#6366f1" bg="rgba(99,102,241,0.1)">
               ⚖️ Comparison
             </Pill>
@@ -1651,14 +1682,7 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           COMMUNITY & LABS
       ════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "80px 0",
-          position: "relative",
-          zIndex: 10,
-          background: "rgba(99,102,241,.02)",
-        }}
-      >
+      <section className="relative z-10 border-t border-slate-100 bg-white">
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
           <div
             style={{
@@ -1835,9 +1859,9 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           STUDENT REVIEWS
       ════════════════════════════════════ */}
-      <section style={{ padding: "80px 0", position: "relative", zIndex: 10 }}>
+      <section className="relative z-10 border-t border-slate-100 bg-slate-50/30">
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
+          <div style={{ textAlign: "center" }} className="mb-8 md:mb-12">
             <Pill color="#ec4899" bg="rgba(236,72,153,.1)">
               💬 Testimonials
             </Pill>
@@ -1914,7 +1938,9 @@ const CourseDetailsPage = () => {
                     <IcUser />
                   </div>
                   <div>
-                    <h5 style={{ color: "#0f172a", fontWeight: 800, margin: 0 }}>
+                    <h5
+                      style={{ color: "#0f172a", fontWeight: 800, margin: 0 }}
+                    >
                       {rev.name}
                     </h5>
                     <p
@@ -1954,14 +1980,7 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           PRICING
       ════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "80px 0",
-          position: "relative",
-          zIndex: 10,
-          borderTop: "1px solid #1e293b",
-        }}
-      >
+      <section className="relative z-10 border-t border-slate-100 bg-white">
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
           <div
             style={{
@@ -2115,7 +2134,9 @@ const CourseDetailsPage = () => {
                       }}
                     >
                       {(() => {
-                        const p = parseInt(course.price?.replace(/[₹,]/g, "") || "0");
+                        const p = parseInt(
+                          course.price?.replace(/[₹,]/g, "") || "0",
+                        );
                         const original = Math.round(p / 0.7);
                         return `₹${original.toLocaleString("en-IN")}`;
                       })()}
@@ -2129,7 +2150,7 @@ const CourseDetailsPage = () => {
                         fontSize: 12,
                         fontWeight: 900,
                         textTransform: "uppercase",
-                        letterSpacing: "0.05em"
+                        letterSpacing: "0.05em",
                       }}
                     >
                       30% OFF
@@ -2220,16 +2241,9 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           MENTORS
       ════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "80px 0",
-          position: "relative",
-          zIndex: 10,
-          borderTop: "1px solid #1e293b",
-        }}
-      >
+      <section className="relative z-10 border-t border-slate-100 bg-white">
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
+          <div style={{ textAlign: "center" }} className="mb-8 md:mb-12">
             <Pill color="#6366f1" bg="rgba(99,102,241,0.1)">
               <svg
                 width="14"
@@ -2403,17 +2417,9 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           CERTIFICATION
       ════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "80px 0",
-          position: "relative",
-          zIndex: 10,
-          borderTop: "1px solid rgba(255,255,255,.04)",
-          background: "rgba(255,255,255,.01)",
-        }}
-      >
+      <section className="relative z-10 border-t border-slate-100 bg-slate-50/30">
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
+          <div style={{ textAlign: "center" }} className="mb-8 md:mb-12">
             <Pill color="#818cf8" bg="rgba(129,140,248,.1)">
               <svg
                 width="14"
@@ -2574,16 +2580,9 @@ const CourseDetailsPage = () => {
       {/* ════════════════════════════════════
           FAQ
       ════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "80px 0",
-          position: "relative",
-          zIndex: 10,
-          borderTop: "1px solid rgba(255,255,255,.04)",
-        }}
-      >
+      <section className="relative z-10 border-t border-slate-100 bg-white">
         <div style={{ maxWidth: 760, margin: "0 auto", padding: "0 24px" }}>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ textAlign: "center" }} className="mb-8 md:mb-12">
             <Pill>❓ FAQ</Pill>
             <h2
               style={{
@@ -2640,42 +2639,74 @@ const CourseDetailsPage = () => {
           >
             {/* Title Section */}
             <div style={{ flex: 1, minWidth: 0 }}>
-              <p style={{
-                fontSize: isMobile ? 8 : 10,
-                color: "#818cf8",
-                fontWeight: 700,
-                letterSpacing: ".1em",
-                textTransform: "uppercase",
-                margin: "0 0 2px"
-              }}>
+              <p
+                style={{
+                  fontSize: isMobile ? 8 : 10,
+                  color: "#818cf8",
+                  fontWeight: 700,
+                  letterSpacing: ".1em",
+                  textTransform: "uppercase",
+                  margin: "0 0 2px",
+                }}
+              >
                 📌 Enrolling Now
               </p>
-              <h4 style={{
-                fontFamily: "'Lexend', sans-serif",
-                fontWeight: 800,
-                color: "#fff",
-                fontSize: isMobile ? 14 : 17,
-                margin: 0,
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap"
-              }}>
+              <h4
+                style={{
+                  fontFamily: "'Lexend', sans-serif",
+                  fontWeight: 800,
+                  color: "#fff",
+                  fontSize: isMobile ? 14 : 17,
+                  margin: 0,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
                 {course.title}
               </h4>
             </div>
 
             {/* Price & Action Section */}
-            <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 12 : 32 }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: isMobile ? 12 : 32,
+              }}
+            >
               {!isMobile && (
-                <div style={{ 
-                  display: "flex", 
-                  flexDirection: "column", 
-                  alignItems: "center",
-                  borderRight: "1px solid rgba(255,255,255,0.1)",
-                  paddingRight: 24
-                }}>
-                  <p style={{ fontSize: 9, color: "#94a3b8", fontWeight: 700, textTransform: "uppercase", margin: "0 0 4px", letterSpacing: 1 }}>Offer Ends</p>
-                  <div style={{ display: "flex", gap: 3, fontWeight: 800, fontSize: 18, color: "#ec4899", fontFamily: "'Outfit', sans-serif" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    borderRight: "1px solid rgba(255,255,255,0.1)",
+                    paddingRight: 24,
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: 9,
+                      color: "#94a3b8",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      margin: "0 0 4px",
+                      letterSpacing: 1,
+                    }}
+                  >
+                    Offer Ends
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: 3,
+                      fontWeight: 800,
+                      fontSize: 18,
+                      color: "#ec4899",
+                      fontFamily: "'Outfit', sans-serif",
+                    }}
+                  >
                     <span>{formatNum(timeLeft.hours)}</span>:
                     <span>{formatNum(timeLeft.minutes)}</span>:
                     <span>{formatNum(timeLeft.seconds)}</span>
@@ -2684,27 +2715,64 @@ const CourseDetailsPage = () => {
               )}
 
               <div style={{ textAlign: "right" }}>
-                <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-end" : "center", gap: isMobile ? 0 : 8 }}>
-                  <span style={{ fontSize: isMobile ? 18 : 24, fontWeight: 900, color: "#818cf8", fontFamily: "'Lexend', sans-serif" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: isMobile ? "column" : "row",
+                    alignItems: isMobile ? "flex-end" : "center",
+                    gap: isMobile ? 0 : 8,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: isMobile ? 18 : 24,
+                      fontWeight: 900,
+                      color: "#818cf8",
+                      fontFamily: "'Lexend', sans-serif",
+                    }}
+                  >
                     {course.price}
                   </span>
-                  <span style={{ fontSize: isMobile ? 11 : 13, color: "#64748b", textDecoration: "line-through", fontWeight: 600 }}>
+                  <span
+                    style={{
+                      fontSize: isMobile ? 11 : 13,
+                      color: "#64748b",
+                      textDecoration: "line-through",
+                      fontWeight: 600,
+                    }}
+                  >
                     {(() => {
-                      const p = parseInt(course.price?.replace("₹", "").replace(/,/g, "") || "0");
+                      const p = parseInt(
+                        course.price?.replace("₹", "").replace(/,/g, "") || "0",
+                      );
                       const original = Math.round(p / 0.7);
                       return `₹${original.toLocaleString("en-IN")}`;
                     })()}
                   </span>
                 </div>
                 {!isMobile && (
-                  <span style={{ fontSize: 9, color: "#f59e0b", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.05em", display: "block" }}>
+                  <span
+                    style={{
+                      fontSize: 9,
+                      color: "#f59e0b",
+                      fontWeight: 900,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.05em",
+                      display: "block",
+                    }}
+                  >
                     Special 30% Discount
                   </span>
                 )}
               </div>
 
               <button
-                onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform", "_blank")}
+                onClick={() =>
+                  window.open(
+                    "https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform",
+                    "_blank",
+                  )
+                }
                 style={{
                   padding: isMobile ? "10px 16px" : "14px 32px",
                   background: "linear-gradient(135deg,#6366f1,#ec4899)",
@@ -2718,7 +2786,7 @@ const CourseDetailsPage = () => {
                   transition: "all .3s",
                   boxShadow: "0 8px 24px rgba(99,102,241,0.4)",
                   letterSpacing: ".04em",
-                  whiteSpace: "nowrap"
+                  whiteSpace: "nowrap",
                 }}
               >
                 {isMobile ? "ENROLL" : "ENROLL NOW 🚀"}

@@ -16,14 +16,14 @@ const STUDENT_IMAGES = [
 
 const Trust = () => {
   return (
-    <section className="py-20 md:py-32 bg-white overflow-hidden">
+    <section className="bg-white overflow-hidden">
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 text-center">
-        <div className="mb-12 md:mb-20">
+        <div className="mb-8 md:mb-12">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-[0.3em] mb-4"
+            className="text-sm md:text-base font-black text-slate-400 uppercase tracking-[0.3em] mb-4"
           >
             Alumni Success
           </motion.p>

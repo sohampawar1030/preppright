@@ -21,9 +21,9 @@ const Placement = () => {
   const scrollLogos = [...PLACEMENT_LOGOS, ...PLACEMENT_LOGOS];
 
   return (
-    <section className="py-20 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
-        <div className="inline-block px-3 py-1 mb-4 rounded-lg bg-emerald-50 border border-emerald-100 text-emerald-600 text-[10px] font-black uppercase tracking-widest">
+    <section className="bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-8 md:mb-12 text-center">
+        <div className="inline-block px-4 py-2 mb-4 rounded-lg bg-emerald-50 border border-emerald-100 text-emerald-600 text-sm md:text-base font-black uppercase tracking-widest">
           Alumni Success
         </div>
         <h2
@@ -40,7 +40,7 @@ const Placement = () => {
         <div className="absolute inset-y-0 left-0 w-24 md:w-48 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-24 md:w-48 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-        <div className="flex animate-scroll-placement whitespace-nowrap gap-6 md:gap-8 items-center py-4">
+        <div className="flex animate-scroll-placement whitespace-nowrap gap-6 md:gap-8 items-center">
           {scrollLogos.map((logo, i) => (
             <div key={i} className="flex-shrink-0">
               <div className="w-[240px] h-[240px] md:w-[300px] md:h-[300px] rounded-xl overflow-hidden bg-slate-50 border border-slate-100 shadow-md group hover:shadow-xl transition-all duration-300">

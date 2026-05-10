@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { GraduationCap } from "lucide-react";
 
 const CATEGORIES = [
   {
@@ -30,20 +31,28 @@ const CATEGORIES = [
 ];
 
 const TopCategories = () => (
-  <section className="py-20 md:py-32 bg-slate-50/50">
+  <section className="bg-white py-16 md:py-24">
     <div className="w-full max-w-7xl mx-auto px-4 md:px-8">
       <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end mb-12 md:mb-16 gap-8 text-center lg:text-left">
         <div className="max-w-2xl">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-2 mb-6 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-sm md:text-base font-black uppercase tracking-widest"
+          >
+            Learning Paths
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-950 mb-6 tracking-tight leading-tight"
             style={{ fontFamily: "'Lexend', sans-serif" }}
           >
             Top <span className="text-indigo-600">Categories</span>
           </motion.h2>
-          <p className="text-slate-500 font-medium text-lg md:text-xl">
+          <p className="text-slate-600 font-medium text-lg md:text-xl leading-relaxed">
             Explore Learning Paths Tailored to Your Career Goals
           </p>
         </div>
@@ -73,8 +82,9 @@ const TopCategories = () => (
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 onError={(e) => {
                   e.target.style.display = "none";
+                  e.target.parentElement.classList.add("bg-slate-100", "flex", "items-center", "justify-center");
                   e.target.parentElement.innerHTML =
-                    '<div class="w-full h-full bg-slate-100 flex items-center justify-center text-6xl">🎓</div>';
+                    '<div class="text-indigo-600"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>';
                 }}
               />
               <div
@@ -100,12 +110,12 @@ const TopCategories = () => (
             {/* Content Container */}
             <div className="px-6 pb-8 md:pb-10 text-center flex flex-col flex-grow items-center">
               <h3
-                className="text-xl md:text-2xl font-bold text-slate-900 mb-4 tracking-tight min-h-[3.5rem] flex items-center justify-center leading-snug"
+                className="text-xl md:text-2xl font-black text-slate-950 mb-4 tracking-tight min-h-[3.5rem] flex items-center justify-center leading-snug"
                 style={{ fontFamily: "'Lexend', sans-serif" }}
               >
                 {cat.title}
               </h3>
-              <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 font-medium line-clamp-2">
+              <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-8 font-medium line-clamp-2">
                 {cat.desc}
               </p>
 

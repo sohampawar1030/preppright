@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { Star, Flame, Rocket } from "lucide-react";
 
 const SLIDES = [
   {
@@ -13,7 +14,11 @@ const SLIDES = [
     ),
     desc: "Join 5M+ learners worldwide. Experience live interactive classes and report massive career growth with our industry-recognized certifications.",
     img: "/images/Students_working/image copy 10.png",
-    badge: "⭐ Top Rated Platform",
+    badge: (
+      <span className="flex items-center gap-2">
+        <Star size={16} className="text-amber-400 fill-amber-400" /> Top Rated Platform
+      </span>
+    ),
     stats: [
       { label: "Careers Advanced", value: "5M+" },
       { label: "Live Classes", value: "1.5K+" },
@@ -30,7 +35,11 @@ const SLIDES = [
     ),
     desc: "Join the most interactive learning community. We don't just teach code; we build careers through 1-on-1 human mentorship.",
     img: "/images/courses/abc/java.png",
-    badge: "🔥 Live Interaction",
+    badge: (
+      <span className="flex items-center gap-2">
+        <Flame size={16} className="text-orange-500 fill-orange-500" /> Live Interaction
+      </span>
+    ),
   },
   {
     tag: "Future-Proof Careers",
@@ -42,7 +51,11 @@ const SLIDES = [
     ),
     desc: "Don't just use AI, build it. Get hands-on training from industry experts who've worked at the world's biggest tech giants.",
     img: "/images/courses/ai_ml.png",
-    badge: "🚀 120% Avg. Hike",
+    badge: (
+      <span className="flex items-center gap-2">
+        <Rocket size={16} className="text-indigo-600 fill-indigo-600" /> 120% Avg. Hike
+      </span>
+    ),
   },
 ];
 
@@ -169,9 +182,9 @@ const Hero = ({ bannerVisible }) => {
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-violet-50/30 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2" />
 
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 lg:gap-20 items-center">
           {/* Content Section */}
-          <div className="relative z-10 order-1 md:order-1 text-left">
+          <div className="relative z-10 order-1 md:order-1 text-center flex flex-col items-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -179,20 +192,21 @@ const Hero = ({ bannerVisible }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.6 }}
+                className="flex flex-col items-center"
               >
-                <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs font-black uppercase tracking-widest">
+                <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 md:mb-6 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-sm md:text-base font-black uppercase tracking-widest">
                   <span className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse" />
                   {SLIDES[current].tag}
                 </div>
 
                 <h1
-                  className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight leading-[1.1] text-slate-950"
+                  className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 md:mb-6 tracking-tight leading-[1.1] text-slate-950"
                   style={{ fontFamily: "'Lexend', sans-serif" }}
                 >
                   {SLIDES[current].title}
                 </h1>
 
-                <p className="text-slate-500 text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl mb-8 font-medium">
+                <p className="text-slate-500 text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl mb-6 md:mb-8 font-medium mx-auto">
                   {SLIDES[current].desc}
                 </p>
               </motion.div>
@@ -202,7 +216,7 @@ const Hero = ({ bannerVisible }) => {
           </div>
 
           {/* Visual Section */}
-          <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] order-2 md:order-2">
+          <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] order-2 md:order-2">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -212,13 +226,13 @@ const Hero = ({ bannerVisible }) => {
                 transition={{ duration: 0.8 }}
                 className="absolute inset-0"
               >
-                <div className="relative w-full h-full p-4">
+                <div className="relative w-full h-full p-2 md:p-4">
                   {/* Premium Frame */}
                   <div className="relative w-full h-full rounded-2xl md:rounded-3xl overflow-hidden bg-slate-100 border-4 border-white shadow-2xl">
                     <img
                       src={SLIDES[current].img}
                       alt="Course Preview"
-                      className="w-full h-auto min-h-[300px] md:min-h-[400px] lg:h-full object-cover rounded-2xl"
+                      className="w-full h-full object-cover rounded-2xl"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
 
@@ -270,9 +284,9 @@ const Hero = ({ bannerVisible }) => {
       </div>
 
       {/* Search Bar & Buttons - Moved Below Image */}
-      <div className="mt-16 md:mt-24 max-w-4xl px-4 relative z-50">
+      <div className="mt-8 md:mt-16 max-w-4xl px-4 relative z-50 mx-auto text-center">
         {/* Search Bar */}
-        <div className="relative w-full mb-10 group">
+        <div className="relative w-full mb-6 md:mb-10 group">
           <div className="absolute inset-0 bg-indigo-500/10 blur-xl group-focus-within:blur-2xl transition-all rounded-full" />
           <div className="relative flex items-center bg-white p-2 md:p-3 rounded-xl border border-slate-200 shadow-sm focus-within:border-indigo-400 focus-within:ring-4 focus-within:ring-indigo-50 transition-all">
             <div className="pl-4 pr-2 text-slate-400">
@@ -338,8 +352,8 @@ const Hero = ({ bannerVisible }) => {
                           {course.duration}
                         </span>
                         <span className="w-1 h-1 rounded-full bg-slate-300" />
-                        <span className="text-amber-400 font-black text-[10px] md:text-[11px]">
-                          ⭐ {course.rating}
+                        <span className="text-amber-400 font-black text-[10px] md:text-[11px] flex items-center gap-1">
+                          <Star size={12} className="fill-amber-400" /> {course.rating}
                         </span>
                       </div>
                     </div>
@@ -362,7 +376,7 @@ const Hero = ({ bannerVisible }) => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-start items-start">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
             href="#courses"
             className="w-full sm:w-auto flex items-center justify-center min-h-[64px] px-12 rounded-xl bg-slate-950 text-white font-black text-base uppercase tracking-[0.2em] hover:bg-indigo-600 transition-all shadow-2xl shadow-slate-900/20 active:scale-95"
@@ -378,7 +392,7 @@ const Hero = ({ bannerVisible }) => {
         </div>
 
         {/* Slide Indicators Centered */}
-        <div className="flex justify-start gap-3 mt-12">
+        <div className="flex justify-center gap-3 mt-8 md:mt-12">
           {SLIDES.map((_, i) => (
             <button
               key={i}

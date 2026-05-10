@@ -14,9 +14,17 @@ const WorldMap = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+    <section className="bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-12 md:mb-20">
+        <div className="text-center mb-8 md:mb-12">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-2 mb-6 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-sm md:text-base font-black uppercase tracking-widest"
+          >
+            Global Presence
+          </motion.div>
           <h2
             className="text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight"
             style={{ fontFamily: "'Lexend', sans-serif" }}
@@ -43,7 +51,7 @@ const WorldMap = () => {
                 <img
                   src="/map.png"
                   alt="Global Connections"
-                  className="w-full h-auto drop-shadow-sm mb-16"
+                  className="w-full h-auto drop-shadow-sm mb-6"
                   onError={(e) => {
                     e.target.src = "/world_map.png";
                   }}
@@ -87,7 +95,7 @@ const WorldMap = () => {
           </div>
 
           {/* Feature Points */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 mt-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 mt-2">
             {[
               { label: "Global Mentorship", icon: "🌍", color: "#6366f1" },
               { label: "24/7 Support", icon: "🕒", color: "#ec4899" },
