@@ -156,12 +156,26 @@ const Courses = ({ limit }) => {
 
                 <div className="mt-auto flex items-center justify-between">
                   <div className="flex flex-col">
-                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">
-                      Course Fee
-                    </span>
-                    <span className="text-2xl md:text-3xl font-black text-slate-900 tracking-tighter">
-                      {course.price}
-                    </span>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                        Course Fee
+                      </span>
+                      <span className="px-2 py-0.5 rounded-md bg-amber-100 text-amber-700 text-[9px] font-black uppercase tracking-wider">
+                        30% OFF
+                      </span>
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-2xl md:text-3xl font-black text-slate-900 tracking-tighter">
+                        {course.price}
+                      </span>
+                      <span className="text-sm font-bold text-slate-400 line-through decoration-slate-300">
+                        {(() => {
+                          const currentPrice = parseInt(course.price.replace(/[^\d]/g, ""));
+                          const originalPrice = Math.round(currentPrice / 0.7);
+                          return `₹${originalPrice.toLocaleString()}`;
+                        })()}
+                      </span>
+                    </div>
                   </div>
                   <Link
                     to={`/course/${course.id}`}

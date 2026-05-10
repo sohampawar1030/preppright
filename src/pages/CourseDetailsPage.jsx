@@ -1031,98 +1031,54 @@ const CourseDetailsPage = () => {
           >
             {course.tools_learned?.map((tool, i) => {
               const toolLogos = {
-                "intellij idea":
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg",
-                maven:
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original.svg",
-                junit:
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/junit/junit-original.svg",
-                "spring boot":
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
-                mysql:
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-                git: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-                "vs code":
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
-                "node.js":
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-                react:
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-                mongodb:
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-                express:
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-                docker:
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-                aws: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-                python:
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-                pandas:
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg",
-                numpy:
-                  "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg",
-                tensorflow:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tensorflow.svg",
-                pytorch:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/pytorch.svg",
-                keras:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/keras.svg",
-                opencv:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/opencv.svg",
-                "hugging face":
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/huggingface.svg",
-                cuda: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nvidia.svg",
-                sql: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mysql.svg",
-                expressjs:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/express.svg",
-                "microsoft excel":
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftexcel.svg",
-                excel:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftexcel.svg",
-                "sap fico":
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/sap.svg",
-                "power bi":
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/powerbi.svg",
-                tableau:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tableau.svg",
-                quickbooks:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/quickbooks.svg",
-                jupyter:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/jupyter.svg",
-                "google analytics":
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googleanalytics.svg",
-                wordpress:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/wordpress.svg",
-                canva:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/canva.svg",
-                semrush:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/semrush.svg",
-                "meta ads manager":
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/meta.svg",
-                mailchimp:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/mailchimp.svg",
-                "linkedin recruiter":
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg",
-                "microsoft teams":
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftteams.svg",
-                "kali linux":
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kalilinux.svg",
-                wireshark:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/wireshark.svg",
-                azure:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftazure.svg",
-                terraform:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/terraform.svg",
-                kubernetes:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kubernetes.svg",
-                arduino:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/arduino.svg",
-                "raspberry pi":
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/raspberrypi.svg",
-                matlab:
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/matlab.svg",
-                "autocad 2024":
-                  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/autodesk.svg",
+                "intellij idea": "https://cdn.simpleicons.org/intellijidea/000000",
+                maven: "https://cdn.simpleicons.org/apachemaven/C71A36",
+                junit: "https://cdn.simpleicons.org/junit5/25A239",
+                "spring boot": "https://cdn.simpleicons.org/springboot/6DB33F",
+                mysql: "https://cdn.simpleicons.org/mysql/4479A1",
+                git: "https://cdn.simpleicons.org/git/F05032",
+                "vs code": "https://cdn.simpleicons.org/visualstudiocode/007ACC",
+                "node.js": "https://cdn.simpleicons.org/nodedotjs/339933",
+                react: "https://cdn.simpleicons.org/react/61DAFB",
+                mongodb: "https://cdn.simpleicons.org/mongodb/47A248",
+                express: "https://cdn.simpleicons.org/express/000000",
+                docker: "https://cdn.simpleicons.org/docker/2496ED",
+                aws: "https://cdn.simpleicons.org/amazonwebservices/232F3E",
+                python: "https://cdn.simpleicons.org/python/3776AB",
+                pandas: "https://cdn.simpleicons.org/pandas/150458",
+                numpy: "https://cdn.simpleicons.org/numpy/013243",
+                tensorflow: "https://cdn.simpleicons.org/tensorflow/FF6F00",
+                pytorch: "https://cdn.simpleicons.org/pytorch/EE4C2C",
+                keras: "https://cdn.simpleicons.org/keras/D00000",
+                opencv: "https://cdn.simpleicons.org/opencv/5C3EE8",
+                "hugging face": "https://cdn.simpleicons.org/huggingface/FFD21E",
+                cuda: "https://cdn.simpleicons.org/nvidia/76B900",
+                sql: "https://cdn.simpleicons.org/mysql/4479A1",
+                expressjs: "https://cdn.simpleicons.org/express/000000",
+                "microsoft excel": "https://cdn.simpleicons.org/microsoftexcel/217346",
+                excel: "https://cdn.simpleicons.org/microsoftexcel/217346",
+                "sap fico": "https://cdn.simpleicons.org/sap/08639C",
+                "power bi": "https://cdn.simpleicons.org/powerbi/F2C811",
+                tableau: "https://cdn.simpleicons.org/tableau/E97627",
+                quickbooks: "https://cdn.simpleicons.org/quickbooks/2CA01C",
+                jupyter: "https://cdn.simpleicons.org/jupyter/F37626",
+                "google analytics": "https://cdn.simpleicons.org/googleanalytics/E37400",
+                wordpress: "https://cdn.simpleicons.org/wordpress/21759B",
+                canva: "https://cdn.simpleicons.org/canva/00C4CC",
+                semrush: "https://cdn.simpleicons.org/semrush/FF642D",
+                "meta ads manager": "https://cdn.simpleicons.org/meta/0668E1",
+                mailchimp: "https://cdn.simpleicons.org/mailchimp/FFE01B",
+                "linkedin recruiter": "https://cdn.simpleicons.org/linkedin/0A66C2",
+                "microsoft teams": "https://cdn.simpleicons.org/microsoftteams/6264A7",
+                "kali linux": "https://cdn.simpleicons.org/kalilinux/557C94",
+                wireshark: "https://cdn.simpleicons.org/wireshark/167EC6",
+                azure: "https://cdn.simpleicons.org/microsoftazure/0078D4",
+                terraform: "https://cdn.simpleicons.org/terraform/7B42BC",
+                kubernetes: "https://cdn.simpleicons.org/kubernetes/326CE5",
+                arduino: "https://cdn.simpleicons.org/arduino/00979D",
+                "raspberry pi": "https://cdn.simpleicons.org/raspberrypi/C51A4A",
+                matlab: "https://cdn.simpleicons.org/mathworks/0076A8",
+                "autocad 2024": "https://cdn.simpleicons.org/autodesk/0696D7",
               };
               const logoUrl =
                 toolLogos[tool.toLowerCase()] ||
@@ -1133,55 +1089,26 @@ const CourseDetailsPage = () => {
                   key={i}
                   className="cdp-tool-card"
                   style={{
-                    padding: "18px 22px",
+                    padding: "10px 20px",
                     borderRadius: 12,
-                    background: "rgba(255,255,255,.03)",
-                    border: "1px solid rgba(255,255,255,.08)",
+                    background: "#fff",
+                    border: "1px solid rgba(0,0,0,0.08)",
                     display: "flex",
-                    flexDirection: "column",
                     alignItems: "center",
-                    gap: 10,
-                    minWidth: 100,
+                    justifyContent: "center",
+                    minWidth: 120,
                     cursor: "default",
                     transition: "all .3s",
+                    boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
                   }}
                 >
-                  <div
-                    style={{
-                      width: 54,
-                      height: 54,
-                      borderRadius: 8,
-                      background: "rgba(255,255,255,.03)",
-                      border: "1px solid rgba(0,0,0,0.08)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      padding: 10,
-                      transition: "transform .3s",
-                    }}
-                  >
-                    <img
-                      src={logoUrl}
-                      alt={tool}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
-                        filter:
-                          tool.toLowerCase() === "express" ||
-                          logoUrl.includes("simple-icons")
-                            ? "brightness(0) invert(1)"
-                            : "none",
-                      }}
-                    />
-                  </div>
                   <span
                     style={{
-                      fontSize: 11,
-                      fontWeight: 700,
-                      color: "#64748b",
-                      letterSpacing: ".08em",
-                      textTransform: "uppercase",
+                      fontSize: 13,
+                      fontWeight: 800,
+                      color: "#1e293b",
+                      letterSpacing: "0.02em",
+                      fontFamily: "'Lexend', sans-serif"
                     }}
                   >
                     {tool}
@@ -2187,26 +2114,25 @@ const CourseDetailsPage = () => {
                         fontWeight: 600,
                       }}
                     >
-                      ₹
                       {(() => {
-                        const p = parseInt(
-                          course.price?.replace(/[₹,]/g, "") || "0",
-                        );
-                        return (p + 2000).toLocaleString("en-IN");
+                        const p = parseInt(course.price?.replace(/[₹,]/g, "") || "0");
+                        const original = Math.round(p / 0.7);
+                        return `₹${original.toLocaleString("en-IN")}`;
                       })()}
                     </span>
                     <span
                       style={{
                         padding: "4px 10px",
                         borderRadius: 4,
-                        background: "rgba(236, 72, 153, 0.1)",
-                        color: "#ec4899",
+                        background: "rgba(245, 158, 11, 0.1)",
+                        color: "#f59e0b",
                         fontSize: 12,
-                        fontWeight: 700,
+                        fontWeight: 900,
                         textTransform: "uppercase",
+                        letterSpacing: "0.05em"
                       }}
                     >
-                      Save ₹2,000 Today
+                      30% OFF
                     </span>
                   </div>
                   <div
@@ -2700,124 +2626,56 @@ const CourseDetailsPage = () => {
               background: "rgba(10,15,30,.98)",
               backdropFilter: "blur(24px)",
               border: isMobile ? "none" : "1px solid rgba(255,255,255,.1)",
-              borderTop: isMobile
-                ? "1px solid rgba(255,255,255,.1)"
-                : "1px solid rgba(255,255,255,.1)",
+              borderTop: "1px solid rgba(255,255,255,.1)",
               borderRadius: isMobile ? 0 : 12,
-              padding: isMobile ? "8px 10px" : "18px 28px",
+              padding: isMobile ? "16px 18px" : "18px 28px",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-between",
               boxShadow: "0 -10px 60px rgba(0,0,0,.5)",
-              gap: isMobile ? 10 : 12,
+              gap: 12,
               width: "100%",
-              overflow: "hidden",
             }}
           >
-            {/* Mobile title section */}
-            {isMobile && (
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <p
-                  style={{
-                    fontSize: 8,
-                    color: "#818cf8",
-                    fontWeight: 700,
-                    letterSpacing: ".1em",
-                    textTransform: "uppercase",
-                    margin: "0 0 2px",
-                  }}
-                >
-                  📌 Enrolling Now
-                </p>
-                <h4
-                  className="cdp-sticky-title"
-                  style={{
-                    fontFamily: "'Outfit', sans-serif",
-                    fontWeight: 800,
-                    color: "#fff",
-                    fontSize: 14,
-                    margin: 0,
-                    minWidth: 0,
-                  }}
-                >
-                  {course.title}
-                </h4>
-              </div>
-            )}
+            {/* Title Section */}
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <p style={{
+                fontSize: isMobile ? 8 : 10,
+                color: "#818cf8",
+                fontWeight: 700,
+                letterSpacing: ".1em",
+                textTransform: "uppercase",
+                margin: "0 0 2px"
+              }}>
+                📌 Enrolling Now
+              </p>
+              <h4 style={{
+                fontFamily: "'Lexend', sans-serif",
+                fontWeight: 800,
+                color: "#fff",
+                fontSize: isMobile ? 14 : 17,
+                margin: 0,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap"
+              }}>
+                {course.title}
+              </h4>
+            </div>
 
-            {/* Desktop title section */}
-            {!isMobile && (
-              <div style={{ display: "block" }}>
-                <p
-                  style={{
-                    fontSize: 10,
-                    color: "#818cf8",
-                    fontWeight: 700,
-                    letterSpacing: ".1em",
-                    textTransform: "uppercase",
-                    margin: "0 0 3px",
-                  }}
-                >
-                  📌 Enrolling Now
-                </p>
-                <h4
-                  style={{
-                    fontFamily: "'Outfit', sans-serif",
-                    fontWeight: 800,
-                    color: "#fff",
-                    fontSize: 17,
-                    margin: 0,
-                  }}
-                >
-                  {course.title}
-                </h4>
-              </div>
-            )}
-
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                gap: isMobile ? 10 : 32,
-                width: "auto",
-                justifyContent: "flex-end",
-                flexWrap: "nowrap",
-              }}
-            >
+            {/* Price & Action Section */}
+            <div style={{ display: "flex", alignItems: "center", gap: isMobile ? 12 : 32 }}>
               {!isMobile && (
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    borderRight: "1px solid rgba(255,255,255,0.1)",
-                    paddingRight: 24,
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: 9,
-                      color: "#94a3b8",
-                      fontWeight: 700,
-                      textTransform: "uppercase",
-                      margin: "0 0 4px",
-                      letterSpacing: 1,
-                    }}
-                  >
-                    Offer Ends
-                  </p>
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: 3,
-                      fontWeight: 800,
-                      fontSize: 18,
-                      color: "#ec4899",
-                      fontFamily: "'Outfit', sans-serif",
-                    }}
-                  >
+                <div style={{ 
+                  display: "flex", 
+                  flexDirection: "column", 
+                  alignItems: "center",
+                  borderRight: "1px solid rgba(255,255,255,0.1)",
+                  paddingRight: 24
+                }}>
+                  <p style={{ fontSize: 9, color: "#94a3b8", fontWeight: 700, textTransform: "uppercase", margin: "0 0 4px", letterSpacing: 1 }}>Offer Ends</p>
+                  <div style={{ display: "flex", gap: 3, fontWeight: 800, fontSize: 18, color: "#ec4899", fontFamily: "'Outfit', sans-serif" }}>
                     <span>{formatNum(timeLeft.hours)}</span>:
                     <span>{formatNum(timeLeft.minutes)}</span>:
                     <span>{formatNum(timeLeft.seconds)}</span>
@@ -2825,77 +2683,42 @@ const CourseDetailsPage = () => {
                 </div>
               )}
 
-              <div
-                style={{
-                  textAlign: isMobile ? "left" : "right",
-                  width: "auto",
-                  minWidth: 0,
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: isMobile ? "flex-start" : "flex-end",
-                    maxWidth: "100%",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: isMobile ? 14 : 24,
-                      fontWeight: 800,
-                      color: "#818cf8",
-                      fontFamily: "'Outfit', sans-serif",
-                      maxWidth: "100%",
-                    }}
-                  >
+              <div style={{ textAlign: "right" }}>
+                <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-end" : "center", gap: isMobile ? 0 : 8 }}>
+                  <span style={{ fontSize: isMobile ? 18 : 24, fontWeight: 900, color: "#818cf8", fontFamily: "'Lexend', sans-serif" }}>
                     {course.price}
                   </span>
-                  {!isMobile && (
-                    <span
-                      style={{
-                        fontSize: 10,
-                        color: "#64748b",
-                        textDecoration: "line-through",
-                      }}
-                    >
-                      ₹
-                      {(() => {
-                        const p = parseInt(
-                          course.price?.replace(/[₹,]/g, "") || "0",
-                        );
-                        return (p + 2000).toLocaleString("en-IN");
-                      })()}
-                    </span>
-                  )}
+                  <span style={{ fontSize: isMobile ? 11 : 13, color: "#64748b", textDecoration: "line-through", fontWeight: 600 }}>
+                    {(() => {
+                      const p = parseInt(course.price?.replace("₹", "").replace(/,/g, "") || "0");
+                      const original = Math.round(p / 0.7);
+                      return `₹${original.toLocaleString("en-IN")}`;
+                    })()}
+                  </span>
                 </div>
+                {!isMobile && (
+                  <span style={{ fontSize: 9, color: "#f59e0b", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.05em", display: "block" }}>
+                    Special 30% Discount
+                  </span>
+                )}
               </div>
 
               <button
-                className="cdp-enroll-btn"
-                onClick={() =>
-                  window.open(
-                    "https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform",
-                    "_blank",
-                  )
-                }
+                onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLScOFaALLkOnFhOG68XtrikDhuRgKEFJvOu-EXoHiO5ghqFgZg/viewform", "_blank")}
                 style={{
-                  padding: isMobile ? "8px 12px" : "14px 32px",
+                  padding: isMobile ? "10px 16px" : "14px 32px",
                   background: "linear-gradient(135deg,#6366f1,#ec4899)",
                   color: "#fff",
-                  fontFamily: "'Outfit', sans-serif",
+                  fontFamily: "'Lexend', sans-serif",
                   fontWeight: 800,
-                  fontSize: isMobile ? 10 : 15,
+                  fontSize: isMobile ? 12 : 15,
                   borderRadius: 12,
                   border: "none",
                   cursor: "pointer",
                   transition: "all .3s",
-                  boxShadow: isMobile
-                    ? "0 6px 18px rgba(99,102,241,.35)"
-                    : "0 8px 24px rgba(99,102,241,.4)",
+                  boxShadow: "0 8px 24px rgba(99,102,241,0.4)",
                   letterSpacing: ".04em",
-                  whiteSpace: "nowrap",
-                  flexShrink: 0,
+                  whiteSpace: "nowrap"
                 }}
               >
                 {isMobile ? "ENROLL" : "ENROLL NOW 🚀"}
