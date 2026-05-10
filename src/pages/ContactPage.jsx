@@ -33,7 +33,7 @@ const ContactPage = () => {
   return (
     <div className="bg-white text-slate-900 min-h-screen" style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Hero Section */}
-      <section className="pt-40 pb-20 relative overflow-hidden bg-slate-50/50">
+      <section className="hero-section-fix pb-20 relative overflow-hidden bg-slate-50/50">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-50/50 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2" />
         
         <div className="max-w-6xl mx-auto px-6">

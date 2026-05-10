@@ -159,10 +159,10 @@ const Hero = ({ bannerVisible }) => {
     <section
       style={{
         "--padding-top": bannerVisible
-          ? "var(--pt-banner, 150px)"
-          : "var(--pt-no-banner, 110px)",
+          ? "var(--pt-banner, 180px)"
+          : "var(--pt-no-banner, 130px)",
       }}
-      className={`hero-section-fix relative overflow-hidden bg-white transition-all duration-500 [--pt-banner:130px] md:[--pt-banner:150px] [--pt-no-banner:90px] md:[--pt-no-banner:110px]`}
+      className={`hero-section-fix relative overflow-hidden bg-white transition-all duration-500 [--pt-banner:160px] md:[--pt-banner:180px] [--pt-no-banner:110px] md:[--pt-no-banner:130px]`}
     >
       {/* Background Orbs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-indigo-50/50 rounded-full blur-[120px] -z-10 translate-x-1/3 -translate-y-1/3" />

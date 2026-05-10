@@ -59,7 +59,7 @@ const CategoriesPage = () => {
   return (
     <div className="bg-white text-slate-900 min-h-screen" style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Hero Section */}
-      <section className="pt-40 pb-24 relative overflow-hidden">
+      <section className="hero-section-fix pb-20 relative overflow-hidden bg-slate-50/50">
         {/* Background Gradients */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-50/50 rounded-full blur-[100px] -z-10" />
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-violet-50/50 rounded-full blur-[100px] -z-10" />

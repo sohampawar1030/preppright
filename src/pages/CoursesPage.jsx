@@ -126,7 +126,7 @@ const CoursesPage = () => {
     <div className="min-h-screen bg-white text-slate-900" style={{ fontFamily: "'Inter', sans-serif" }}>
       
       {/* Premium Dynamic Hero Section */}
-      <section className="pt-40 pb-20 relative overflow-hidden bg-white">
+      <section className="hero-section-fix pb-20 relative overflow-hidden bg-white">
         {/* Decorative background element */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-50/50 rounded-full blur-[120px] -z-10 translate-x-1/4 -translate-y-1/4" />
         
