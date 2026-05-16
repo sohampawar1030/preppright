@@ -22,7 +22,7 @@ const COURSE_HERO_SLIDES = [
       </>
     ),
     desc: "Experience world-class learning with industry experts. Join 50,000+ students already transforming their careers with PreppRight.",
-    img: "/images/Students_working/image copy 10.png",
+    img: "/images/courses/abc/fullstack .png",
     accent: "bg-indigo-600",
   },
   {

@@ -48,15 +48,15 @@ const Trust = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.05 }}
               viewport={{ once: true }}
-              className="aspect-square sm:aspect-[4/3] rounded-[32px] overflow-hidden shadow-premium group border border-slate-50 bg-slate-50"
+              className="aspect-square sm:aspect-[4/3] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-premium group border border-slate-100 bg-white p-4 md:p-6 flex items-center justify-center"
             >
               <img
                 src={`/images/Students_working/${img}`}
-                alt="Alumni Success"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                alt="Alumni Success Logo"
+                className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
                 onError={(e) => {
                   e.target.src =
-                    "https://via.placeholder.com/400x300?text=Work";
+                    "https://via.placeholder.com/400x300?text=Partner";
                 }}
               />
             </motion.div>

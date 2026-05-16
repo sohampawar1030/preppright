@@ -20,6 +20,7 @@ import AdvantageDetailPage from "./pages/AdvantageDetailPage";
 import SkillPathsPage from "./pages/SkillPathsPage";
 import PracticeAssessmentPage from "./pages/PracticeAssessmentPage";
 import CommunityPage from "./pages/CommunityPage";
+import AboutPage from "./pages/AboutPage";
 
 import EnrollmentBanner from "./components/EnrollmentBanner";
 import Navbar from "./components/Navbar";
@@ -67,6 +68,7 @@ function AppContent() {
 
         <Routes>
           <Route path="/" element={<Home bannerVisible={showBanner} />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/advantage/:id" element={<AdvantageDetailPage />} />
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/course/:id" element={<CourseDetailsPage />} />

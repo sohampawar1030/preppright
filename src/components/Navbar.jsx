@@ -5,7 +5,8 @@ import { courseDetails } from "../data/coursesData";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
-  { to: "/categories", label: "Categories" },
+  { to: "/about", label: "About Us" },
+  { to: "/categories", label: "Industrial Trainings" },
   { to: "/courses", label: "Courses" },
   { to: "/discuss", label: "Discuss" },
   { to: "/quiz", label: "Quiz" },

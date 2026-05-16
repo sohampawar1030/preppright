@@ -13,7 +13,7 @@ const SLIDES = [
       </>
     ),
     desc: "Join 5M+ learners worldwide. Experience live interactive classes and report massive career growth with our industry-recognized certifications.",
-    img: "/images/Students_working/image copy 10.png",
+    img: "/images/courses/abc/fullstack .png",
     badge: (
       <span className="flex items-center gap-2">
         <Star size={16} className="text-amber-400 fill-amber-400" /> Top Rated Platform

@@ -107,7 +107,8 @@ export const courseDetails = {
         name: "Farhat Bhat", 
         role: "Software Development Engineer-2 @ Sony India", 
         bio: "Expert in scalable web architectures and modern frontend frameworks with extensive experience at Sony.",
-        linkedin: "https://www.linkedin.com/in/farhathbhat/"
+        linkedin: "https://www.linkedin.com/in/farhathbhat/",
+        image_url: "/images/Mentor_images/FARAH.png"
       }
     ]
   },
@@ -201,7 +202,8 @@ export const courseDetails = {
         name: "Uttam Grade", 
         role: "Data Analytics Manager @ EY | Gen AI Expert", 
         bio: "Specialist in large-scale data analytics and Generative AI implementations at EY.",
-        linkedin: "https://www.linkedin.com/in/uttamgrade/"
+        linkedin: "https://www.linkedin.com/in/uttamgrade/",
+        image_url: "/images/Mentor_images/UTTAM.png"
       }
     ]
   },
@@ -274,7 +276,8 @@ export const courseDetails = {
         name: "Uttam Grade", 
         role: "Gen AI & ML Expert @ EY", 
         bio: "Leading AI/ML initiatives and specialized in advanced predictive modeling.",
-        linkedin: "https://www.linkedin.com/in/uttamgrade/"
+        linkedin: "https://www.linkedin.com/in/uttamgrade/",
+        image_url: "/images/Mentor_images/UTTAM.png"
       }
     ]
   },
@@ -303,7 +306,8 @@ export const courseDetails = {
         name: "T.Raja Stephenson", 
         role: "Digital Marketing Lead @ Adobe & T-Mobile", 
         bio: "Seasoned marketing strategist with experience driving growth for global giants like Adobe and T-Mobile.",
-        linkedin: "https://www.linkedin.com/in/titturaja/"
+        linkedin: "https://www.linkedin.com/in/titturaja/",
+        image_url: "/images/Mentor_images/titturaj.png"
       }
     ]
   },
@@ -359,7 +363,8 @@ export const courseDetails = {
         name: "C Vaishnavucv", 
         role: "Cyber Security Expert @ Cyber Cell", 
         bio: "Specialist in digital forensics and defensive security at the official Cyber Cell.",
-        linkedin: "https://www.linkedin.com/in/vaishnavucv/"
+        linkedin: "https://www.linkedin.com/in/vaishnavucv/",
+        image_url: "/images/Mentor_images/Vaishnavu.png"
       }
     ]
   },
@@ -408,7 +413,8 @@ export const courseDetails = {
         name: "Garima Mittal", 
         role: "Product Manager @ TCS | IoT Expert", 
         bio: "Leading IoT product initiatives at TCS with deep expertise in connected devices.",
-        linkedin: "https://www.linkedin.com/in/garima-mittal-mie-ceng-india-4a722b77/"
+        linkedin: "https://www.linkedin.com/in/garima-mittal-mie-ceng-india-4a722b77/",
+        image_url: "/images/Mentor_images/GARIMA.png"
       }
     ]
   },
@@ -521,7 +527,12 @@ export const courseDetails = {
       { title: "Mechanical Engine Component", description: "Create a detailed 3D model with technical specifications for manufacturing.", tech: ["AutoCAD 3D"] }
     ],
     instructors: [
-      { name: "Garima Mittal", role: "CAD Specialist @ Autodesk Certified", bio: "Garima has trained over 1000+ professionals in industrial design workflows." },
+      { 
+        name: "Garima Mittal", 
+        role: "CAD Specialist @ Autodesk Certified", 
+        bio: "Garima has trained over 1000+ professionals in industrial design workflows.",
+        image_url: "/images/Mentor_images/GARIMA.png"
+      },
       { name: "Rohan Joshi", role: "Lead Architect", bio: "Rohan specializes in large-scale urban design and technical drafting." }
     ]
   },
